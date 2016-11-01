@@ -1,0 +1,99 @@
+@import '~stylesheets/include/_variables.scss';
+
+.header.loading {
+    opacity: 0;
+}
+
+.header {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
+    box-sizing: border-box;
+    background-color: #FFF;
+
+    position: fixed;
+    top: 0;
+    z-index: 500;
+
+    font-size: 1.6em;
+    line-height: 2.5em;
+    letter-spacing: 0.1px;
+
+    .header__container {
+        width: 85%;
+        max-width: $layout-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .header__list {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .header-title__link {
+        color: $lighter-text-color;
+        opacity: 0;
+
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            background: url('~assets/images/smiley.png');
+            background-size: contain;
+
+            position: relative;
+            left: 5px;
+            top: 1px;
+        }
+    }
+    .header__item {
+        padding-left: 105px;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+    .header__link {
+        color: $text-color;
+        position: relative;
+
+        .header-link__underline {
+            display: inline-block;
+            width: 0px;
+            height: 10px;
+            background-color: $light-peach;
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+        }
+    }
+    .header-link__language--selected, .header-link__language:hover {
+        color: $light-peach;
+    }
+}
+
+#main-container {
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        font-size: 1.5em;
+
+        .header__container {
+            width: 100%;
+        }
+        .header__title {
+            display: none;
+        }
+        .header__list {
+            width: 100%;
+            padding-right: 17px;
+        }
+        .header__item {
+            padding-left: 80px;
+        }
+    }
+}

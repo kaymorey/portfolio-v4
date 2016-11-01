@@ -1,0 +1,283 @@
+[
+    {
+        "slug": "lantern",
+        "title": "Lantern",
+        "image": "lantern-main.jpg",
+        "date": "2015",
+        "type": "iOS app & connected object",
+        "text": "Lantern is my final year project in Gobelins. It's a nightlight that creates an atmosphere of sound and light according to the story the parent reads on a tablet.",
+        "website": "http://lantern-app.com",
+        "context": "8 months project at Gobelins",
+        "technologies": "Objective-C, Arduino",
+        "role": "iOS developer",
+        "content": [
+            {
+                "type": "image",
+                "image": "lantern-top.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Purpose of the project",
+                "text": "Before going to bed, children are often afraid of leaving their parent’s side. Some tend to extend their bedtime as much as they can. We wanted to create a bedtime routine that attempts to solve this problem. It combines two of the strongest existing solutions: the bedtime story and the nightlight.",
+                "image": "lantern-drawing.png",
+                "text-position": "left",
+                "mask-mobile": true
+            },
+            {
+                "type": "text",
+                "title": "Choose a story",
+                "text": "Swipe from right to left to navigate through covers stories. Each cover is represented by illustrations and pictograms which animate while swiping.",
+                "text-mobile": "Swipe from right to left to navigate through covers stories.",
+                "text-position": "right",
+                "video": "covers.mp4",
+                "mockup": "ipad-portrait"
+            },
+            {
+                "type": "image",
+                "image": "lantern-on.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Navigate through pages",
+                "text": "Just swipe from bottom to top to navigate through pages and go along the story. Each time you change pages, the color of the nightlight changes as well. You can also tap on a small icon to play a one-time animation on the nightlight.",
+                "text-mobile": "Each page of the story corresponds to a color and a soundscape on the nightlight.",
+                "text-position": "right",
+                "video": "reading.mp4",
+                "mockup": "ipad-portrait"
+            },
+            {
+                "type": "image",
+                "image": "lantern-open.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Configure sleep mode",
+                "text": "After reading the story, pick a melody and select a duration. The nightlight will play the sound and make a sweet light during the chosen time. Lantern will then acompagny the child during the night thanks to a soft light.",
+                "text-mobile": "Let your child fall asleep with a soft melody.",
+                "text-position": "left",
+                "video": "sleep-mode.mp4",
+                "mockup": "ipad-portrait"
+            }
+        ]
+    },
+    {
+        "slug": "animooh",
+        "title": "Animooh",
+        "image": "animooh-main.jpg",
+        "date": "2014",
+        "type": "iOS application",
+        "text": "Animooh is an iPad application for children to make them discover incredible animals.",
+        "website": "http://katia-moreira.com/animooh",
+        "context": "3 months project at Gobelins",
+        "technologies": "Objective-C",
+        "role": "iOS developer",
+        "content": [
+            {
+                "type": "image",
+                "image": "animooh-home-ipad.png"
+            },
+            {
+                "type": "text",
+                "title": "Purpose of the project",
+                "text": "Our thinking began with the assigned topic <em>augmented knowledge</em>. We decided to create an application that uses popular science and interactions on a tablet to make the learning process funnier for children.",
+                "text-position": "left",
+                "image": "animooh-purpose.png",
+                "modifier": "ipad-landscape",
+                "mask-mobile": true
+            },
+            {
+                "type": "block-image",
+                "images": [
+                    "animooh-elephant.png",
+                    "animooh-starfish.png"
+                ],
+                "modifier": "ipad-landscape"
+            },
+            {
+                "type": "text",
+                "title": "Play with animals",
+                "text": "Each animal presented in the application has an extraordinary capability. The child can play and interact with the animal to realize what it is.",
+                "text-mobile": "Play with the animal and guess its extraordinary capacity",
+                "text-position": "left",
+                "video": "interaction.mp4",
+                "mockup": "ipad-landscape"
+            },
+            {
+                "type": "text",
+                "title": "Understand how it works",
+                "text": "Each capability is explained thanks to diagrams or funny interactions. The aim was to make scientific explanations accessible for children. A voiceover and some subtitles also help them to understand.",
+                "text-mobile": "Each capability is explained thanks to diagrams or funny interactions.",
+                "text-position": "right",
+                "video": "setules.mp4",
+                "mockup": "ipad-landscape"
+            },
+            {
+                "type": "video-player",
+                "source": "vimeo",
+                "id": "96509404"
+            },
+            {
+                "type": "text",
+                "title": "(Re)discover animals",
+                "text": "We chose a dozen of animals which are incredible : let's discover the pistol shrimp, the monkfish or the mimic octopus. The parent may learn as many things as his/her children...",
+                "text-mobile": "We chose a dozen of animals which are incredible.",
+                "text-position": "left",
+                "image": "animooh-animals-list.png"
+            }
+        ]
+    },
+    {
+        "slug": "simonpong",
+        "title": "SimonPong",
+        "image": "simonpong-main.jpg",
+        "date": "2015",
+        "type": "arduino experiment",
+        "text": "SimonPong is a custom arcade table created during an arduino workshop. It mixes two famous games : simon and pong.",
+        "context": "2 weeks workshop at Gobelins",
+        "technologies": "Arduino, Processing",
+        "role": "Developer (and carpenter)",
+        "content": [
+            {
+                "type": "text",
+                "title": "Context of the project",
+                "text": "The project was created during a 2 weeks workshop : 1 week of conception and learning, and 1 week of realisation. The subject was to create a multiplayer game with arduino.",
+                "text-mobile": "The project was created during a 2 weeks workshop.",
+                "text-position": "left",
+                "image": "simonpong-table.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Manufacturing",
+                "text": "We had only a few days to drill holes, sand, paint and make a custom arcade table.",
+                "text-mobile": "We had only a few days to make a custom arcade table.",
+                "text-position": "right",
+                "image": "simonpong-manufacturing.jpg"
+            },
+            {
+                "type": "block-image",
+                "images": [
+                    "simonpong-pc.jpg",
+                    "simonpong-manufacturing2.jpg"
+                ]
+            },
+            {
+                "type": "text",
+                "title": "Development",
+                "text": "We developed the graphic game using Processing and the controls with arduino. Two aruidno boards controled 16 buttons, 16 lights and 4 potentiometers.",
+                "text-mobile": "We developed the graphic game using Processing and the controls with arduino.",
+                "text-position": "left",
+                "image": "simonpong-electronics.jpg"
+            }
+        ]
+
+    },
+    {
+        "slug": "trust",
+        "title": "Trust",
+        "image": "trust-main.jpg",
+        "date": "2014",
+        "type": "iOS app",
+        "text": "Trust is a mobile application which helps you understand some news thanks to a timeline.",
+        "context": "1 week workshop in Amsterdam and 3 months realisation at Gobelins",
+        "technologies": "Objective-C",
+        "role": "iOS developer",
+        "content": [
+            {
+                "type": "text",
+                "title": "Purpose of the project",
+                "text": "The project has been suggested by the Thomson Reuters Foundation to the students of Gobelins. The aim was to propose an application bound to the digital natives to encourage them to read more news. We created a timeline that allows the user to better understand the news by having access to all of its history.",
+                "text-mobile": "Choose one of the news theme proposed.",
+                "text-position": "left",
+                "video": "covers.mp4",
+                "mockup": "iphone-portrait"
+            },
+            {
+                "type": "text",
+                "title": "Navigate through the timeline",
+                "text": "The app only proposes a few actual themes (3 per week) so you can focus on them. Once you chose a news theme, you can access to its timeline. The contents are ordered so that you can understand the history of the news and how we get to the actual situation.",
+                "text-mobile": "Access to a timeline that explains the history of the news.",
+                "text-position": "right",
+                "video": "timeline.mp4",
+                "mockup": "iphone-portrait"
+            },
+            {
+                "type": "text",
+                "title": "Access to linked articles",
+                "text": "Choose an article and read its content. If it contains medias you can open it in a custom lightbox and view it in portrait but also in landscape. At the end of the article you can access to a sticky linked content which will enrich the information you just read.",
+                "text-mobile": "Read an article and access to a linked content.",
+                "text-position": "left",
+                "video": "article.mp4",
+                "mockup": "iphone-portrait"
+            }
+        ]
+
+    },
+    {
+        "slug": "jocondelab",
+        "title": "JocondeLab",
+        "image": "jocondelab-main.jpg",
+        "date": "2014",
+        "type": "website",
+        "text": "JocondeLab is a website that helps users to organize a cultural trip in France according to their tastes by visiting museums.",
+        "context": "4 months project at Gobelins",
+        "technologies": "AngularJS, HTML5/CSS3, Silex(PHP), Sphinx",
+        "role": "Web developer",
+        "content": [
+            {
+                "type": "text",
+                "title": "Purpose of the project",
+                "text": "The project was proposed by the french ministry of culture. They had a big database of french museums and its artworks, the goal was to use it to propose an experience or a service.",
+                "text-position": "left",
+                "image": "jocondelab-home.jpg",
+                "mask-mobile": true
+            },
+            {
+                "type": "text",
+                "title": "Choose a location",
+                "text": "First, you have to choose a location. If you don't know where to go just select you departure city and the distance you want to browse. Otherwise, select an arrival city.",
+                "text-mobile": "First, choose your location.",
+                "text-position": "right",
+                "image": "jocondelab-destination.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Indicate your tastes",
+                "text": "Then, indicate your tastes by selecting for each proposition if you like it or not. As you can see we used an accordion to display the images. It's a custom javascript plugin tailor-made.",
+                "text-mobile": "Then, indicate your tastes.",
+                "text-position": "left",
+                "image": "jocondelab-tastes.jpg"
+            },
+            {
+                "type": "text",
+                "title": "Choose your artworks",
+                "text": "According to your tastes and your destination the website proposes you to see some artworks in french museums. Like them or remove them. The website will then propose you to visit some other museums on your way to your arrival. As the database was very huge, I used Sphinx to make very fast requests.",
+                "text-position": "right",
+                "text-mobile": "According to your tastes and your destination the website proposes you to see some artworks in french museums.",
+                "image": "jocondelab-like.jpg"
+            }
+        ]
+
+    },
+    {
+        "slug": "iieplearning",
+        "title": "IIEP Learning",
+        "image": "iieplearning-main.jpg",
+        "date": "2015",
+        "type": "website",
+        "text": "IIEP Learning Portal is a platform of the Institutional Institute for Education Planning, an arm of UNESCO. It develops the capacities of education actors to plan and manage their education systems.",
+        "context": "Professional project at Opsone",
+        "technologies": "Symfony2, JavaScript, Solr",
+        "role": "Web developer",
+        "content": [
+            {
+                "type": "image",
+                "image": "iieplearning-home.png"
+            },
+            {
+                "type": "video",
+                "mockup": "macbook",
+                "video": "iieplearning-search.mp4"
+            }
+        ]
+    }
+]

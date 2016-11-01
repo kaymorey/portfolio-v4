@@ -1,0 +1,30 @@
+<div>
+    <header class="header" :class="loading ? 'loading' : ''">
+        <nav class="header__container">
+            <h1 class="header__title">
+                <a href="" class="header-title__link">Katia Moreira</a>
+            </h1>
+            <ul class="header__list">
+                <li class="header__item">
+                    <a href="" class="header__link header__anchor" data-target=".projects">
+                        Projets
+                        <span class="header-link__underline"></span>
+                    </a>
+                </li>
+                <li class="header__item">
+                    <a href="" class="header__link">
+                        Bonjour!
+                        <span class="header-link__underline"></span>
+                    </a>
+                </li>
+                <li class="header__item">
+                    <a href="" class="header__link header-link__language header-link__language--selected">En</a>/<a href="" class="header__link header-link__language">Fr</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="main-container">
+        <router-view></router-view>
+    </div>
+    <footer></footer>
+</div>

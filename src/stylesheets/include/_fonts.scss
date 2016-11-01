@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Akkurat Pro';
+    src: url('../assets/fonts/AkkuratPro-Italic.eot');
+    src: url('../assets/fonts/AkkuratPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/AkkuratPro-Italic.woff') format('woff'),
+        url('../assets/fonts/AkkuratPro-Italic.ttf') format('truetype'),
+        url('../assets/fonts/AkkuratPro-Italic.svg#AkkuratPro-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Akkurat Pro';
+    src: url('../assets/fonts/AkkuratPro-Regular.eot');
+    src: url('../assets/fonts/AkkuratPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/AkkuratPro-Regular.woff') format('woff'),
+        url('../assets/fonts/AkkuratPro-Regular.ttf') format('truetype'),
+        url('../assets/fonts/AkkuratPro-Regular.svg#AkkuratPro-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular';
+    src: url('../assets/fonts/CircularStd-Book.eot');
+    src: url('../assets/fonts/CircularStd-Book.eot?#iefix') format('embedded-opentype'),
+        url('../assets/fonts/CircularStd-Book.woff') format('woff'),
+        url('../assets/fonts/CircularStd-Book.ttf') format('truetype'),
+        url('../assets/fonts/CircularStd-Book.svg#CircularStd-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
