@@ -1,0 +1,204 @@
+@import '~stylesheets/include/_variables.scss';
+@import '~stylesheets/include/_layout.scss';
+
+.project__content {
+    .project-content__block {
+        padding-bottom: 155px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .project-content__img {
+            text-align: right;
+        }
+    }
+    .project-content__block--right {
+        flex-direction: row-reverse;
+    }
+    .project-content__block-images {
+        @extend .project-content__block;
+    }
+    .project-content__block-video {
+        width: 792px;
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+
+        &.project-content__block-video--macbook {
+            background: url('~assets/images/mackbook-flat.png') no-repeat top;
+            background-size: contain;
+            height: 497px;
+            line-height: 0;
+        }
+
+        video {
+            position: relative;
+            top: 29px;
+            width: calc(100% - 6px);
+        }
+    }
+    .project-content__block-video-player {
+        @extend .project-content__block;
+
+        iframe {
+            margin: 0 auto;
+        }
+    }
+    .project-content__title {
+        @extend .text-content;
+        color: $blue;
+    }
+    .project-content__text, .project-content__img, .project-content__video {
+        width: 50%;
+    }
+    .project-content__img {
+        max-width: 520px;
+
+        &.project-content__img--center {
+            text-align: center;
+        }
+        &.project-content__img--ipad-landscape {
+            max-width: 460px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+    .project-content__caption {
+        width: 100%;
+        padding-top: 8px;
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 1.4em;
+    }
+    .project-content__video {
+        position: relative;
+
+        &.project-content__video--ipad-portrait {
+            width: 320px;
+            position: relative;
+
+            &.project-content__video-with-caption {
+                margin-bottom: 33px;
+            }
+
+            .project-content__video-figure {
+                /* Les calculs supers savants pour bien placer la vidéo, cf doc (à créer) */
+                width: 100% - 40px / 320px * 100%;
+                position: absolute;
+                top: 42px / 460px * 100%;
+                left: 20px / 320px * 100%;
+            }
+
+            .project-content__caption {
+                padding-top: 46px;
+            }
+        }
+        &.project-content__video--ipad-landscape {
+            width: 460px;
+
+            &.project-content__video-with-caption {
+                margin-bottom: 33px;
+            }
+
+            .project-content__video-figure {
+                /* Les calculs supers savants pour bien placer la vidéo, cf doc (à créer) */
+                width: 100% - 78px / 460px * 100%;
+                position: absolute;
+                top: 17.5px / 328.906px * 100%;
+                left: 40px / 460px * 100%;
+            }
+
+            .project-content__caption {
+                padding-top: 28px / 328.906px * 100%;
+            }
+        }
+
+        &.project-content__video--iphone-portrait {
+            width: 250px;
+            position: relative;
+
+            &.project-content__video-with-caption {
+                margin-bottom: 20px;
+            }
+
+            .project-content__video-figure {
+                /* Les calculs supers savants pour bien placer la vidéo, cf doc (à créer) */
+                width: 100% - 30px / 250px * 100%;
+                position: absolute;
+                top: 56px / 534px * 100%;
+                left: 15px / 250px * 100%;
+            }
+
+            .project-content__caption {
+                padding-top: 67px;
+            }
+        }
+
+        .project-content__video-mockup {
+            max-width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .project__content {
+        .project-content__block {
+            .project-content__text {
+                padding: 0 20px 0 0;
+            }
+        }
+        .project-content__block--right {
+            .project-content__text {
+                padding: 0 0 0 20px;
+            }
+        }
+        .project-content__block-images {
+            .project-content__img {
+                &:first-child {
+                    padding-right: 10px;
+                }
+                &:last-child {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .project__content {
+        .project-content__block {
+            padding-bottom: 30px;
+        }
+        .project-content__text {
+            display: none;
+        }
+        .project-content__img {
+            width: 100%;
+             margin: 0 auto;
+            text-align: center;
+        }
+        .project-content__video {
+            margin: 0 auto;
+
+        }
+        .project-content__block-images {
+            .project-content__img:first-child {
+                margin-right: 5%;
+            }
+        }
+        .project-content__block-video.project-content__block-video--macbook {
+            width: calc(100% - 4px); /* remove border width */
+            height: auto;
+            border: solid #d2d2d2 2px;
+            background: none;
+
+            video {
+                width: 100%;
+                top: 0;
+            }
+        }
+    }
+}

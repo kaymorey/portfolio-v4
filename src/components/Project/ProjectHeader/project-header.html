@@ -1,0 +1,31 @@
+<header class="project__header">
+    <h1 class="project-title">{{ project.title }}</h1>
+    <div class="project__text">
+        <div class="project-text__content">
+            <span class="project-subtitle project-text__date">{{ project.date }}</span>
+            <span class="project-subtitle-bull">&bull;</span>
+            <div>
+                <span class="project-subtitle">{{ project.type }}</span>
+                <p class="project-text__description">{{ project.text }}</p>
+                <a :href="project.website" class="project-header__link" v-if="project.website">
+                    <span class="project-link__chevron">&gt;</span>
+                    Visit website
+                </a>
+            </div>
+        </div>
+        <aside class="project-header__aside">
+            <div class="project-aside__block">
+                <h2 class="project-section-title">Context</h2>
+                <p class="lighter-text-content">{{ project.context }}</p>
+            </div>
+            <div class="project-aside__block">
+                <h2 class="project-section-title">Technologies</h2>
+                <p class="lighter-text-content">{{ project.technologies }}</p>
+            </div>
+            <div class="project-aside__block">
+                <h2 class="project-section-title">Role</h2>
+                <p class="lighter-text-content">{{ project.role }}</p>
+            </div>
+        </aside>
+    </div>
+</header>

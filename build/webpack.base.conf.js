@@ -78,6 +78,14 @@ module.exports = {
         }
       },
       {
+        test: /\.mp4$/,
+        loader: 'url',
+        query: {
+          limit: 100000,
+          name: utils.assetsPath('videos/[name].[hash:7].[ext]')
+        }
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
         query: {
@@ -85,6 +93,11 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
+    ]
+  },
+  postcss: function () {
+    return [
+      require('autoprefixer')
     ]
   },
   eslint: {
@@ -97,5 +110,6 @@ module.exports = {
         browsers: ['last 2 versions']
       })
     ]
-  }
+  },
+  sassResources: path.resolve(__dirname, '../src/stylesheets/include/_mixins.scss')
 }

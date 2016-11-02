@@ -3,36 +3,18 @@
         <div class="projects__slider-list-container">
             <ul class="projects-slider__list">
                     <li class="projects-slider__item" v-for="(project, index) in projects">
+                        <router-link :to="{ name: 'project', params: { project: project.slug }}">
                         <!-- <a v-link="{ name: 'project', params: { project: project.slug }}"> -->
-                        <a>
-                        <img src="" class="projects-slider__item-img">
                             <!-- <img src="../assets/images/project.png" alt=""> -->
-                            <!-- <img :src="imagePath(project.image, project.slug)" class="projects-slider__item-img"> -->
+                            <img :src="imagePath(project.image, project.slug)" class="projects-slider__item-img">
                             <!-- <img v-lazy="lazyImagePath(project.image, project.slug)" alt="" class="projects-slider__item-img"> -->
-                        </a>
+                        </router-link>
                     </li>
                 </ul>
             <div class="projects-slider__dragging">
                 <span class="projects-slider__dragging-arrow projects-slider__dragging-arrow--left"></span>
                 <p class="projects-slider__dragging-text">
                     <span v-for="(char, index) in draggingText" :class="'char'+ (index+1)">{{ char }}</span>
-                    <!-- <span class="char1">D</span>
-                    <span class="char2">r</span>
-                    <span class="char3">a</span>
-                    <span class="char4">g</span>
-                    <span class="char5">&nbsp;</span>
-                    <span class="char6">t</span>
-                    <span class="char7">o</span>
-                    <span class="char8">&nbsp;</span>
-                    <span class="char9">c</span>
-                    <span class="char10">h</span>
-                    <span class="char11">a</span>
-                    <span class="char12">n</span>
-                    <span class="char13">g</span>
-                    <span class="char14">e</span>
-                    <span class="char15">&nbsp;</span>
-                    <span class="char16">.</span>
-                    <span class="char17">&nbsp;</span> -->
                 </p>
                 <span class="projects-slider__dragging-arrow projects-slider__dragging-arrow--right"></span>
                 <img class="projects-slider__dragging-hand" src="~assets/images/dragging-hand.png" alt="">

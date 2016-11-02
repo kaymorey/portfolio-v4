@@ -1,5 +1,6 @@
 import Vue from 'vue'
 
+import Mixin from 'scripts/Mixin'
 import DataLoader from 'scripts/DataLoader'
 import Slider from 'scripts/Slider'
 
@@ -20,13 +21,12 @@ export default class Projects {
                     dataLoader: new DataLoader()
                 }
             },
+            mixins: [Mixin],
             mounted: function () {
                 this.getProjects()
             },
-            watch: {
-                projects: function () {
-                    this.createSlider()
-                }
+            updated: function () {
+                this.createSlider()
             },
             methods: {
                 getProjects () {
@@ -35,7 +35,6 @@ export default class Projects {
                     })
                 },
                 createSlider () {
-                    console.log(this.projects)
                     if (Object.keys(this.slider).length === 0) {
                         this.slider = new Slider()
                         this.slider.init()

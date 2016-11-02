@@ -1,0 +1,118 @@
+@import '~stylesheets/include/_variables.scss';
+@import '~stylesheets/include/_layout.scss';
+
+.project__header {
+    padding-bottom: 155px;
+
+    .project-subtitle-bull {
+        padding: 0 18px 0 27px;
+    }
+    .project__text {
+        display: flex;
+        justify-content: space-between;
+    }
+    .project-text__description {
+        @extend .text-content;
+        font-size: 2.1em;
+    }
+    .project-header__link {
+        @extend .text-content;
+        display: inline-block;
+        margin-top: 81px;
+        position: relative;
+
+        &:hover {
+            .project-link__chevron {
+                padding-left: 11px;
+                &::before {
+                    width: 18px;
+                    left: 0;
+                }
+            }
+        }
+    }
+    .project-link__chevron {
+        @extend .project-section-title;
+        position: absolute;
+        left: -27px;
+        transition: all 0.35s;
+
+        &::before {
+            transition: all 0.35s;
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 2px;
+            background-color: $blue;
+
+            position: absolute;
+            top: 0;
+            left: 6px;
+            transform: translate(0, 19.5px);
+        }
+    }
+
+    .project-header__aside {
+        width: 35%;
+        max-width: 389px;
+        margin-top: 54px;
+    }
+    .project-aside__block:nth-child(n+2) {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .project__header {
+        .project-text__content {
+            margin-right: 40px;
+        }
+        .project-text__date, .project-subtitle-bull {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .project__header {
+        padding-bottom: 30px;
+
+        .project-title {
+            font-size: 2.8em;
+        }
+        .project__text {
+            display: block;
+        }
+        .project-text__content {
+            margin: 15px 0 0 0;
+        }
+        .project-text__description {
+            font-size: 1.6em;
+        }
+        .project-header__link {
+            margin-top: 35px;
+            padding-left: 13px;
+
+            .project-link__chevron {
+                left: 0;
+            }
+
+            &:hover {
+                .project-link__chevron {
+                    padding-left: 0;
+
+                    &::before {
+                        width: 0;
+                    }
+                }
+            }
+        }
+        .project-header__aside {
+            width: 100%;
+            margin-top: 24px;
+        }
+        .project-aside__block:nth-child(n+2) {
+            margin-top: 30px;
+        }
+    }
+}

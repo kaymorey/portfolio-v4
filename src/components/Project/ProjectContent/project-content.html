@@ -1,0 +1,56 @@
+<section class="project__content">
+    <template v-for="block in project.content">
+        <!-- BLOCK TEXT -->
+        <div class="project-content__block" v-if="block.type == 'text'" :class="[{'desktop' : block['mask-mobile']}, block['text-position'] == 'right' ? 'project-content__block--right': '']">
+
+            <div class="project-content__text">
+                <h3 class="project-content__title">{{ block.title }}</h3>
+                <p class="lighter-text-content" v-html="block.text"></p>
+            </div>
+
+            <div class="project-content__img" v-if="block.image" :class="block.modifier ? 'project-content__img--' + block.modifier : ''">
+                <figure>
+                    <img :src="imagePath(block.image, project.slug)" alt="">
+                    <figcaption class="mobile project-content__caption">{{ block['text-mobile'] }}</figcaption>
+                </figure>
+            </div>
+
+            <div class="project-content__video" :class="['project-content__video--' + block.mockup, block['text-mobile'] ? 'project-content__video-with-caption' : '']" v-if="block.video">
+                <img v-if="block.mockup" :src="imagePath(block.mockup + '.png')" class="project-content__video-mockup">
+                <figure class="project-content__video-figure">
+                    <video autoplay loop>
+                    <source :src="videoPath(block.video, project.slug)" type="video/mp4">
+                    </video>
+                    <figcaption class="mobile project-content__caption">{{ block['text-mobile'] }}</figcaption>
+                </figure>
+            </div>
+        </div>
+        <!-- END BLOCK TEXT -->
+
+        <!-- BLOCK IMAGE CENTER -->
+        <p class="project__block-image project__img-center project__img-center--middle" v-if="block.type == 'image'">
+            <img :src="imagePath(block.image, project.slug)" alt="">
+        </p>
+        <!-- END BLOCK IMAGE CENTER -->
+
+        <!-- BlOCK TWO IMAGES -->
+        <div class="project-content__block-images" v-if="block.type == 'block-image'">
+            <p class="project-content__img project-content__img--center" v-for="image in block.images" :class="block.modifier ? 'project-content__img--' + block.modifier : ''">
+                <img :src="imagePath(image, project.slug)" alt="">
+            </p>
+        </div>
+        <!-- END BlOCK TWO IMAGES -->
+
+        <div class="project-content__block-video-player" v-if="block.type == 'video-player'">
+            <iframe :src="'https://player.vimeo.com/video/' + block.id" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+
+        <!-- BlOCK VIDEO CENTER -->
+        <p class="project-content__block-video" :class="'project-content__block-video--' + block.mockup" v-if="block.type == 'video'">
+            <video autoplay loop>
+                <source :src="videoPath(block.video)" type="video/mp4">
+            </video>
+        </p>
+        <!-- END BlOCK VIDEO CENTER -->
+    </template>
+</section>

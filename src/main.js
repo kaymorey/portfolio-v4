@@ -4,6 +4,7 @@ import domready from 'domready'
 
 import App from './components/App'
 import Home from './components/Home/Home'
+import Project from './components/Project/Project'
 
 import './stylesheets/main.scss'
 
@@ -14,11 +15,18 @@ class Main {
     constructor () {
         this.app = new App()
         this.home = new Home()
+        this.project = new Project()
+        console.log(this.project.component.template)
 
         this.routes = [
             {
                 path: '/',
                 component: this.home.component
+            },
+            {
+                path: '/works/:project',
+                name: 'project',
+                component: this.project.component
             }
         ]
 
