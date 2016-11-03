@@ -93,7 +93,7 @@ export default class HomeLoading {
                 delay: 0.7,
                 ease: Power3.easeOut,
                 onComplete: () => {
-                    window.scroll(0, 0)
+                    // window.scroll(0, 0)
                     this.body.style.overflow = 'auto'
                     this.linksAnimation()
                     resolve(true)

@@ -3,12 +3,14 @@
         <div class="projects__slider-list-container">
             <ul class="projects-slider__list">
                     <li class="projects-slider__item" v-for="(project, index) in projects">
-                        <router-link :to="{ name: 'project', params: { project: project.slug }}">
+                        <a href="#" :data-slug="project.slug" class="projects-slider__item-link">
+                        <!-- <router-link :to="{ name: 'project', params: { project: project.slug }}"> -->
                         <!-- <a v-link="{ name: 'project', params: { project: project.slug }}"> -->
                             <!-- <img src="../assets/images/project.png" alt=""> -->
                             <img :src="imagePath(project.image, project.slug)" class="projects-slider__item-img">
                             <!-- <img v-lazy="lazyImagePath(project.image, project.slug)" alt="" class="projects-slider__item-img"> -->
-                        </router-link>
+                        <!-- </router-link> -->
+                        </a>
                     </li>
                 </ul>
             <div class="projects-slider__dragging">

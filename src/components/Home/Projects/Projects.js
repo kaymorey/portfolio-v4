@@ -3,6 +3,7 @@ import Vue from 'vue'
 import Mixin from 'scripts/Mixin'
 import DataLoader from 'scripts/DataLoader'
 import Slider from 'scripts/Slider'
+import SliderToProjectAnimation from 'scripts/SliderToProjectAnimation'
 
 import './projects.scss'
 
@@ -18,6 +19,7 @@ export default class Projects {
                     currentProject: {},
                     nextProject: {},
                     slider: {},
+                    sliderToProjectAnimation: {},
                     dataLoader: new DataLoader()
                 }
             },
@@ -27,6 +29,7 @@ export default class Projects {
             },
             updated: function () {
                 this.createSlider()
+                this.createSliderToProjectAnimation()
             },
             methods: {
                 getProjects () {
@@ -53,6 +56,12 @@ export default class Projects {
                             this.currentProject = this.projects[0]
                             this.nextProject = this.projects[1]
                         }
+                    }
+                },
+                createSliderToProjectAnimation () {
+                    if (Object.keys(this.sliderToProjectAnimation).length === 0) {
+                        this.sliderToProjectAnimation = new SliderToProjectAnimation()
+                        this.sliderToProjectAnimation.init()
                     }
                 }
             }
