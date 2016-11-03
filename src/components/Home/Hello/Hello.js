@@ -7,26 +7,25 @@ import './hello.scss'
 export default class Hello {
 
     constructor () {
+        let loading = true
+
         this.component = Vue.component('hello', {
             template: require('./hello.html'),
             data () {
                 return {
-                    loading: true
+                    loading: loading,
+                    homeLoading: {}
                 }
             },
-            mounted: () => {
-                this.create()
-                this.init()
+            mounted: function () {
+                if (this.loading) {
+                    this.homeLoading = new HomeLoading()
+                    this.homeLoading.init()
+                }
+            },
+            destroyed: function () {
+                loading = false
             }
         })
     }
-
-    create () {
-        this.homeLoading = new HomeLoading()
-    }
-
-    init () {
-        this.homeLoading.init()
-    }
-
 }

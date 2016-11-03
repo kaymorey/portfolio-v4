@@ -16,7 +16,6 @@ class Main {
         this.app = new App()
         this.home = new Home()
         this.project = new Project()
-        console.log(this.project.component.template)
 
         this.routes = [
             {
