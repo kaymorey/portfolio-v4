@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import Mixin from 'scripts/Mixin'
 import DataLoader from 'scripts/DataLoader'
+import ProjectFromHomeAnimation from 'scripts/ProjectFromHomeAnimation'
 
 import ProjectHeader from './ProjectHeader/ProjectHeader'
 import ProjectContent from './ProjectContent/ProjectContent'
@@ -23,7 +24,9 @@ export default class Project {
             data () {
                 return {
                     project: '',
-                    dataLoader: new DataLoader()
+                    dataLoader: new DataLoader(),
+                    loadingFromHome: false,
+                    projectFromHomeAnimation: {}
                 }
             },
             mixins: [Mixin],
@@ -32,8 +35,18 @@ export default class Project {
                     this.getProject()
                 }
             },
+            created () {
+                console.log(window.sessionStorage.getItem('navigateFrom'))
+                if (window.sessionStorage.getItem('navigateFrom') === 'home') {
+                    this.loadingFromHome = true
+                }
+                window.sessionStorage.setItem('navigateFrom', 'unknown')
+            },
             mounted () {
                 this.getProject()
+            },
+            updated () {
+                this.createProjectFromHomeAnimation()
             },
             methods: {
                 getProject: function () {
@@ -41,6 +54,12 @@ export default class Project {
                     this.dataLoader.loadData().then(() => {
                         this.project = this.dataLoader.getProject(slug)
                     })
+                },
+                createProjectFromHomeAnimation: function () {
+                    if (Object.keys(this.projectFromHomeAnimation).length === 0) {
+                        this.projectFromHomeAnimation = new ProjectFromHomeAnimation()
+                        this.projectFromHomeAnimation.init()
+                    }
                 }
             }
         })

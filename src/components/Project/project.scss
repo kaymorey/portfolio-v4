@@ -1,9 +1,28 @@
 @import '~stylesheets/include/_variables.scss';
 @import '~stylesheets/include/_layout.scss';
 
+.project.loading-from-home {
+    .project__img-center {
+        &.project__img-center--top {
+            width: 590px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
 .project {
     margin-top: 85px;
     position: relative;
+}
+
+.project.loading-from-home {
+
 }
 
 .project__container {

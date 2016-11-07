@@ -1,6 +1,13 @@
 @import '~stylesheets/include/_variables.scss';
 @import '~stylesheets/include/_layout.scss';
 
+.project.loading-from-home {
+    .project__header {
+        position: relative;
+        z-index: 100;
+    }
+}
+
 .project__header {
     padding-bottom: 155px;
 

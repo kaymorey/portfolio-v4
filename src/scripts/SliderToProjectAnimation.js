@@ -25,30 +25,38 @@ export default class SliderToProjectAnimation {
         items.forEach(item => {
             if (items.indexOf(item) !== 0) {
                 TweenLite.to(item, 0.5, {
-                    opacity: 0,
-                    onComplete: () => {
-                        this.backgroundAnimation(link)
-                    }
+                    opacity: 0
                 })
             }
         })
 
         TweenLite.to(this.draggingIcon, 0.5, {
-            opacity: 0
+            opacity: 0,
+            onComplete: () => {
+                this.backgroundAnimation(link)
+            }
         })
     }
 
     backgroundAnimation (link) {
         let bodyHeight = document.querySelector('body').offsetHeight
         let height = bodyHeight - (this.sliderBackground.offsetTop + window.pageYOffset)
-        console.log(this.sliderBackground.offsetTop + window.pageYOffset)
-        console.log(height)
+
+        let imgRect = this.links[0].getBoundingClientRect()
+        let textRect = document.querySelector('.projects-slider__text[data-index="0"]').getBoundingClientRect()
+
+        window.imgRect = imgRect
+        window.textRect = textRect
+
+        console.log(imgRect)
+        console.log(textRect)
 
         TweenLite.to(this.sliderBackground, 1.0, {
             top: '118px',
             height: height,
             onComplete: () => {
-                this.pushPath(link)
+                // this.pushPath(link)
+                // window.sessionStorage.setItem('navigateFrom', 'home')
             }
         })
     }
@@ -61,5 +69,4 @@ export default class SliderToProjectAnimation {
             params: {project: slug}
         })
     }
-
 }
