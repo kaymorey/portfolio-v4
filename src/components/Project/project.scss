@@ -4,25 +4,28 @@
 .project.loading-from-home {
     .project__img-center {
         &.project__img-center--top {
-            width: 590px;
             position: absolute;
             top: 0;
             left: 0;
 
-            img {
+            .project__main-img {
+                width: 590px;
+                height: 400px;
                 max-width: 100%;
+                filter: grayscale(1.0) opacity(0.6);
             }
         }
+    }
+    .project__background {
+        background: linear-gradient(to bottom, #F2F4F8, #CFE4FC);
+        top: 87px;
+        left: 23vw;
     }
 }
 
 .project {
     margin-top: 85px;
     position: relative;
-}
-
-.project.loading-from-home {
-
 }
 
 .project__container {
@@ -49,11 +52,11 @@
 }
 
 .project__background {
-    width: 72%;
+    width: 77vw;
     background: linear-gradient(to top, #cfe4fc, #ffdfce);
 
     position: absolute;
-    top: 0;
+    top: 100px;
     right: 0;
     bottom: 0;
     z-index: 0;

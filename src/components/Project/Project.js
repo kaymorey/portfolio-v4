@@ -36,7 +36,6 @@ export default class Project {
                 }
             },
             created () {
-                console.log(window.sessionStorage.getItem('navigateFrom'))
                 if (window.sessionStorage.getItem('navigateFrom') === 'home') {
                     this.loadingFromHome = true
                 }
@@ -56,9 +55,8 @@ export default class Project {
                     })
                 },
                 createProjectFromHomeAnimation: function () {
-                    if (Object.keys(this.projectFromHomeAnimation).length === 0) {
+                    if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.loadingFromHome) {
                         this.projectFromHomeAnimation = new ProjectFromHomeAnimation()
-                        this.projectFromHomeAnimation.init()
                     }
                 }
             }

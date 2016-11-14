@@ -1,10 +1,13 @@
 import TweenLite from 'gsap'
+import ScrollToPlugin from 'ScrollToPlugin'
 
 import router from 'src/Router'
 
 export default class SliderToProjectAnimation {
 
     constructor () {
+        this.mainContainer = document.getElementById('main-container')
+        this.section = document.querySelector('.projects')
         this.links = [...document.querySelectorAll('.projects-slider__item-link')]
         this.draggingIcon = document.querySelector('.projects-slider__dragging')
         this.sliderBackground = document.querySelector('.projects-slider__background')
@@ -15,7 +18,20 @@ export default class SliderToProjectAnimation {
             link.addEventListener('click', (e) => {
                 e.preventDefault()
 
-                this.launchAnimation(link)
+                this.scrollToCorrectPosition().then(() => {
+                    this.launchAnimation(link)
+                })
+            })
+        })
+    }
+
+    scrollToCorrectPosition () {
+        return new Promise((resolve) => {
+            TweenLite.to(window, 0.3, {
+                scrollTo: this.section,
+                onComplete: () => {
+                    resolve(true)
+                }
             })
         })
     }
@@ -48,15 +64,18 @@ export default class SliderToProjectAnimation {
         window.imgRect = imgRect
         window.textRect = textRect
 
-        console.log(imgRect)
-        console.log(textRect)
-
         TweenLite.to(this.sliderBackground, 1.0, {
             top: '118px',
             height: height,
             onComplete: () => {
-                // this.pushPath(link)
-                // window.sessionStorage.setItem('navigateFrom', 'home')
+                this.section.remove()
+                document.querySelector('.hello').remove()
+
+                this.section.classList.add('project-loading')
+                document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
+
+                this.pushPath(link)
+                window.sessionStorage.setItem('navigateFrom', 'home')
             }
         })
     }

@@ -6,6 +6,16 @@
     overflow: hidden;
 }
 
+.projects.project-loading {
+    width: 100%;
+    margin: 0;
+    background-color: #FFF;
+    position: absolute;
+    top: 54px;
+    left: 0;
+    z-index: 500;
+}
+
 .projects__slider {
     margin: 0 0 180px 23%;
     position: relative;
@@ -188,7 +198,7 @@
 .projects-slider__text {
     position: absolute;
     top: 155px;
-    left: -178px;
+    left: calc(-23vw + (100vw - 1200px)/2);
     z-index: 300;
     pointer-events: none;
 
@@ -198,26 +208,9 @@
     }
     .project-text__title {
         margin-bottom: 54px;
-        font-size: 5.6em;
-        letter-spacing: 0.030em; /* 0.17 / 5.6em */
-        color: $blue;
-    }
-    .project-text__date, .project-text__type {
-        @extend .text-content;
-        font-style: italic;
-        color: $blue;
-    }
-    .project-text__bull {
-        padding: 0 20px;
-        font-size: 2.6em;
-        line-height: 1.54em;
-        color: $text-color;
     }
     .project-text__content {
         display: flex;
-    }
-    .project-text__description {
-        max-width: 389px;
     }
 }
 

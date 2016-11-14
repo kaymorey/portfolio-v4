@@ -1,6 +1,12 @@
 @import '~stylesheets/include/_variables.scss';
 @import '~stylesheets/include/_layout.scss';
 
+.project.loading-from-home {
+    .project__content {
+        opacity: 0;
+    }
+}
+
 .project__content {
     .project-content__block {
         padding-bottom: 155px;

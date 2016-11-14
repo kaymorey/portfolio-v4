@@ -1,8 +1,8 @@
 <div>
-    <section class="project" :class="loadingFromHome == false ? 'loading-from-home' : ''">
+    <section class="project" :class="loadingFromHome == true ? 'loading-from-home' : ''">
         <section class="project__container">
             <p class="project__img-center project__img-center--top">
-                <img :src="imagePath(project.image, project.slug)" alt="" class="project__main-img">
+                <img :src="imagePath(project.image, project.slug)" :data-src="imagePath(project.image, project.slug)" alt="" class="project__main-img">
             </p>
 
             <project-header :project="project"></project-header>

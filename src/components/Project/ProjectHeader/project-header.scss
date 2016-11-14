@@ -5,15 +5,19 @@
     .project__header {
         position: relative;
         z-index: 100;
+
+        .project-header__link {
+            opacity: 0;
+        }
+    }
+    .project-header__aside {
+        opacity: 0;
     }
 }
 
 .project__header {
     padding-bottom: 155px;
 
-    .project-subtitle-bull {
-        padding: 0 18px 0 27px;
-    }
     .project__text {
         display: flex;
         justify-content: space-between;
