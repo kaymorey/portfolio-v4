@@ -2,6 +2,8 @@ import {TweenLite, TweenMax} from 'gsap'
 import ColorPropsPlugin from 'ColorPropsPlugin'
 import css from 'css-styler'
 
+import ImagesLoader from 'scripts/ImagesLoader'
+
 export default class ProjectFromHomeAnimation {
 
     constructor () {
@@ -20,18 +22,23 @@ export default class ProjectFromHomeAnimation {
 
         this.slider = document.querySelector('.projects')
 
-        let imgObj = new window.Image()
-        imgObj.src = this.img.dataset.src
-        imgObj.onload = () => {
-            this.init()
-        }
-
         window.scroll(0, 0)
+
+        this.imagesLoader = new ImagesLoader()
+        this.imagesLoader.loadImages().then(() => {
+            this.init()
+        })
     }
 
     init () {
         this.headerLink = document.querySelector('.project-header__link')
+        this.setInitialStyles()
+        this.slider.remove()
 
+        this.colorsAnimation()
+    }
+
+    setInitialStyles () {
         // 49px _ 268.391px
         this.imgContainer.style.top = window.imgRect.top - this.container.getBoundingClientRect().top + 'px'
         this.imgContainer.style.left = window.imgRect.left - this.container.getBoundingClientRect().left + 'px'
@@ -41,32 +48,56 @@ export default class ProjectFromHomeAnimation {
         this.header.style.left = window.textRect.left - this.container.getBoundingClientRect().left + 'px'
 
         this.background.style.height = this.slider.offsetHeight + 'px'
-
-        this.removeProjectsSlider()
     }
 
-    removeProjectsSlider () {
-        this.slider.remove()
+    /*
+     * colorsAnimation calls changeBackgroundColor() and colorizeImage() functions
+     * Also expand background height
+     */
+    colorsAnimation () {
+        this.changeBackgroundColor()
+        this.colorizeImage()
 
-        let obj = {
+        TweenLite.to(this.background, 0.7, {
+            delay: 0.5,
+            height: this.section.offsetHeight,
+            onComplete: () => {
+                this.positionsAnimation()
+            }
+        })
+    }
+
+    /*
+     * Animate background linear-gradient change
+     */
+    changeBackgroundColor () {
+        let colors = {
             color1: '#f2f4f8',
             color2: '#cfe4fc'
         }
-        let grayscale = {
-            gray: 1,
-            opacity: 0.6
-        }
 
-        TweenMax.to(obj, 0.7, {
+        TweenMax.to(colors, 0.7, {
             delay: 0.5,
             colorProps: {
                 color1: '#ffdfce',
                 color2: '#cfe4fc'
             },
             onUpdate: () => {
-                this.upFn(obj)
+                css(this.background, {
+                    background: 'linear-gradient(to bottom, ' + colors.color1 + ', ' + colors.color2 + ')'
+                })
             }
         })
+    }
+
+    /*
+     * Animate image from grayscale to color
+     */
+    colorizeImage () {
+        let grayscale = {
+            gray: 1,
+            opacity: 0.6
+        }
 
         TweenMax.to(grayscale, 0.7, {
             gray: 0,
@@ -77,23 +108,20 @@ export default class ProjectFromHomeAnimation {
                 })
             }
         })
-
-        TweenLite.to(this.background, 0.7, {
-            delay: 0.5,
-            height: this.section.offsetHeight,
-            onComplete: () => {
-                this.launchAnimation()
-            }
-        })
     }
 
-    upFn (obj) {
-        css(this.background, {
-            background: 'linear-gradient(to bottom, ' + obj.color1 + ', ' + obj.color2 + ')'
-        })
+    /*
+     * positionsAnimation calls moveElements() and makeAsideAppear() functions
+     */
+    positionsAnimation () {
+        this.moveElements()
+        this.makeAsideAppear()
     }
 
-    launchAnimation () {
+    /*
+     * Animate img and header positions changes
+     */
+    moveElements () {
         TweenLite.to(this.imgContainer, 0.7, {
             delay: 0.5,
             width: this.img.naturalWidth,
@@ -121,7 +149,12 @@ export default class ProjectFromHomeAnimation {
                 this.background.style.height = this.section.offsetHeight + 'px'
             }
         })
+    }
 
+    /*
+     * Animate aside (and eventually header link) opacity
+     */
+    makeAsideAppear () {
         TweenLite.to(this.headerAside, 0.7, {
             delay: 0.5,
             alpha: 1

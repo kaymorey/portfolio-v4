@@ -10,13 +10,13 @@
 
             <div class="project-content__img" v-if="block.image" :class="block.modifier ? 'project-content__img--' + block.modifier : ''">
                 <figure>
-                    <img :src="imagePath(block.image, project.slug)" alt="">
+                    <img :src="imagePath(block.image, project.slug)" alt="" :data-src="imagePath(block.image, project.slug)">
                     <figcaption class="mobile project-content__caption">{{ block['text-mobile'] }}</figcaption>
                 </figure>
             </div>
 
             <div class="project-content__video" :class="['project-content__video--' + block.mockup, block['text-mobile'] ? 'project-content__video-with-caption' : '']" v-if="block.video">
-                <img v-if="block.mockup" :src="imagePath(block.mockup + '.png')" class="project-content__video-mockup">
+                <img v-if="block.mockup" :src="imagePath(block.mockup + '.png')" class="project-content__video-mockup" :data-src="imagePath(block.mockup + '.png')">
                 <figure class="project-content__video-figure">
                     <video autoplay loop>
                     <source :src="videoPath(block.video, project.slug)" type="video/mp4">
@@ -29,14 +29,14 @@
 
         <!-- BLOCK IMAGE CENTER -->
         <p class="project__block-image project__img-center project__img-center--middle" v-if="block.type == 'image'">
-            <img :src="imagePath(block.image, project.slug)" alt="">
+            <img :src="imagePath(block.image, project.slug)" alt="" :data-src="imagePath(block.image, project.slug)">
         </p>
         <!-- END BLOCK IMAGE CENTER -->
 
         <!-- BlOCK TWO IMAGES -->
         <div class="project-content__block-images" v-if="block.type == 'block-image'">
             <p class="project-content__img project-content__img--center" v-for="image in block.images" :class="block.modifier ? 'project-content__img--' + block.modifier : ''">
-                <img :src="imagePath(image, project.slug)" alt="">
+                <img :src="imagePath(image, project.slug)" alt="" :data-src="imagePath(image, project.slug)">
             </p>
         </div>
         <!-- END BlOCK TWO IMAGES -->
