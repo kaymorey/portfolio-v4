@@ -1,8 +1,11 @@
-import {TweenLite, TweenMax} from 'gsap'
+import {TweenLite, TweenMax, Power2} from 'gsap'
 import ColorPropsPlugin from 'ColorPropsPlugin'
 import css from 'css-styler'
 
 import ImagesLoader from 'scripts/ImagesLoader'
+
+const COLORS_DURATION_ANIMATION = 0.5
+const POSITIONS_DURATION_ANIMATION = 0.5
 
 export default class ProjectFromHomeAnimation {
 
@@ -58,8 +61,7 @@ export default class ProjectFromHomeAnimation {
         this.changeBackgroundColor()
         this.colorizeImage()
 
-        TweenLite.to(this.background, 0.7, {
-            delay: 0.5,
+        TweenLite.to(this.background, COLORS_DURATION_ANIMATION, {
             height: this.section.offsetHeight,
             onComplete: () => {
                 this.positionsAnimation()
@@ -76,8 +78,7 @@ export default class ProjectFromHomeAnimation {
             color2: '#cfe4fc'
         }
 
-        TweenMax.to(colors, 0.7, {
-            delay: 0.5,
+        TweenMax.to(colors, COLORS_DURATION_ANIMATION, {
             colorProps: {
                 color1: '#ffdfce',
                 color2: '#cfe4fc'
@@ -99,7 +100,7 @@ export default class ProjectFromHomeAnimation {
             opacity: 0.6
         }
 
-        TweenMax.to(grayscale, 0.7, {
+        TweenMax.to(grayscale, COLORS_DURATION_ANIMATION, {
             gray: 0,
             opacity: 1,
             onUpdate: () => {
@@ -122,21 +123,21 @@ export default class ProjectFromHomeAnimation {
      * Animate img and header positions changes
      */
     moveElements () {
-        TweenLite.to(this.imgContainer, 0.7, {
-            delay: 0.5,
+        TweenLite.to(this.imgContainer, POSITIONS_DURATION_ANIMATION, {
+            ease: Power2.easeOut,
             width: this.img.naturalWidth,
             top: 0,
             left: '50%',
             marginLeft: -this.img.naturalWidth / 2 + 'px'
         })
-        TweenLite.to(this.img, 0.7, {
-            delay: 0.5,
+        TweenLite.to(this.img, POSITIONS_DURATION_ANIMATION, {
+            ease: Power2.easeOut,
             width: 'auto',
             height: 'auto'
         })
 
-        TweenLite.to(this.header, 0.7, {
-            delay: 0.5,
+        TweenLite.to(this.header, POSITIONS_DURATION_ANIMATION, {
+            ease: Power2.easeOut,
             top: this.img.naturalHeight + 59 + 'px',
             onComplete: () => {
                 this.imgContainer.style.position = 'static'
@@ -155,14 +156,12 @@ export default class ProjectFromHomeAnimation {
      * Animate aside (and eventually header link) opacity
      */
     makeAsideAppear () {
-        TweenLite.to(this.headerAside, 0.7, {
-            delay: 0.5,
+        TweenLite.to(this.headerAside, POSITIONS_DURATION_ANIMATION, {
             alpha: 1
         })
 
         if (this.headerLink) {
-            TweenLite.to(this.headerLink, 0.7, {
-                delay: 0.5,
+            TweenLite.to(this.headerLink, POSITIONS_DURATION_ANIMATION, {
                 alpha: 1
             })
         }

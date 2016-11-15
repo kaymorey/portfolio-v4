@@ -1,4 +1,4 @@
-import TweenLite from 'gsap'
+import {TweenLite, Power2} from 'gsap'
 import ScrollToPlugin from 'ScrollToPlugin'
 
 import router from 'src/Router'
@@ -40,13 +40,13 @@ export default class SliderToProjectAnimation {
         let items = [...document.querySelectorAll('.projects-slider__item')]
         items.forEach(item => {
             if (items.indexOf(item) !== 0) {
-                TweenLite.to(item, 0.5, {
+                TweenLite.to(item, 0.3, {
                     opacity: 0
                 })
             }
         })
 
-        TweenLite.to(this.draggingIcon, 0.5, {
+        TweenLite.to(this.draggingIcon, 0.3, {
             opacity: 0,
             onComplete: () => {
                 this.backgroundAnimation(link)
@@ -64,9 +64,10 @@ export default class SliderToProjectAnimation {
         window.imgRect = imgRect
         window.textRect = textRect
 
-        TweenLite.to(this.sliderBackground, 1.0, {
+        TweenLite.to(this.sliderBackground, 0.6, {
             top: '118px',
-            height: height,
+            height: height + 100,
+            ease: Power2.easeInOut,
             onComplete: () => {
                 this.section.remove()
                 document.querySelector('.hello').remove()
