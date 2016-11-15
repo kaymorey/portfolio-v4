@@ -2,7 +2,7 @@ import {TweenLite, TweenMax, Power2} from 'gsap'
 import ColorPropsPlugin from 'ColorPropsPlugin'
 import css from 'css-styler'
 
-import ImagesLoader from 'scripts/ImagesLoader'
+import Utils from 'scripts/Utils'
 
 const COLORS_DURATION_ANIMATION = 0.5
 const POSITIONS_DURATION_ANIMATION = 0.5
@@ -27,8 +27,7 @@ export default class ProjectFromHomeAnimation {
 
         window.scroll(0, 0)
 
-        this.imagesLoader = new ImagesLoader()
-        this.imagesLoader.loadImages().then(() => {
+        Utils.loadImages().then(() => {
             this.init()
         })
     }
@@ -37,6 +36,7 @@ export default class ProjectFromHomeAnimation {
         this.headerLink = document.querySelector('.project-header__link')
         this.setInitialStyles()
         this.slider.remove()
+        this.slider.classList.remove('project-loading')
 
         this.colorsAnimation()
     }

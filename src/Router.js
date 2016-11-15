@@ -16,6 +16,7 @@ class Router extends VueRouter {
         let routes = [
             {
                 path: '/',
+                name: 'home',
                 component: home.component
             },
             {

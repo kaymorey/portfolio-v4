@@ -7,6 +7,8 @@ import ProjectFromHomeAnimation from 'scripts/ProjectFromHomeAnimation'
 import ProjectHeader from './ProjectHeader/ProjectHeader'
 import ProjectContent from './ProjectContent/ProjectContent'
 
+import Utils from 'scripts/Utils'
+
 import './project.scss'
 
 export default class Project {
@@ -42,6 +44,12 @@ export default class Project {
                 window.sessionStorage.setItem('navigateFrom', 'unknown')
             },
             mounted () {
+                if (!this.loadingFromHome) {
+                    Utils.loadImages().then(() => {
+                        Utils.fadeInPage()
+                    })
+                }
+
                 this.getProject()
             },
             updated () {

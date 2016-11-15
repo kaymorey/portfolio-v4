@@ -4,6 +4,7 @@ export default class HomeLoading {
 
     constructor () {
         this.body = document.querySelector('body')
+        this.mainContainer = document.getElementById('main-container')
         this.menu = document.querySelector('.header')
         this.section = document.querySelector('.hello')
         this.sectionContainer = document.querySelector('.hello__container')
@@ -29,6 +30,8 @@ export default class HomeLoading {
 
     setInitialStyles () {
         this.body.style.overflow = 'hidden'
+
+        this.mainContainer.style.opacity = 1
 
         let sectionHeight = this.section.offsetHeight
         this.leftBackground.style.bottom = sectionHeight - 182 + 'px'

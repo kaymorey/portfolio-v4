@@ -6,6 +6,8 @@ import App from './components/App'
 import Home from './components/Home/Home'
 import Project from './components/Project/Project'
 
+import Menu from 'scripts/Menu/Menu'
+
 import './stylesheets/main.scss'
 
 class Main {
@@ -16,12 +18,40 @@ class Main {
     }
 
     init () {
+        let loading = true
+
         this.vue = new Vue({
             router,
             template: this.app.template,
             data () {
                 return {
-                    loading: true
+                    loading: loading,
+                    menu: {}
+                }
+            },
+            mounted () {
+                this.menu = new Menu()
+                this.menu.init()
+
+                this.listenToScroll()
+            },
+            updated () {
+                loading = false
+            },
+            methods: {
+                listenToScroll () {
+                    window.addEventListener('scroll', (e) => {
+                        if (!ticking) {
+                            window.requestAnimationFrame(() => {
+                                if (this.$route.name == 'home') {
+                                    this.menu.onScroll()
+                                }
+
+                                let ticking = false
+                            })
+                        }
+                        let ticking = true
+                    })
                 }
             }
         }).$mount('#app')
