@@ -5,17 +5,16 @@ export default class MenuItemAnchor extends MenuItem {
     constructor (el) {
         super(el)
 
-        let targetClass = el.dataset.target
-        this.target = document.querySelector(targetClass)
+        this.targetClass = el.dataset.target
+        this.target = document.querySelector(this.targetClass)
     }
 
     /*
      * Set selected state according to scroll position
      */
-    setState (state = 1) {
+    setState () {
+        this.target = document.querySelector(this.targetClass)
         if (this.target.getBoundingClientRect().top - document.querySelector('header.header').offsetHeight - 120 <= 0) {
-            console.log(this.target.getBoundingClientRect().top)
-            console.log(this.target.offsetTop)
             if (!this.el.classList.contains(MenuItem.SELECTED_CLASS)) {
                 this.setSelected()
             }

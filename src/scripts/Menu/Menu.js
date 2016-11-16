@@ -54,8 +54,7 @@ export default class Menu {
     }
 
     deselectAnchor () {
-        console.log('deselect anchor')
-        this.anchorItem.setState(0)
+        this.anchorItem.setUnselected()
     }
 
     setLogoOpacity () {

@@ -37,13 +37,16 @@ class Main {
             },
             updated () {
                 loading = false
+                if (this.$route.name !== 'home') {
+                    this.menu.deselectAnchor()
+                }
             },
             methods: {
                 listenToScroll () {
                     window.addEventListener('scroll', (e) => {
                         if (!ticking) {
                             window.requestAnimationFrame(() => {
-                                if (this.$route.name == 'home') {
+                                if (this.$route.name === 'home') {
                                     this.menu.onScroll()
                                 }
 
