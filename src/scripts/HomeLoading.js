@@ -48,9 +48,9 @@ export default class HomeLoading {
 
                 return this.makeContentAppear()
             }).then(() => {
-                this.linksAnimation()
+                // this.linksAnimation()
             }).then(() => {
-                resolve(true)
+                // resolve(true)
             })
         })
     }
@@ -81,6 +81,7 @@ export default class HomeLoading {
     moveRightBackgroundDown () {
         TweenLite.to(this.rightBackground, 1.5, {
             top: window.innerHeight,
+            bottom: -window.innerHeight - this.rightBackground.offsetHeight,
             ease: Power3.easeInOut,
             onComplete: () => {
                 this.rightBackground.style.display = 'none'
