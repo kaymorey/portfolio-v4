@@ -1,0 +1,75 @@
+@import '~stylesheets/include/_variables.scss';
+@import '~stylesheets/include/_layout.scss';
+
+section.contact {
+    @extend .text-content;
+
+    width: 85%;
+    max-width: $layout-width;
+    margin: 0 auto;
+    padding: 20px;
+
+    // background: linear-gradient(to bottom, #ffdfce, #cfe4fc);
+    background-color: $light-peach;
+}
+
+.contact__input-text {
+    margin-left: 10px;
+    border: none;
+    border-bottom: solid $text-color 2px;
+}
+
+.contact__input-text, .contact__textarea {
+    font-size: 2.0rem;
+    letter-spacing: 0.0075em; /* 0.15 / 2.0em */
+    color: $blue;
+    background: none;
+}
+
+.contact__textarea-container {
+    width: 400px;
+    position: relative;
+}
+
+.contact__textarea {
+    width: 100%;
+    height: 205px;
+    border: none;
+    resize: none;
+    position: relative;
+    z-index: 200;
+    overflow-y: hidden;
+}
+
+.contact__textarea-lines {
+    width: 100%;
+    height: 205px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.contact__textarea-line {
+    display: inline-block;
+
+    width: 100%;
+    height: 2px;
+    background-color: $text-color;
+}
+
+.contact__send-container {
+    display: inline-block;
+
+    .link-underline {
+        z-index: 0 !important;
+    }
+}
+
+.contact__send {
+    @extend .text-content;
+    padding: 0;
+    border: none;
+    color: $blue;
+    background: none;
+    cursor: pointer;
+}
