@@ -4,72 +4,196 @@
 section.contact {
     @extend .text-content;
 
+    position: relative;
+}
+
+.contact__container {
     width: 85%;
     max-width: $layout-width;
     margin: 0 auto;
-    padding: 20px;
 
-    // background: linear-gradient(to bottom, #ffdfce, #cfe4fc);
-    background-color: $light-peach;
-}
-
-.contact__input-text {
-    margin-left: 10px;
-    border: none;
-    border-bottom: solid $text-color 2px;
-}
-
-.contact__input-text, .contact__textarea {
-    font-size: 2.0rem;
-    letter-spacing: 0.0075em; /* 0.15 / 2.0em */
-    color: $blue;
-    background: none;
-}
-
-.contact__textarea-container {
-    width: 400px;
     position: relative;
+    z-index: 100;
 }
 
-.contact__textarea {
-    width: 100%;
-    height: 205px;
-    border: none;
-    resize: none;
-    position: relative;
-    z-index: 200;
-    overflow-y: hidden;
-}
-
-.contact__textarea-lines {
-    width: 100%;
-    height: 205px;
+.contact__background {
+    background: linear-gradient(to bottom, $light-peach, #cfe4fc);
     position: absolute;
-    top: 0;
+    top: 120px;
+    right: calc(15vw / 2 + 275px);
+    bottom: -80px;
     left: 0;
+    z-index: 0;
 }
 
-.contact__textarea-line {
-    display: inline-block;
-
-    width: 100%;
-    height: 2px;
-    background-color: $text-color;
+.contact__title {
+    font-size: 5.4rem;
+    line-height: 1.48em;
+    color: $blue;
+}
+.contact__smiley {
+    position: relative;
+    top: 1px;
 }
 
-.contact__send-container {
-    display: inline-block;
+.contact__content {
+    padding-top: 55px;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .link-underline {
-        z-index: 0 !important;
+.contact__email-container {
+    margin-bottom: 55px;
+}
+
+.contact__email {
+    padding-left: 20px;
+    color: $blue;
+}
+
+.contact__form {
+    .contact__input-text {
+        margin-left: 10px;
+        border: none;
+        border-bottom: solid $text-color 2px;
+    }
+
+    .contact__input-text, .contact__textarea {
+        font-size: 2.0rem;
+        letter-spacing: 0.0075em; /* 0.15 / 2.0em */
+        color: $blue;
+        background: none;
+    }
+
+    .contact__textarea-container {
+        width: 400px;
+        max-width: 100%;
+        position: relative;
+    }
+
+    .contact__textarea {
+        width: 100%;
+        height: 205px;
+        border: none;
+        resize: none;
+        position: relative;
+        z-index: 200;
+        overflow-y: hidden;
+    }
+
+    .contact__textarea-lines {
+        width: 100%;
+        height: 205px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .contact__textarea-line {
+        display: inline-block;
+
+        width: 100%;
+        height: 2px;
+        background-color: $text-color;
+    }
+
+    .contact__send-container {
+        display: inline-block;
+
+        .link-underline {
+            z-index: 0 !important;
+        }
+    }
+
+    .contact__send {
+        @extend .text-content;
+
+        margin-top: 35px;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
     }
 }
 
-.contact__send {
-    @extend .text-content;
-    padding: 0;
-    border: none;
-    color: $blue;
-    background: none;
-    cursor: pointer;
+.contact__content--right {
+    .contact__img-profile {
+        max-width: 100%;
+    }
+
+    .contact__links-container {
+        margin-left: 146px;
+    }
+
+    .contact__social-link {
+        color: $text-color;
+
+        margin-left: 30px;
+
+        &:first-child {
+            margin: 0;
+        }
+
+        .link-underline {
+            background-color: $light-peach !important;
+        }
+    }
+}
+
+@media screen and (min-width: 1411px) {
+    .contact__background {
+        right: calc((100vw - #{$layout-width})/2 + 275px);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .contact__content--right {
+        min-width: 250px;
+        max-width: 33%;
+
+        .contact__links-container {
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .contact__background {
+        right: 15%;
+    }
+    .contact__content {
+        display: block;
+    }
+
+    .contact__content--right {
+        margin-top: 60px;
+        .contact__img-profile {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contact__background {
+        top: 45px;
+    }
+
+    .contact__form {
+        .contact__textarea, .contact__textarea-lines {
+            height: 154px;
+        }
+        .contact__input-text {
+            display: block;
+            margin: 0;
+        }
+    }
+
+    .contact__title {
+        font-size: 3.0rem;
+    }
+    .contact__smiley {
+        width: 24px;
+        height: 24px;
+        top: 2px;
+    }
 }

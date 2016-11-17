@@ -1,38 +1,68 @@
 <section class="contact">
-    <h3>Bonjour !</h3>
+    <div class="contact__container">
+        <h2 class="contact__title">Dire bonjour <img src="~assets/images/smiley.png" alt="" class="contact__smiley"></h2>
+        <h2 class="contact__title">Vous voulez me contacter ?</h2>
 
-    <form>
-        <label>Je m'appelle</label>
-        <input type="text" name="" class="contact__input-text">
+        <div class="contact__content">
+            <div class="contact__content--left">
+                <div class="contact__email-container">
+                Utilisez le formulaire ci-dessous ou envoyez moi un email à
+                    <br>
+                    <span class="contact__email">bonjour@katia-moreira.fr</span>
+                </div>
 
-        <br>
+                <form class="contact__form" v-on:submit.prevent="submitForm">
+                    <p>Bonjour !</p>
 
-        <label>Je t'envoie ce message parce que</label>
-        <input type="text" name="" class="contact__input-text">
+                    <label for="name">Je m'appelle</label>
+                    <input type="text" name="name" v-model="name" :blur="isValidName" class="contact__input-text">
 
-        <br>
+                    <br>
 
-        <label>Voilà ce que j'ai à te dire</label>
-        <br>
-        <div class="contact__textarea-container">
-            <textarea class="contact__textarea"></textarea>
-            <div class="contact__textarea-lines">
-                <span class="contact__textarea-line"></span>
-                <span class="contact__textarea-line"></span>
-                <span class="contact__textarea-line"></span>
-                <span class="contact__textarea-line"></span>
-                <span class="contact__textarea-line"></span>
+                    <label for="subject">Je t'envoie ce message parce que</label>
+                    <input type="text" name="subject" v-model="subject" :blur="isValidEmail" class="contact__input-text">
+
+                    <br>
+
+                    <label for="message">Voilà ce que j'ai à te dire</label>
+                    <br>
+                    <div class="contact__textarea-container">
+                        <textarea name="message" v-model="message" class="contact__textarea"></textarea>
+                        <div class="contact__textarea-lines">
+                            <span class="contact__textarea-line"></span>
+                            <span class="contact__textarea-line"></span>
+                            <span class="contact__textarea-line"></span>
+                            <span class="contact__textarea-line"></span>
+                            <span class="contact__textarea-line"></span>
+                        </div>
+                    </div>
+
+                    <label for="email">Tu peux me contacter au mail suivant</label>
+                    <input type="email" name="email" v-model="email" :blur="isValidMessage" class="contact__input-text">
+
+                    <br>
+                    <p>A bientôt !</p>
+
+                    <p class="link-underline__container contact__send-container">
+                        <input type="submit" value="Envoyer" class="contact__send">
+                        <span class="link-underline contact__send-underline"></span>
+                    </p>
+                </form>
             </div>
+
+            <aside class="contact__content--right">
+                <img src="~assets/images/contact-profile.jpg" class="contact__img-profile">
+                <div class="contact__links-container">
+                    <p class="project-section-title">En savoir plus sur moi</p>
+                    <div>
+                        <a href="" class="contact__social-link link-underline__container">Twitter<span class="link-underline"></span></a>
+                        <a href="" class="contact__social-link link-underline__container">LinkedIn<span class="link-underline"></span></a>
+                        <a href="" class="contact__social-link link-underline__container">CV<span class="link-underline"></span>
+                        </a>
+                    </div>
+                </div>
+            </aside>
         </div>
-
-        <label>Tu peux me contacter au mail suivant</label>
-        <input type="email" name="" class="contact__input-text">
-
-        <p>A bientôt !</p>
-
-        <p class="link-underline__container contact__send-container">
-            <input type="submit" value="Envoyer" class="contact__send">
-            <span class="link-underline contact__send-underline"></span>
-        </p>
-    </form>
+    </div>
+    <div class="contact__background"></div>
 </section>

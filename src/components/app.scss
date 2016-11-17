@@ -95,3 +95,15 @@
         }
     }
 }
+
+@media screen and (max-width: 320px) {
+    .header {
+        .header__list {
+            display: flex;
+            justify-content: space-around;
+        }
+        .header__item {
+            padding: 0;
+        }
+    }
+}

@@ -3,10 +3,12 @@ export default class ContactForm {
     constructor () {
         this.textarea = document.querySelector('.contact__textarea')
         this.textareaLines = document.querySelector('.contact__textarea-lines')
+        this.textareaMinHeight = '205'
     }
 
     init () {
-        this.adjustTextareaHeight('205')
+        this.setTextareaMinHeight()
+        this.adjustTextareaHeight(this.textareaMinHeight)
 
         this.textarea.addEventListener('focus', () => {
             this.textareaLines.style.opacity = 0
@@ -19,8 +21,22 @@ export default class ContactForm {
         })
 
         this.textarea.addEventListener('input', () => {
-            this.adjustTextareaHeight('205')
+            this.adjustTextareaHeight(this.textareaMinHeight)
         })
+
+        window.addEventListener('resize', () => {
+            this.setTextareaMinHeight()
+        })
+    }
+
+    setTextareaMinHeight () {
+        if (window.innerWidth > 768 && this.textareaMinHeight !== 205) {
+            this.textareaMinHeight = 205
+            this.adjustTextareaHeight(this.textareaMinHeight)
+        } else if (this.textareaMinHeight !== 154) {
+            this.textareaMinHeight = 154
+            this.adjustTextareaHeight(this.textareaMinHeight)
+        }
     }
 
     adjustTextareaHeight (minHeight) {
