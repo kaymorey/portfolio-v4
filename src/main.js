@@ -6,6 +6,7 @@ import App from './components/App'
 import Home from './components/Home/Home'
 import Project from './components/Project/Project'
 
+import Utils from 'scripts/Utils'
 import Menu from 'scripts/Menu/Menu'
 
 import './stylesheets/main.scss'
@@ -34,12 +35,18 @@ class Main {
                 this.menu.init()
 
                 this.listenToScroll()
+                // this.displayPage()
             },
             updated () {
-                loading = false
                 if (this.$route.name !== 'home') {
                     this.menu.deselectAnchor()
                 }
+
+                if (!loading) {
+                    // this.displayPage()
+                }
+
+                loading = false
             },
             methods: {
                 listenToScroll () {
@@ -54,6 +61,15 @@ class Main {
                             })
                         }
                         let ticking = true
+                    })
+                },
+                displayPage () {
+                    Utils.loadImages().then(() => {
+                        Utils.fadeInPage().then(() => {
+                            if (this.$route.name == 'contact') {
+                                this.menu.selectItem(1)
+                            }
+                        })
                     })
                 }
             }

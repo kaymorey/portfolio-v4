@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="header__item">
-                    <router-link to="contact" class="header__link">
+                    <router-link :to="{name :'contact'}" class="header__link">
                         Bonjour!
                         <span class="header-link__underline"></span>
                     </router-link>
@@ -24,7 +24,7 @@
         </nav>
     </header>
     <div id="main-container">
-        <router-view></router-view>
+        <router-view :menu="menu"></router-view>
     </div>
     <footer></footer>
 </div>

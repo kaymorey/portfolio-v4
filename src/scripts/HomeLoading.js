@@ -47,10 +47,6 @@ export default class HomeLoading {
                 this.moveRightBackgroundDown()
 
                 return this.makeContentAppear()
-            }).then(() => {
-                // this.linksAnimation()
-            }).then(() => {
-                // resolve(true)
             })
         })
     }

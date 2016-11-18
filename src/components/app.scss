@@ -27,9 +27,11 @@
         display: flex;
         justify-content: flex-end;
     }
+    .header__title {
+        opacity: 0;
+    }
     .header-title__link {
         color: $lighter-text-color;
-        opacity: 0;
 
         &::after {
             content: '';

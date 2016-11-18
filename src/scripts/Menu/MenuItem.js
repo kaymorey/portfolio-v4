@@ -94,6 +94,38 @@ export default class MenuItem {
     }
 
     /*
+     * setSelected animation : different whether item is on over
+     * if not we have to play over animation before selected animation
+     */
+    setSelected () {
+        if (this.el.classList.contains(MenuItem.OVER_CLASS)) {
+            this.animateSelected()
+        } else {
+            this.animateOnOver(() => {
+                this.animateSelected()
+            })
+        }
+    }
+
+    /*
+     * setUnselected animation
+     */
+    setUnselected (animated = true) {
+        this.el.classList.remove(MenuItem.SELECTED_CLASS)
+
+        if (!animated) {
+            if (this.underline) {
+                this.underline.style.width = 0
+                this.underline.style.bottom = 0
+            }
+        } else {
+            this.animateOnOut(() => {
+                this.underline.style.bottom = 0
+            })
+        }
+    }
+
+    /*
      * Static methods to get constants
      */
     static get SELECTED_CLASS () {

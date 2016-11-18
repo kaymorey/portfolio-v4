@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Hello from './Hello/Hello'
 import Projects from './Projects/Projects'
 
+import Mixin from 'scripts/Mixin'
+
 export default class Home {
 
     constructor () {
@@ -13,7 +15,8 @@ export default class Home {
                 'hello': this.hello.component,
                 'projects': this.projects.component
             },
-            template: require('./home.html')
+            template: require('./home.html'),
+            mixins: [Mixin]
         })
     }
 

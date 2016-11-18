@@ -2,6 +2,7 @@ import Vue from 'vue'
 
 import ContactForm from 'scripts/ContactForm'
 
+import Mixin from 'scripts/Mixin'
 import Utils from 'scripts/Utils'
 
 import './contact.scss'
@@ -20,13 +21,14 @@ export default class Contact {
                     contactForm: {}
                 }
             },
+            props: ['menu'],
+            mixins: [Mixin],
             mounted () {
                 Utils.loadImages().then(() => {
-                    Utils.fadeInPage()
+                    Utils.fadeInPage().then(() => {
+                        this.menu.selectItem(1)
+                    })
                 })
-
-                this.contactForm = new ContactForm()
-                this.contactForm.init()
             },
             methods: {
                 isValidName: function () {

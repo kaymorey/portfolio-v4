@@ -5,15 +5,23 @@ export default function Utils () {}
 Utils.fadeInPage = function () {
     let header = document.querySelector('header.header')
     let container = document.getElementById('main-container')
+    let logo = document.querySelector('.header__title')
 
-    TweenLite.to(header, 0.5, {
-        delay: 0.2,
-        alpha: 1
-    })
+    let hello = document.querySelector('.hello')
 
-    TweenLite.to(container, 0.5, {
-        delay: 0.2,
-        alpha: 1
+    return new Promise((resolve) => {
+        TweenLite.to(header, 0.5, {
+            delay: 0.2,
+            alpha: 1
+        })
+
+        TweenLite.to(container, 0.5, {
+            delay: 0.2,
+            alpha: 1,
+            onComplete: function () {
+                resolve(true)
+            }
+        })
     })
 }
 

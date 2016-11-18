@@ -23,7 +23,7 @@ export default class Menu {
             this.items.push(item)
         })
 
-        this.titleLink = document.querySelector('.header-title__link')
+        this.logo = document.querySelector('.header__title')
     }
 
     init () {
@@ -44,7 +44,7 @@ export default class Menu {
     }
 
     onScroll () {
-        // ---- Show/hide titleLink ----
+        // ---- Show/hide logo ----
         this.setLogoOpacity()
 
         // ---- Deal with projects item selected state ----
@@ -57,21 +57,40 @@ export default class Menu {
         this.anchorItem.setUnselected()
     }
 
+    selectItem (index) {
+        console.log(index)
+        let item = this.items[index]
+
+        item.setSelected()
+    }
+
+    unSelectItem (index) {
+        let item = this.items[index]
+
+        item.setUnselected
+    }
+
+    unselectAllItems () {
+        this.items.forEach(item => {
+            item.setUnselected(false)
+        })
+    }
+
     setLogoOpacity () {
-        // ---- Show/hide titleLink ----
+        // ---- Show/hide logo ----
         let homeTitleTop = document.querySelector('.hello__title--top')
         if (homeTitleTop) {
             if (homeTitleTop.getBoundingClientRect().top <= 0) {
-                TweenLite.to(this.titleLink, 0.5, {
+                TweenLite.to(this.logo, 0.5, {
                     alpha: 1
                 })
             } else {
-                TweenLite.to(this.titleLink, 0.5, {
+                TweenLite.to(this.logo, 0.5, {
                     alpha: 0
                 })
             }
         } else {
-            TweenLite.to(this.titleLink, 0.5, {
+            TweenLite.to(this.logo, 0.5, {
                 alpha: 1
             })
         }

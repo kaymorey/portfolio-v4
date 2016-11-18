@@ -40,14 +40,4 @@ export default class MenuItemAnchor extends MenuItem {
             })
         }
     }
-
-    /*
-     * setUnselected animation
-     */
-    setUnselected () {
-        this.el.classList.remove(MenuItem.SELECTED_CLASS)
-        this.animateOnOut(() => {
-            this.underline.style.bottom = 0
-        })
-    }
 }

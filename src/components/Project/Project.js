@@ -31,6 +31,7 @@ export default class Project {
                     projectFromHomeAnimation: {}
                 }
             },
+            props: ['menu'],
             mixins: [Mixin],
             route: {
                 data () {

@@ -1,6 +1,17 @@
 import DataLoader from './DataLoader'
 
 export default {
+    data () {
+        return {
+            test: 'test'
+        }
+    },
+    beforeDestroy () {
+        this.resetOpacityPage()
+        if (this.menu) {
+            this.menu.unselectAllItems()
+        }
+    },
     methods: {
         imagePath: function (path, slug = '') {
             if (path) {
@@ -36,6 +47,13 @@ export default {
             } else {
                 callback()
             }
+        },
+        resetOpacityPage: function () {
+            let header = document.querySelector('header.header')
+            let container = document.getElementById('main-container')
+
+            header.style.opacity = 0
+            container.style.opacity = 0
         }
     }
 }
