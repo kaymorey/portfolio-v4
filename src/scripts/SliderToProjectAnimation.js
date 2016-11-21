@@ -8,6 +8,7 @@ export default class SliderToProjectAnimation {
     constructor () {
         this.section = document.querySelector('.projects')
         this.links = [...document.querySelectorAll('.projects-slider__item-link')]
+        this.link = {}
         this.draggingIcon = document.querySelector('.projects-slider__dragging')
         this.sliderBackground = document.querySelector('.projects-slider__background')
     }
@@ -18,7 +19,8 @@ export default class SliderToProjectAnimation {
                 e.preventDefault()
 
                 this.scrollToCorrectPosition().then(() => {
-                    this.launchAnimation(link)
+                    this.link = link
+                    this.launchAnimation()
                 })
             })
         })
@@ -35,7 +37,7 @@ export default class SliderToProjectAnimation {
         })
     }
 
-    launchAnimation (link) {
+    launchAnimation () {
         let items = [...document.querySelectorAll('.projects-slider__item')]
         items.forEach(item => {
             if (items.indexOf(item) !== 0) {
@@ -48,12 +50,12 @@ export default class SliderToProjectAnimation {
         TweenLite.to(this.draggingIcon, 0.3, {
             opacity: 0,
             onComplete: () => {
-                this.backgroundAnimation(link)
+                this.backgroundAnimation()
             }
         })
     }
 
-    backgroundAnimation (link) {
+    backgroundAnimation () {
         let bodyHeight = document.querySelector('body').offsetHeight
         let height = bodyHeight - (this.sliderBackground.offsetTop + window.pageYOffset)
 
@@ -75,13 +77,13 @@ export default class SliderToProjectAnimation {
                 document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
 
                 window.sessionStorage.setItem('navigateFrom', 'home')
-                this.pushPath(link)
+                this.pushPath()
             }
         })
     }
 
-    pushPath (link) {
-        let slug = link.dataset.slug
+    pushPath () {
+        let slug = this.link.dataset.slug
 
         router.push({
             name: 'project',

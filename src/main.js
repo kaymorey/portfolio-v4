@@ -7,6 +7,7 @@ import Home from './components/Home/Home'
 import Project from './components/Project/Project'
 
 import Utils from 'scripts/Utils'
+import Mixin from 'scripts/Mixin'
 import Menu from 'scripts/Menu/Menu'
 
 import './stylesheets/main.scss'
@@ -21,6 +22,8 @@ class Main {
     init () {
         let loading = true
         let sliderToProject = false
+
+        Vue.mixin(Mixin)
 
         this.vue = new Vue({
             router,

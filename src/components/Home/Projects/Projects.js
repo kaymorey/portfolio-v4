@@ -23,7 +23,6 @@ export default class Projects {
                     dataLoader: new DataLoader()
                 }
             },
-            mixins: [Mixin],
             mounted: function () {
                 this.getProjects()
             },

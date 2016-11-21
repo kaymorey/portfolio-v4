@@ -17,13 +17,7 @@ export default class Hello {
                     homeLoading: {}
                 }
             },
-            mounted: function () {
-                if (this.loading) {
-                    this.homeLoading = new HomeLoading()
-                    this.homeLoading.init()
-                }
-            },
-            destroyed: function () {
+            destroyed () {
                 loading = false
             }
         })

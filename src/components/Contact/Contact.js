@@ -18,11 +18,11 @@ export default class Contact {
                     subject: '',
                     email: '',
                     message: '',
-                    contactForm: {}
+                    contactForm: {},
+                    rootPage: true
                 }
             },
             props: ['menu'],
-            mixins: [Mixin],
             mounted () {
                 Utils.loadImages().then(() => {
                     Utils.fadeInPage().then(() => {

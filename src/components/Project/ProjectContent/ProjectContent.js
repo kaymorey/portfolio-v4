@@ -9,8 +9,7 @@ export default class ProjectContent {
     constructor () {
         this.component = Vue.component('project-content', {
             template: require('./project-content.html'),
-            props: ['project'],
-            mixins: [Mixin]
+            props: ['project']
         })
     }
 
