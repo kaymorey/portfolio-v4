@@ -58,7 +58,6 @@ export default class Menu {
     }
 
     selectItem (index) {
-        console.log(index)
         let item = this.items[index]
 
         item.setSelected()

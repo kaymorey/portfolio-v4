@@ -31,7 +31,7 @@ export default class HomeLoading {
     setInitialStyles () {
         this.body.style.overflow = 'hidden'
 
-        this.mainContainer.style.opacity = 1
+        this.mainContainer.classList.add('visible')
 
         let sectionHeight = this.section.offsetHeight
         this.leftBackground.style.bottom = sectionHeight - 182 + 'px'
@@ -101,7 +101,11 @@ export default class HomeLoading {
             })
             TweenLite.to(this.menu, 0.45, {
                 alpha: 1,
-                delay: 0.7
+                delay: 0.7,
+                onComplete: () => {
+                    this.menu.classList.add('visible')
+                    this.menu.style.opacity = ''
+                }
             })
         })
     }

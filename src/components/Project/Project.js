@@ -27,7 +27,6 @@ export default class Project {
                 return {
                     project: '',
                     dataLoader: new DataLoader(),
-                    loadingFromHome: false,
                     projectFromHomeAnimation: {}
                 }
             },
@@ -38,14 +37,8 @@ export default class Project {
                     this.getProject()
                 }
             },
-            created () {
-                if (window.sessionStorage.getItem('navigateFrom') === 'home') {
-                    this.loadingFromHome = true
-                }
-                window.sessionStorage.setItem('navigateFrom', 'unknown')
-            },
             mounted () {
-                if (!this.loadingFromHome) {
+                if (!this.sliderToProject) {
                     Utils.loadImages().then(() => {
                         Utils.fadeInPage()
                     })
@@ -64,7 +57,7 @@ export default class Project {
                     })
                 },
                 createProjectFromHomeAnimation: function () {
-                    if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.loadingFromHome) {
+                    if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.sliderToProject) {
                         this.projectFromHomeAnimation = new ProjectFromHomeAnimation()
                     }
                 }

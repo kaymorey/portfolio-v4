@@ -3,13 +3,24 @@ import DataLoader from './DataLoader'
 export default {
     data () {
         return {
-            test: 'test'
+            sliderToProject: false
         }
     },
     beforeDestroy () {
-        this.resetOpacityPage()
+        if (window.sessionStorage.getItem('navigateFrom') !== 'home') {
+            console.log('oui bien sûr')
+            this.resetOpacityPage()
+        }
+        if (this.sliderToProject) {
+            window.sessionStorage.setItem('navigateFrom', 'unknown')
+        }
         if (this.menu) {
             this.menu.unselectAllItems()
+        }
+    },
+    created () {
+        if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
+            this.sliderToProject = true
         }
     },
     methods: {
@@ -52,8 +63,11 @@ export default {
             let header = document.querySelector('header.header')
             let container = document.getElementById('main-container')
 
-            header.style.opacity = 0
-            container.style.opacity = 0
+            header.style.opacity = ''
+            header.classList.remove('visible')
+
+            container.style.opacity = ''
+            container.classList.remove('visible')
         }
     }
 }

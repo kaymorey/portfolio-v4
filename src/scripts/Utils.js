@@ -12,13 +12,19 @@ Utils.fadeInPage = function () {
     return new Promise((resolve) => {
         TweenLite.to(header, 0.5, {
             delay: 0.2,
-            alpha: 1
+            alpha: 1,
+            onComplete: () => {
+                header.classList.add('visible')
+                header.style.opacity = ''
+            }
         })
 
         TweenLite.to(container, 0.5, {
             delay: 0.2,
             alpha: 1,
             onComplete: function () {
+                container.classList.add('visible')
+                container.style.opacity = ''
                 resolve(true)
             }
         })

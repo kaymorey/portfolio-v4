@@ -20,6 +20,7 @@ class Main {
 
     init () {
         let loading = true
+        let sliderToProject = false
 
         this.vue = new Vue({
             router,
@@ -27,6 +28,7 @@ class Main {
             data () {
                 return {
                     loading: loading,
+                    sliderToProject: sliderToProject,
                     menu: {}
                 }
             },
@@ -35,15 +37,16 @@ class Main {
                 this.menu.init()
 
                 this.listenToScroll()
-                // this.displayPage()
             },
             updated () {
-                if (this.$route.name !== 'home') {
-                    this.menu.deselectAnchor()
+                if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
+                    this.sliderToProject = true
+                } else {
+                    this.sliderToProject = false
                 }
 
-                if (!loading) {
-                    // this.displayPage()
+                if (this.$route.name !== 'home') {
+                    // this.menu.deselectAnchor()
                 }
 
                 loading = false
@@ -61,15 +64,6 @@ class Main {
                             })
                         }
                         let ticking = true
-                    })
-                },
-                displayPage () {
-                    Utils.loadImages().then(() => {
-                        Utils.fadeInPage().then(() => {
-                            if (this.$route.name == 'contact') {
-                                this.menu.selectItem(1)
-                            }
-                        })
                     })
                 }
             }

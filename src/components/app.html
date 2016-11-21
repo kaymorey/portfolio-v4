@@ -1,5 +1,5 @@
 <div>
-    <header class="header" :class="loading ? 'loading' : ''">
+    <header class="header" :class="sliderToProject ? 'visible' : ''">
         <nav class="header__container">
             <h1 class="header__title">
                 <a href="" class="header-title__link">Katia Moreira</a>
@@ -23,7 +23,7 @@
             </ul>
         </nav>
     </header>
-    <div id="main-container">
+    <div id="main-container" :class="sliderToProject ? 'visible' : ''">
         <router-view :menu="menu"></router-view>
     </div>
     <footer></footer>

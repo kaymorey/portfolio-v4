@@ -14,7 +14,7 @@ export default class MenuItemAnchor extends MenuItem {
      */
     setState () {
         this.target = document.querySelector(this.targetClass)
-        if (this.target.getBoundingClientRect().top - document.querySelector('header.header').offsetHeight - 120 <= 0) {
+        if (this.target && this.target.getBoundingClientRect().top - document.querySelector('header.header').offsetHeight - 120 <= 0) {
             if (!this.el.classList.contains(MenuItem.SELECTED_CLASS)) {
                 this.setSelected()
             }

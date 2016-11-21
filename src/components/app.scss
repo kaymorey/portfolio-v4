@@ -1,5 +1,16 @@
 @import '~stylesheets/include/_variables.scss';
 
+// .header.slider-to-project {
+//     opacity: 1;
+// }
+
+.header.visible {
+    opacity: 1;
+}
+#main-container.visible {
+    opacity: 1;
+}
+
 .header {
     width: 100%;
     margin: 0 auto;

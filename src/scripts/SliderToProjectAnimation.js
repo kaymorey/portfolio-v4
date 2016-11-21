@@ -6,7 +6,6 @@ import router from 'src/Router'
 export default class SliderToProjectAnimation {
 
     constructor () {
-        this.mainContainer = document.getElementById('main-container')
         this.section = document.querySelector('.projects')
         this.links = [...document.querySelectorAll('.projects-slider__item-link')]
         this.draggingIcon = document.querySelector('.projects-slider__dragging')
@@ -75,8 +74,8 @@ export default class SliderToProjectAnimation {
                 this.section.classList.add('project-loading')
                 document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
 
-                this.pushPath(link)
                 window.sessionStorage.setItem('navigateFrom', 'home')
+                this.pushPath(link)
             }
         })
     }
