@@ -120,7 +120,7 @@ export default class HomeLoading {
                     ease: Power3.easeOut
                 })
                 .to(underline, 0.5, {
-                    bottom: '-12px',
+                    bottom: '-8px',
                     ease: Power3.easeOut,
                     onComplete: () => {
                         link.classList.remove('hello__link-animation')

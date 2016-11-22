@@ -13,16 +13,14 @@ export default {
                 this.sliderToProject = true
             }
 
-            this.projectToSlider = true
-
-            // if (window.sessionStorage.getItem('navigateFrom') === 'project' && this.$route.name == 'home') {
-            //     this.projectToSlider = true
-            // }
+            if (window.sessionStorage.getItem('navigateFrom') === 'project' && this.$route.name == 'home') {
+                this.projectToSlider = true
+            }
         }
     },
     beforeDestroy () {
         if (this.rootPage) {
-            if (window.sessionStorage.getItem('navigateFrom') !== 'home' && this.rootPage) {
+            if (window.sessionStorage.getItem('navigateFrom') !== 'home' && window.sessionStorage.getItem('navigateFrom') !== 'project') {
                 this.resetOpacityPage()
             }
             if (this.menu) {

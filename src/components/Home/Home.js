@@ -28,7 +28,6 @@ export default class Home {
             },
             mounted () {
                 this.createHomeLoading()
-                this.createSliderFromProjectAnimation()
             },
             methods: {
                 createHomeLoading () {
@@ -40,7 +39,6 @@ export default class Home {
                 createSliderFromProjectAnimation () {
                     if (Object.keys(this.sliderFromProjectAnimation).length === 0 && this.projectToSlider) {
                         this.sliderFromProjectAnimation = new SliderFromProjectAnimation()
-                        this.sliderFromProjectAnimation.init()
                     }
                 }
             }

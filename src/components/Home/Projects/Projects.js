@@ -55,6 +55,8 @@ export default class Projects {
                             this.currentProject = this.projects[0]
                             this.nextProject = this.projects[1]
                         }
+
+                        this.$emit('projects-updated')
                     }
                 },
                 createSliderToProjectAnimation () {

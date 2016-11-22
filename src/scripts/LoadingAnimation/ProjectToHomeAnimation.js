@@ -6,6 +6,7 @@ import router from 'src/Router'
 export default class ProjectToHomeAnimation {
 
     constructor () {
+        this.mainContainer = document.getElementById('main-container')
         this.closeLink = document.querySelector('.project__close-link')
         this.container = document.querySelector('.project__container')
         this.background = document.querySelector('.project__background')
@@ -58,6 +59,10 @@ export default class ProjectToHomeAnimation {
                 })
             },
             onComplete: () => {
+                this.background.classList.add('home-loading')
+                this.background.style.top = ''
+                this.mainContainer.insertBefore(this.background, this.mainContainer.firstChild)
+                window.sessionStorage.setItem('navigateFrom', 'project')
                 this.pushPath()
             }
         })

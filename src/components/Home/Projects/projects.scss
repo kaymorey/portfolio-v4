@@ -16,6 +16,23 @@
     z-index: 500;
 }
 
+.project__background.home-loading {
+    position: fixed;
+    top: 70px;
+}
+
+.projects.loading-from-project {
+    .projects-slider__list, .projects-slider__text {
+        margin-left: -80px;
+    }
+    .projects-slider__pagination-container {
+        top: -40px;
+    }
+    .projects-slider__list, .projects-slider__pagination-container, .projects-slider__text {
+        opacity: 0;
+    }
+}
+
 .projects__slider {
     margin: 0 0 180px 23%;
     position: relative;
