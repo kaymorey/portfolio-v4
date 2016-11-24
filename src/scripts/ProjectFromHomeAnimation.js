@@ -147,7 +147,7 @@ export default class ProjectFromHomeAnimation {
                 this.header.style.position = 'static'
                 this.content.style.opacity = 1
 
-                this.background.style.height = this.section.offsetHeight + 'px'
+                this.background.style.height = this.section.offsetHeight - this.background.offsetTop + 'px'
             }
         })
     }

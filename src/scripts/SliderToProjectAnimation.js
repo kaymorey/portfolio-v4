@@ -66,7 +66,7 @@ export default class SliderToProjectAnimation {
         window.textRect = textRect
 
         TweenLite.to(this.sliderBackground, 0.6, {
-            top: '118px',
+            top: 131,
             height: height + 100,
             ease: Power2.easeInOut,
             onComplete: () => {

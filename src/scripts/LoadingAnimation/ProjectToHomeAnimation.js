@@ -52,6 +52,8 @@ export default class ProjectToHomeAnimation {
             colorProps: {
                 color1: '#f2f4f8',
                 color2: '#cfe4fc'
+                // color1: '#FF0000',
+                // color2: '#FF0000'
             },
             onUpdate: () => {
                 css(this.background, {

@@ -28,7 +28,7 @@
     .projects-slider__pagination-container {
         top: -40px;
     }
-    .projects-slider__list, .projects-slider__pagination-container, .projects-slider__text {
+    .projects-slider__list, .projects-slider__pagination-container, .projects-slider__text, .projects-slider__dragging, .projects-slider__background {
         opacity: 0;
     }
 }
@@ -54,7 +54,7 @@
     position: absolute;
     top: 210px;
     right: 64px;
-    z-index: 200;
+    z-index: 300;
     width: 306px;
     height: 120px;
     cursor: pointer;

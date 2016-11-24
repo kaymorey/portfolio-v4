@@ -1,7 +1,5 @@
 import Vue from 'vue'
 
-import HomeLoading from 'scripts/HomeLoading'
-
 import './hello.scss'
 
 export default class Hello {
@@ -13,8 +11,7 @@ export default class Hello {
             template: require('./hello.html'),
             data () {
                 return {
-                    loading: loading,
-                    homeLoading: {}
+                    loading: loading
                 }
             },
             destroyed () {

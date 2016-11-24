@@ -15,16 +15,17 @@ export default class SliderFromProjectAnimation {
         this.slider = document.querySelector('.projects-slider__list')
         this.pagination = document.querySelector('.projects-slider__pagination-container')
         this.sliderText = document.querySelector('.projects-slider__text')
+        this.dragging = document.querySelector('.projects-slider__dragging')
         this.background = document.querySelector('.projects-slider__background')
 
+        this.projectBackground = document.querySelector('.project__background')
+
         Utils.loadImages().then(() => {
-            console.log('images loaded')
             this.init()
         })
     }
 
     init () {
-        console.log('init')
         if ('scrollRestoration' in window.history) {
             window.history.scrollRestoration = 'manual'
             this.launchAnimation()
@@ -42,10 +43,9 @@ export default class SliderFromProjectAnimation {
     launchAnimation () {
         this.mainContainer.classList.add('visible')
         window.scroll(0, this.section.offsetTop)
-
-        TweenLite.to(this.header, 0.5, {
-            alpha: 1
-        })
+        this.background.style.opacity = 1
+        this.projectBackground.remove()
+        this.projectBackground.classList.remove('home-loading')
 
         TweenLite.to(this.slider, DURATION_ANIMATION, {
             marginLeft: 0,
@@ -63,6 +63,10 @@ export default class SliderFromProjectAnimation {
             top: 0,
             alpha: 1,
             ease: Power3.easeOut,
+            delay: 0.5
+        })
+        TweenLite.to(this.dragging, DURATION_ANIMATION, {
+            alpha: 1,
             delay: 0.5
         })
     }
