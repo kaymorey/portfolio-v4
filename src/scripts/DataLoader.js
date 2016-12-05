@@ -4,14 +4,16 @@ import VueResource from 'vue-resource'
 export default class DataLoader {
 
     constructor () {
-        this.filePath = './static/data/data.json'
+        this.directory = './static/data/'
         this.data = []
         Vue.use(VueResource)
     }
 
-    loadData () {
+    loadData (locale) {
         return new Promise((resolve) => {
-            Vue.http.get(this.filePath).then((response) => {
+            let filePath = this.directory + locale + '/data-' + locale + '.json'
+
+            Vue.http.get(filePath).then((response) => {
                 return response.json()
             }, (response) => {
                 console.log('error when retrieving data')

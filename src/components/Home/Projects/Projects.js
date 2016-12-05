@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 import Mixin from 'scripts/Mixin'
 import DataLoader from 'scripts/DataLoader'
@@ -15,7 +16,6 @@ export default class Projects {
             data () {
                 return {
                     draggingText: Array.from('drag to change . '),
-                    projects: [],
                     currentProject: {},
                     nextProject: {},
                     slider: {},
@@ -23,19 +23,17 @@ export default class Projects {
                     dataLoader: new DataLoader()
                 }
             },
-            mounted: function () {
-                this.getProjects()
+            computed: mapGetters({
+                projects: 'allProjects'
+            }),
+            created () {
+                this.$store.dispatch('getAllProjects')
             },
             updated: function () {
                 this.createSlider()
                 this.createSliderToProjectAnimation()
             },
             methods: {
-                getProjects () {
-                    this.dataLoader.loadData().then((projects) => {
-                        this.projects = projects
-                    })
-                },
                 createSlider () {
                     if (Object.keys(this.slider).length === 0) {
                         this.slider = new Slider()

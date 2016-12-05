@@ -89,5 +89,12 @@ export default class SliderToProjectAnimation {
             name: 'project',
             params: {project: slug}
         })
+        // let slug = this.link.dataset.slug
+        // let locale = this.link.dataset.locale
+
+        // router.push({
+        //     name: 'project',
+        //     params: {locale: locale, project: slug}
+        // })
     }
 }

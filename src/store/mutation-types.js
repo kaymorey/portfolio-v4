@@ -1,0 +1,2 @@
+export const SET_LOCALE = 'SET_LOCALE'
+export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS'

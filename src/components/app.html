@@ -18,7 +18,10 @@
                     </router-link>
                 </li>
                 <li class="header__item">
-                    <a href="" class="header__link header-link__language header-link__language--selected">En</a>/<a href="" class="header__link header-link__language">Fr</a>
+                <template v-for="locale in locales">
+                    <a href="#" class="header__link header-link__language header-link__language--selected" v-on:click="setLocale(locale)">{{ locale.label }}</a>
+                </template>
+                    <!-- <a href="" class="header__link header-link__language header-link__language--selected" :click="changeLocale('en-EN')">En</a>/<a href="" class="header__link header-link__language" :click="changeLocale('fr-FR')">Fr</a> -->
                 </li>
             </ul>
         </nav>

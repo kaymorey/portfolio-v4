@@ -49,13 +49,15 @@ export default class Project {
                 this.getProject()
             },
             updated () {
+                console.log('updated')
                 this.createProjectFromHomeAnimation()
                 this.createProjectToHomeAnimation()
             },
             methods: {
                 getProject () {
                     let slug = this.$route.params.project
-                    this.dataLoader.loadData().then(() => {
+
+                    this.dataLoader.loadData(this.$store.locale).then(() => {
                         this.project = this.dataLoader.getProject(slug)
                     })
                 },

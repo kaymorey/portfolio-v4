@@ -22,15 +22,31 @@ class Router extends VueRouter {
                 component: home.component
             },
             {
-                path: '/works/:project',
-                name: 'project',
-                component: project.component
-            },
-            {
                 path: '/contact',
                 name: 'contact',
                 component: contact.component
+            },
+            {
+                path: '/:project',
+                name: 'project',
+                component: project.component
             }
+            // {
+            //     path: '/',
+            //     alias: '/:locale',
+            //     name: 'home',
+            //     component: home.component
+            // },
+            // {
+            //     path: '/:locale/contact',
+            //     name: 'contact',
+            //     component: contact.component
+            // },
+            // {
+            //     path: '/:locale/:project',
+            //     name: 'project',
+            //     component: project.component
+            // }
         ]
 
         super({

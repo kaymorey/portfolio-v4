@@ -29,6 +29,7 @@ module.exports = {
       'components': path.resolve(__dirname, '../src/components'),
       'stylesheets': path.resolve(__dirname, '../src/stylesheets'),
       'scripts': path.resolve(__dirname, '../src/scripts'),
+      'store': path.resolve(__dirname, '../src/store'),
       'TweenLite': 'gsap/src/uncompressed/TweenLite',
       'ScrollToPlugin': 'gsap/src/uncompressed/plugins/ScrollToPlugin',
       'ColorPropsPlugin': 'gsap/src/uncompressed/plugins/ColorPropsPlugin',

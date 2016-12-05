@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import domready from 'domready'
+import { mapGetters, mapMutations } from 'vuex'
 
 import router from './Router'
+import store from './store'
+import * as types from './store/mutation-types'
 import App from './components/App'
 import Home from './components/Home/Home'
 import Project from './components/Project/Project'
@@ -11,6 +14,8 @@ import Mixin from 'scripts/Mixin'
 import Menu from 'scripts/Menu/Menu'
 
 import './stylesheets/main.scss'
+
+Vue.config.debug = true
 
 class Main {
 
@@ -26,6 +31,7 @@ class Main {
         Vue.mixin(Mixin)
 
         this.vue = new Vue({
+            store,
             router,
             template: this.app.template,
             data () {
@@ -35,13 +41,18 @@ class Main {
                     menu: {}
                 }
             },
+            computed: {
+                ...mapGetters({
+                    locales: 'allLocales'
+                })
+            },
             mounted () {
                 this.menu = new Menu()
                 this.menu.init()
-
                 this.listenToScroll()
             },
             updated () {
+                console.log('updated')
                 if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
                     this.sliderToProject = true
                 } else {
@@ -68,6 +79,11 @@ class Main {
                         }
                         let ticking = true
                     })
+                },
+                setLocale (locale) {
+                    this.$store.commit(types.SET_LOCALE, locale)
+                    this.$store.dispatch('getAllProjects')
+                    console.log(this.$store.state.projects.all)
                 }
             }
         }).$mount('#app')
