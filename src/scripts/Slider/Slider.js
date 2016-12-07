@@ -141,6 +141,7 @@ export default class Slider {
         this.itemsToCopy = []
 
         this.el.style.left = this.sliderLeft + 'px'
+        this.sliderDragging.refItem = this.getFirstItem()
     }
 
     animateText () {
@@ -174,7 +175,7 @@ export default class Slider {
     }
 
     getFirstItem () {
-        let items = this.getCurrentItemsList
+        let items = this.getCurrentItemsList()
 
         if (items.length > 0) {
             return items[0]

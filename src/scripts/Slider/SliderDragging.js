@@ -2,12 +2,12 @@ import TweenLite from 'gsap'
 
 export default class SliderDragging {
 
-    constructor (el, slider, firstItem) {
+    constructor (el, slider, refItem) {
         this.el = el
         this.slider = slider
         /* It would be better to calculate it only once (also used in Slider.js) */
         this.sliderLeft = this.slider.offsetLeft
-        this.firstItem = firstItem
+        this.refItem = refItem
         this.draggingStarted = false
 
         let draggedToNextEvent = new window.Event('draggedToNextEvent')
@@ -60,7 +60,7 @@ export default class SliderDragging {
             this.mouseX = e.clientX
             this.el.style.left = this.initialElX - (this.initialMouseX - this.mouseX) + 'px'
             this.slider.style.left = this.initialSliderX - (this.initialMouseX - this.mouseX) + 'px'
-            if (this.slider.offsetLeft * -1 >= this.firstItem.offsetWidth / 2.5) {
+            if (this.slider.offsetLeft * -1 >= this.refItem.offsetWidth / 2.5) {
                 this.stopDragging(this.stoppedDraggingReasons.DRAGGEDTONEXT)
             }
         }
