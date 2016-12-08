@@ -12,6 +12,7 @@
   "dependencies": {
     "css-styler": "^1.0.0",
     "domready": "^1.0.8",
+    "event-emitter": "^0.3.4",
     "gsap": "^1.19.0",
     "vue": "^2.0.1"
   },

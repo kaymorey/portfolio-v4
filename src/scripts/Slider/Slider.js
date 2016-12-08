@@ -1,10 +1,17 @@
 import {TweenLite, Power3} from 'gsap'
+
+import Emitter from '../Emitter'
+import mediaQueryManager from '../MediaQueryManager'
+
 import SliderDragging from './SliderDragging'
 import SliderPagination from './SliderPagination'
 
 export default class Slider {
 
     constructor () {
+        this.emitter = Emitter
+        this.mediaQueryManager = mediaQueryManager
+
         this.items = [...document.querySelectorAll('.projects-slider__item')]
         this.texts = [...document.querySelectorAll('.projects-slider__text')]
 
@@ -23,6 +30,11 @@ export default class Slider {
     }
 
     init () {
+        this.mediaQueryManager.init()
+        this.emitter.on('changeBreakpoint', () => {
+            console.log('change breakpoint')
+        })
+
         this.sliderDragging.init()
         this.sliderPagination.init()
 
@@ -76,7 +88,6 @@ export default class Slider {
                 }, 100)
 
                 let offsetLeft = selectedItem.offsetLeft
-                console.log(-offsetLeft + this.sliderLeft)
                 TweenLite.to(this.el, 0.7, {
                     left: -offsetLeft + this.sliderLeft,
                     ease: Power3.easeOut,
@@ -193,11 +204,7 @@ export default class Slider {
                     // Inverse data-index value
                     if (index === '0') {
                         text.dataset.index = '1'
-                        text.style.left = '60px' /* /!\ RESPONSIVE /!\ This value may change if window size changes */
                     } else {
-                        if (window.matchMedia('(max-width: 768px)').matches) {
-                            text.style.top = 0
-                        }
                         text.dataset.index = '0'
                     }
 
@@ -207,6 +214,9 @@ export default class Slider {
                     } else {
                         this.reversedTexts = false
                     }
+
+                    // Unset style elements
+                    text.removeAttribute('style')
 
                     // Dispatch completed animation event
                     this.el.dispatchEvent(this.animationTextCompletedEvent)
