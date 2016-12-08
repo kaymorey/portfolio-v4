@@ -76,6 +76,7 @@ export default class Slider {
                 }, 100)
 
                 let offsetLeft = selectedItem.offsetLeft
+                console.log(-offsetLeft + this.sliderLeft)
                 TweenLite.to(this.el, 0.7, {
                     left: -offsetLeft + this.sliderLeft,
                     ease: Power3.easeOut,
