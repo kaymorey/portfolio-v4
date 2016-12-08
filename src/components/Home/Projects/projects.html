@@ -23,14 +23,16 @@
             </div>
         </div>
         <div class="projects-slider__pagination-container">
-            <ul class="projects-slider__pagination">
-                <li class="pagination__item" v-for="(project, index) in projects">
-                    <a href="#" class="pagination__link text-content">
-                        <span class="pagination__number">0{{ index + 1 }}</span>. {{ project.title }}
-                    </a>
-                </li>
-            </ul>
-            <span class="projects-slider__pagination-underline" data-selected="0"></span>
+            <div class="projects-slider__pagination-container--scrollable">
+                <ul class="projects-slider__pagination">
+                    <li class="pagination__item" v-for="(project, index) in projects">
+                        <a href="#" class="pagination__link text-content">
+                            <span class="pagination__number">0{{ index + 1 }}</span>. {{ project.title }}
+                        </a>
+                    </li>
+                </ul>
+                <span class="projects-slider__pagination-underline" data-selected="0"></span>
+            </div>
         </div>
         <div class="projects-slider__background"></div>
         <div class="projects-slider__text" data-index="0">

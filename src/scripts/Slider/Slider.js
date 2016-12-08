@@ -50,12 +50,13 @@ export default class Slider {
             this.slideTo(this.getCurrentIndex(), false)
         })
 
-        // window.addEventListener('resize', () => {
-        //     this.resize()
-        // })
+        window.addEventListener('resize', () => {
+            this.resize()
+        })
     }
 
     resize () {
+        this.sliderLeft = this.el.offsetLeft
     }
 
     slideTo (index, animateText = true) {
@@ -64,25 +65,50 @@ export default class Slider {
 
             let didClickOnPaginationLinkEvent = new window.CustomEvent('didClickOnPaginationLink', {'detail': index})
             this.el.dispatchEvent(didClickOnPaginationLinkEvent)
-            this.selectItemsToCopy(selectedItem)
 
-            this.updateItemsInterval = window.setInterval(() => {
-                this.update()
-            }, 100)
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                this.slideAnimationMobile(index)
+            } else {
+                this.selectItemsToCopy(selectedItem)
 
-            let offsetLeft = selectedItem.offsetLeft
-            TweenLite.to(this.el, 0.7, {
-                left: -offsetLeft + this.sliderLeft,
-                ease: Power3.easeOut,
-                onComplete: () => {
-                    this.didSlideTo(index)
+                this.updateItemsInterval = window.setInterval(() => {
+                    this.update()
+                }, 100)
+
+                let offsetLeft = selectedItem.offsetLeft
+                TweenLite.to(this.el, 0.7, {
+                    left: -offsetLeft + this.sliderLeft,
+                    ease: Power3.easeOut,
+                    onComplete: () => {
+                        this.didSlideTo(index)
+                    }
+                })
+
+                if (animateText) {
+                    this.animateText()
                 }
-            })
-
-            if (animateText) {
-                this.animateText()
             }
         }
+    }
+
+    slideAnimationMobile (index) {
+        TweenLite.to(this.el, 0.3, {
+            opacity: 0,
+            ease: Power3.easeOut,
+            onComplete: () => {
+                this.items.forEach(item => {
+                    item.style.display = 'none'
+                })
+                this.items[index].style.display = 'inline-block'
+            }
+        })
+        TweenLite.to(this.el, 0.3, {
+            delay: 0.3,
+            opacity: 1,
+            ease: Power3.easeIn
+        })
+
+        this.animateText()
     }
 
     selectItemsToCopy (selectedItem) {
@@ -145,10 +171,21 @@ export default class Slider {
     }
 
     animateText () {
+        let textOffsetX = 238
+
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            textOffsetX = 40
+        }
+
         for (let text of this.texts) {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                if (text.dataset.index == 1) {
+                    text.style.top = document.querySelector('.projects-slider__text[data-index="0"]').offsetTop + 'px'
+                }
+            }
             let index = text.dataset.index
             TweenLite.to(text, 0.7, {
-                left: text.offsetLeft - 238, /* /!\ RESPONSIVE /!\ This value may change if window size changes */
+                left: text.offsetLeft - textOffsetX, /* /!\ RESPONSIVE /!\ This value may change if window size changes */
                 opacity: index, /* First text (index 0) to opacity 0, second (index 1) to 1 */
                 ease: Power3.easeOut,
                 onComplete: () => {
@@ -157,6 +194,9 @@ export default class Slider {
                         text.dataset.index = '1'
                         text.style.left = '60px' /* /!\ RESPONSIVE /!\ This value may change if window size changes */
                     } else {
+                        if (window.matchMedia('(max-width: 768px)').matches) {
+                            text.style.top = 0
+                        }
                         text.dataset.index = '0'
                     }
 
