@@ -32,7 +32,10 @@ export default class Slider {
     init () {
         this.mediaQueryManager.init()
         this.emitter.on('changeBreakpoint', () => {
-            console.log('change breakpoint')
+            this.items.forEach(item => {
+                item.style = ''
+            })
+            this.el.style = ''
         })
 
         this.sliderDragging.init()
@@ -92,7 +95,7 @@ export default class Slider {
                     left: -offsetLeft + this.sliderLeft,
                     ease: Power3.easeOut,
                     onComplete: () => {
-                        this.didSlideTo(index)
+                        // this.didSlideTo(index)
                     }
                 })
 
@@ -146,7 +149,7 @@ export default class Slider {
             if (!itemToCopy.copied) {
                 let el = itemToCopy.el
 
-                if (el.getBoundingClientRect().left + el.offsetWidth < this.sliderContainer.offsetLeft) {
+                if (Math.round(el.getBoundingClientRect().left + el.offsetWidth) <= this.sliderContainer.offsetLeft) {
                     itemToCopy.copy = el.cloneNode(true)
                     this.el.appendChild(itemToCopy.copy)
                     itemToCopy.copied = true
@@ -185,8 +188,10 @@ export default class Slider {
     animateText () {
         let textOffsetX = 238
 
-        if (window.matchMedia('(max-width: 768px)').matches) {
+        if (this.mediaQueryManager.currentBreakpoint == 'mobile') {
             textOffsetX = 40
+        } else if (this.mediaQueryManager.currentBreakpoint == 'tablet') {
+            textOffsetX = 220
         }
 
         for (let text of this.texts) {

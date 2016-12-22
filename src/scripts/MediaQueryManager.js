@@ -3,18 +3,19 @@ import Emitter from './Emitter'
 const BREAKPOINTS = [
     {
         'name': 'mobile',
-        'type': 'max',
-        'value': '768'
+        'content': '(max-width: 768px)'
     },
     {
         'name': 'tablet',
-        'type': 'max',
-        'value': '1024'
+        'content': '(min-width: 769px) and (max-width: 1024px)'
+    },
+    {
+        'name': 'small-desktop',
+        'content': '(min-width: 1025px) and (max-width: 1199px)'
     },
     {
         'name': 'desktop',
-        'type': 'min',
-        'value': '1200'
+        'content': '(min-width: 1200px)'
     }
 ]
 
@@ -35,10 +36,9 @@ class MediaQueryManager {
 
     setCurrentBreakpoint () {
         for (let breakpoint of BREAKPOINTS) {
-            console.log(breakpoint)
-            if (window.matchMedia('(' + breakpoint.type + '-width: ' + breakpoint.value + 'px)') && this.currentBreakpoint != breakpoint.name) {
+            if (window.matchMedia(breakpoint.content).matches && this.currentBreakpoint != breakpoint.name) {
                 this.currentBreakpoint = breakpoint.name
-                console.log('coucou')
+                console.log(this.currentBreakpoint)
                 this.emitter.emit('changeBreakpoint')
             }
         }
