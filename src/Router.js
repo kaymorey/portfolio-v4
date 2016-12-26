@@ -5,6 +5,7 @@ import App from './components/App'
 import Home from './components/Home/Home'
 import Project from './components/Project/Project'
 import Contact from './components/Contact/Contact'
+import NotFound from './components/NotFound/NotFound'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,7 @@ class Router extends VueRouter {
         let home = new Home()
         let project = new Project()
         let contact = new Contact()
+        let notFound = new NotFound()
 
         let routes = [
             {
@@ -27,9 +29,14 @@ class Router extends VueRouter {
                 component: contact.component
             },
             {
-                path: '/:project',
+                path: '/project/:project',
                 name: 'project',
                 component: project.component
+            },
+            {
+                path: '*',
+                name: '404',
+                component: notFound.component
             }
             // {
             //     path: '/',

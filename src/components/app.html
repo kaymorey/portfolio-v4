@@ -2,7 +2,7 @@
     <header class="header" :class="sliderToProject ? 'visible' : ''">
         <nav class="header__container">
             <h1 class="header__title">
-                <a href="" class="header-title__link">Katia Moreira</a>
+                <router-link :to="{name: 'home'}" class="header-title__link">Katia Moreira</router-link>
             </h1>
             <ul class="header__list">
                 <li class="header__item">
@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="header__item">
-                    <router-link :to="{name :'contact'}" class="header__link">
+                    <router-link :to="{name: 'contact'}" class="header__link">
                         Bonjour!
                         <span class="header-link__underline"></span>
                     </router-link>
@@ -29,5 +29,4 @@
     <div id="main-container" :class="sliderToProject ? 'visible' : ''">
         <router-view :menu="menu"></router-view>
     </div>
-    <footer></footer>
 </div>

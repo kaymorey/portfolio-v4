@@ -1,0 +1,32 @@
+@import '~stylesheets/include/_variables.scss';
+@import '~stylesheets/include/_layout.scss';
+
+section.not-found {
+    width: 85%;
+    max-width: $layout-width;
+    margin: 0 auto;
+
+    @extend .text-content;
+    text-align: center;
+}
+
+.not-found__smiley {
+    width: 170px;
+    margin-top: 40px;
+}
+
+.not-found__title {
+    margin-top: 20px;
+    font-size: 6.3rem;
+    line-height: 1em;
+    color: $blue;
+}
+
+.not-found__link {
+    margin-top: 25px;
+    color: $text-color;
+
+    .link-underline {
+        background-color: $light-peach !important;
+    }
+}
