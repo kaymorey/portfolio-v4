@@ -10,7 +10,6 @@ export default class Slider {
 
     constructor () {
         this.emitter = Emitter
-        this.mediaQueryManager = mediaQueryManager
 
         this.items = [...document.querySelectorAll('.projects-slider__item')]
         this.texts = [...document.querySelectorAll('.projects-slider__text')]
@@ -27,22 +26,20 @@ export default class Slider {
         this.reversedTexts = false
         this.updateItemsInterval = null
         this.itemsToCopy = []
+        this.selectedIndex = 0
     }
 
     init () {
-        this.mediaQueryManager.init()
+        // Responsive
+        mediaQueryManager.init()
         this.emitter.on('changeBreakpoint', () => {
-            this.items.forEach(item => {
-                item.style = ''
-            })
-            this.el.style = ''
+            this.changeBreakpoint()
         })
 
-        this.sliderDragging.init()
+        this.sliderLeft = this.el.offsetLeft
+
+        // Init SliderPagination and add eventListener
         this.sliderPagination.init()
-
-        this.sliderLeft = this.el.offsetLeft /* /!\ RESPONSIVE /!\ This value may change if window size changes */
-
         this.sliderPagination.links.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault()
@@ -55,11 +52,12 @@ export default class Slider {
             }, false)
         })
 
+        // Init SliderDragging
+        this.sliderDragging.init()
         // EventListener on sliderDragging to auto slide to next item
         this.sliderDragging.el.addEventListener('draggedToNextEvent', () => {
             this.slideAfterDrag()
         })
-
         // EventListener on sliderDragging to auto slide back to current item
         this.sliderDragging.el.addEventListener('mouseUpEvent', () => {
             this.slideTo(this.getCurrentIndex(), false)
@@ -70,8 +68,23 @@ export default class Slider {
         })
     }
 
+    changeBreakpoint () {
+        this.items.forEach(item => {
+            item.style = ''
+        })
+
+        if (mediaQueryManager.previousBreakpoint == 'tablet' && mediaQueryManager.currentBreakpoint == 'mobile') {
+            this.el.style = ''
+        } else {
+            let offsetLeft = this.items[this.selectedIndex].offsetLeft
+            this.el.style.left = -offsetLeft + this.el.offsetLeft + 'px'
+        }
+    }
+
     resize () {
         this.sliderLeft = this.el.offsetLeft
+
+        this.sliderPagination.resize()
     }
 
     slideTo (index, animateText = true) {
@@ -81,7 +94,7 @@ export default class Slider {
             let didClickOnPaginationLinkEvent = new window.CustomEvent('didClickOnPaginationLink', {'detail': index})
             this.el.dispatchEvent(didClickOnPaginationLinkEvent)
 
-            if (window.matchMedia('(max-width: 768px)').matches) {
+            if (mediaQueryManager.currentBreakpoint == 'mobile') {
                 this.slideAnimationMobile(index)
             } else {
                 this.selectItemsToCopy(selectedItem)
@@ -95,7 +108,7 @@ export default class Slider {
                     left: -offsetLeft + this.sliderLeft,
                     ease: Power3.easeOut,
                     onComplete: () => {
-                        // this.didSlideTo(index)
+                        this.didSlideTo(index)
                     }
                 })
 
@@ -115,6 +128,8 @@ export default class Slider {
                     item.style.display = 'none'
                 })
                 this.items[index].style.display = 'inline-block'
+
+                this.selectedIndex = index
             }
         })
         TweenLite.to(this.el, 0.3, {
@@ -183,26 +198,33 @@ export default class Slider {
 
         this.el.style.left = this.sliderLeft + 'px'
         this.sliderDragging.refItem = this.getFirstItem()
+
+        this.selectedIndex = index
     }
 
     animateText () {
         let textOffsetX = 238
 
-        if (this.mediaQueryManager.currentBreakpoint == 'mobile') {
+        if (mediaQueryManager.currentBreakpoint == 'mobile') {
             textOffsetX = 40
-        } else if (this.mediaQueryManager.currentBreakpoint == 'tablet') {
+        } else if (mediaQueryManager.currentBreakpoint == 'tablet') {
             textOffsetX = 220
+        } else if (mediaQueryManager.currentBreakpoint == 'small-desktop') {
+            textOffsetX = (23 * window.innerWidth / 100 + 60) - ((window.innerWidth - 980) / 2)
+        } else {
+            textOffsetX = (23 * window.innerWidth / 100 + 60) - ((window.innerWidth - 1200) / 2)
         }
 
         for (let text of this.texts) {
-            if (window.matchMedia('(max-width: 768px)').matches) {
+            if (mediaQueryManager.currentBreakpoint == 'mobile') {
                 if (text.dataset.index == 1) {
                     text.style.top = document.querySelector('.projects-slider__text[data-index="0"]').offsetTop + 'px'
                 }
             }
+
             let index = text.dataset.index
             TweenLite.to(text, 0.7, {
-                left: text.offsetLeft - textOffsetX, /* /!\ RESPONSIVE /!\ This value may change if window size changes */
+                left: text.offsetLeft - textOffsetX,
                 opacity: index, /* First text (index 0) to opacity 0, second (index 1) to 1 */
                 ease: Power3.easeOut,
                 onComplete: () => {

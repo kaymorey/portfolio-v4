@@ -1,4 +1,5 @@
 import TweenLite from 'gsap'
+import Emitter from '../Emitter'
 
 export default class SliderPagination {
 
@@ -16,6 +17,10 @@ export default class SliderPagination {
             link.addEventListener('mouseleave', () => {
                 this.onOutLink(link)
             })
+        })
+
+        Emitter.on('changeBreakpoint', () => {
+            this.updateOnBrakpointChange()
         })
     }
 
@@ -47,5 +52,15 @@ export default class SliderPagination {
         TweenLite.to(this.underline, 0.6, {
             width: referenceWidth
         })
+    }
+
+    resize () {
+        let link = this.links[this.underline.dataset.selected]
+        this.underline.style.left = link.offsetLeft + 'px'
+    }
+
+    updateOnBrakpointChange () {
+        let link = this.links[this.underline.dataset.selected]
+        this.underline.style.width = link.offsetWidth + 'px'
     }
 }
