@@ -29,6 +29,8 @@ export default class Contact {
                         this.menu.selectItem(1)
                     })
                 })
+
+                this.showEmail()
             },
             methods: {
                 isValidName: function () {
@@ -48,6 +50,11 @@ export default class Contact {
                         // Send email
                         console.log('send mail')
                     }
+                },
+                showEmail: function () {
+                    let email = 'bonjour@katia-moreira.fr'
+                    document.querySelector('.contact__email').href = 'mailto:' + email
+                    document.querySelector('.contact__email').innerHTML = email
                 }
             }
         })
