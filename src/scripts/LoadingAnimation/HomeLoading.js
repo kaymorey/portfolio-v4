@@ -103,7 +103,7 @@ export default class HomeLoading {
                 alpha: 1,
                 delay: 0.7,
                 onComplete: () => {
-                    this.menu.classList.add('visible')
+                    this.menu.classList.remove('home')
                     this.menu.style.opacity = ''
                 }
             })

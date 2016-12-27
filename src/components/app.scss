@@ -4,11 +4,12 @@
 //     opacity: 1;
 // }
 
-.header.visible {
-    opacity: 1;
-}
 #main-container.visible {
     opacity: 1;
+}
+
+.header.home {
+    opacity: 0;
 }
 
 .header {
@@ -17,7 +18,6 @@
     padding: 15px 0;
     box-sizing: border-box;
     background-color: #FFF;
-    opacity: 0;
 
     position: fixed;
     top: 0;

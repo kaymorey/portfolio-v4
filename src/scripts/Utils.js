@@ -3,22 +3,12 @@ import TweenLite from 'gsap'
 export default function Utils () {}
 
 Utils.fadeInPage = function () {
-    let header = document.querySelector('header.header')
     let container = document.getElementById('main-container')
     let logo = document.querySelector('.header__title')
 
     let hello = document.querySelector('.hello')
 
     return new Promise((resolve) => {
-        TweenLite.to(header, 0.5, {
-            delay: 0.2,
-            alpha: 1,
-            onComplete: () => {
-                header.classList.add('visible')
-                header.style.opacity = ''
-            }
-        })
-
         TweenLite.to(container, 0.5, {
             delay: 0.2,
             alpha: 1,

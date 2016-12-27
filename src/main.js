@@ -38,6 +38,7 @@ class Main {
                 return {
                     loading: loading,
                     sliderToProject: sliderToProject,
+                    isHomePage: false,
                     menu: {}
                 }
             },
@@ -53,6 +54,7 @@ class Main {
             },
             updated () {
                 console.log('updated')
+
                 if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
                     this.sliderToProject = true
                 } else {
@@ -61,6 +63,9 @@ class Main {
 
                 if (this.$route.name !== 'home') {
                     // this.menu.deselectAnchor()
+                } else {
+                    this.isHomePage = true
+                    console.log('test')
                 }
 
                 loading = false
