@@ -44,13 +44,21 @@ class Main {
             },
             computed: {
                 ...mapGetters({
-                    locales: 'allLocales'
+                    locales: 'allLocales',
+                    selectedLocale: 'selectedLocale'
                 })
             },
             mounted () {
                 this.menu = new Menu()
                 this.menu.init()
                 this.listenToScroll()
+
+                let localeSlug = this.$route.params.locale
+                if (localeSlug) {
+                    let locale = this.locales.find(locale => locale.slug === localeSlug)
+                    this.$store.commit(types.SET_LOCALE, locale)
+                    this.$store.dispatch('getAllProjects')
+                }
             },
             updated () {
                 console.log('updated')
@@ -65,7 +73,6 @@ class Main {
                     // this.menu.deselectAnchor()
                 } else {
                     this.isHomePage = true
-                    console.log('test')
                 }
 
                 loading = false
@@ -88,7 +95,8 @@ class Main {
                 setLocale (locale) {
                     this.$store.commit(types.SET_LOCALE, locale)
                     this.$store.dispatch('getAllProjects')
-                    console.log(this.$store.state.projects.all)
+
+                    router.push({name: this.$route.name, params: {locale: locale.slug}})
                 }
             }
         }).$mount('#app')

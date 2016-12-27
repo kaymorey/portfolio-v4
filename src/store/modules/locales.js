@@ -7,7 +7,8 @@ const state = {
 }
 
 const getters = {
-    allLocales: state => state.all
+    allLocales: state => state.all,
+    selectedLocale: state => state.selected
 }
 
 const mutations = {

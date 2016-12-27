@@ -19,17 +19,18 @@ class Router extends VueRouter {
 
         let routes = [
             {
-                path: '/',
+                path: '/:locale(en|fr)?',
                 name: 'home',
                 component: home.component
             },
             {
-                path: '/contact',
+                path: '/:locale(en|fr)/contact',
                 name: 'contact',
                 component: contact.component
             },
             {
-                path: '/project/:project',
+                path: '/:locale(en|fr)/project/:project',
+                alias: '/en/project/:project',
                 name: 'project',
                 component: project.component
             },
