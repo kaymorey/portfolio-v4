@@ -4,12 +4,14 @@ import Projects from './Projects/Projects'
 
 import Mixin from 'scripts/Mixin'
 
-import HomeLoading from 'scripts/HomeLoading'
+import HomeLoading from 'scripts/LoadingAnimation/HomeLoading'
 import SliderFromProjectAnimation from 'scripts/LoadingAnimation/SliderFromProjectAnimation'
 
 export default class Home {
 
     constructor () {
+        let loading = true
+
         this.hello = new Hello()
         this.projects = new Projects()
 
@@ -21,13 +23,21 @@ export default class Home {
             template: require('./home.html'),
             data () {
                 return {
+                    loading: loading,
                     homeLoading: {},
                     sliderFromProjectAnimation: {},
                     rootPage: true
                 }
             },
             mounted () {
-                this.createHomeLoading()
+                if (loading) {
+                    this.createHomeLoading()
+                } else {
+                    document.getElementById('main-container').classList.add('visible')
+                }
+            },
+            destroyed () {
+                loading = false
             },
             methods: {
                 createHomeLoading () {
