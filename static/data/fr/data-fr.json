@@ -4,12 +4,12 @@
         "title": "Lantern",
         "image": "lantern-main.jpg",
         "date": "2015",
-        "type": "iOS app & connected object",
-        "text": "Lantern is my final year project in Gobelins. It's a nightlight that creates an atmosphere of sound and light according to the story the parent reads on a tablet.",
+        "type": "iOS app & objet connecté",
+        "text": "Lantern est mon projet final réalisé à l'école des Gobelins. C'est une veilleuse connectée qui produit du son et des lumières en fonction d'une histoire lue sur tablette.",
         "website": "http://lantern-app.com",
-        "context": "8 months project at Gobelins",
+        "context": "Projet de 8 mois aux Gobelins",
         "technologies": "Objective-C, Arduino",
-        "role": "iOS developer",
+        "role": "Développeuse iOS",
         "content": [
             {
                 "type": "image",
@@ -17,17 +17,17 @@
             },
             {
                 "type": "text",
-                "title": "Purpose of the project",
-                "text": "Before going to bed, children are often afraid of leaving their parent’s side. Some tend to extend their bedtime as much as they can. We wanted to create a bedtime routine that attempts to solve this problem. It combines two of the strongest existing solutions: the bedtime story and the nightlight.",
+                "title": "But du projet",
+                "text": "Avant d'aller se coucher, les enfants ont souvent peur de quitter leurs parents. Certains enfants essayent de faire durer le moment du coucher le plus longtemps possible. Nous avons voulu créer une routine du coucher qui tente de résoudre ce problème. Elle regroupe deux solutions existantes : la lecture d'une histoire et la veilleuse.",
                 "image": "lantern-drawing.png",
                 "text-position": "left",
                 "mask-mobile": true
             },
             {
                 "type": "text",
-                "title": "Choose a story",
-                "text": "Swipe from right to left to navigate through covers stories. Each cover is represented by illustrations and pictograms which animate while swiping.",
-                "text-mobile": "Swipe from right to left to navigate through covers stories.",
+                "title": "Choix d'une histoire",
+                "text": "Balaye l'écran de droite à gauche pour naviguer entre les différentes histoires. Chaque couverture est représentée par des illustrations et des pictogrammes qui s'animent.",
+                "text-mobile": "Balaye l'écran de droite à gauche pour naviguer entre les différentes histoires.",
                 "text-position": "right",
                 "video": "covers.mp4",
                 "mockup": "ipad-portrait"
@@ -38,9 +38,9 @@
             },
             {
                 "type": "text",
-                "title": "Navigate through pages",
-                "text": "Just swipe from bottom to top to navigate through pages and go along the story. Each time you change pages, the color of the nightlight changes as well. You can also tap on a small icon to play a one-time animation on the nightlight.",
-                "text-mobile": "Each page of the story corresponds to a color and a soundscape on the nightlight.",
+                "title": "Lecture de l'histoire",
+                "text": "Balaye l'écran du bas vers le haut pour tourner les pages de l'histoire. A chaque fois que l'on change de page, la veilleuse diffuse une ambiance lumineuse et sonore correspondant aux péripéties du récit. On peut également appuyer sur une petite icône pour jouer une animation ponctuelle sur la veilleuse.",
+                "text-mobile": "Chaque page de l'histoire correspond à une couleur et un fond sonore joués par la veilleuse.",
                 "text-position": "right",
                 "video": "reading.mp4",
                 "mockup": "ipad-portrait"
@@ -51,9 +51,9 @@
             },
             {
                 "type": "text",
-                "title": "Configure sleep mode",
-                "text": "After reading the story, pick a melody and select a duration. The nightlight will play the sound and make a sweet light during the chosen time. Lantern will then acompagny the child during the night thanks to a soft light.",
-                "text-mobile": "Let your child fall asleep with a soft melody.",
+                "title": "Mode nuit",
+                "text": "Après la lecture de l'histoire, on peut choisir une mélodie et une durée. La veilleuse jouera le son et diffusera une lumière douce pendant le temps choisi pour aider à l'endormissement. La Lantern continuera d'accompagner l'enfant toute la nuit, comme une simple veilleuse.",
+                "text-mobile": "Aidez votre enfant à s'endormir avec une douce mélodie.",
                 "text-position": "left",
                 "video": "sleep-mode.mp4",
                 "mockup": "ipad-portrait"
@@ -65,12 +65,12 @@
         "title": "Animooh",
         "image": "animooh-main.jpg",
         "date": "2014",
-        "type": "iOS application",
-        "text": "Animooh is an iPad application for children to make them discover incredible animals.",
-        "website": "http://katia-moreira.com/animooh",
-        "context": "3 months project at Gobelins",
+        "type": "application iOS",
+        "text": "Animooh est une application iPad destinée aux enfants qui leur permet de découvrir des animaux incroyables.",
+        "website": "http://katiamoreira.fr/animooh",
+        "context": "Projet de 3 mois aux Gobelins",
         "technologies": "Objective-C",
-        "role": "iOS developer",
+        "role": "développeuse iOS",
         "content": [
             {
                 "type": "image",
@@ -78,8 +78,8 @@
             },
             {
                 "type": "text",
-                "title": "Purpose of the project",
-                "text": "Our thinking began with the assigned topic <em>augmented knowledge</em>. We decided to create an application that uses popular science and interactions on a tablet to make the learning process funnier for children.",
+                "title": "But du projet",
+                "text": "Nous avons axé notre réflexion autour du thème de la <em>connaissance augmentée</em>. Nous avons décidé de créer une application qui rend l'apprentissage plus \"fun\" grâce à la vulgarisation scientifique et l'ajout d'interactions.",
                 "text-position": "left",
                 "image": "animooh-purpose.png",
                 "modifier": "ipad-landscape",
@@ -95,18 +95,18 @@
             },
             {
                 "type": "text",
-                "title": "Play with animals",
-                "text": "Each animal presented in the application has an extraordinary capability. The child can play and interact with the animal to realize what it is.",
-                "text-mobile": "Play with the animal and guess its extraordinary capacity",
+                "title": "Jouer avec les animaux",
+                "text": "Chaque animal présenté dans l'application possède une capacité extraordinaire. L'enfant doit jouer avec l'animal pour découvrir en quoi elle consiste.",
+                "text-mobile": "Joue avec l'animal et devine quelle est sa capacité extraordinaire.",
                 "text-position": "left",
                 "video": "interaction.mp4",
                 "mockup": "ipad-landscape"
             },
             {
                 "type": "text",
-                "title": "Understand how it works",
-                "text": "Each capability is explained thanks to diagrams or funny interactions. The aim was to make scientific explanations accessible for children. A voiceover and some subtitles also help them to understand.",
-                "text-mobile": "Each capability is explained thanks to diagrams or funny interactions.",
+                "title": "Comprendre le fonctionnement",
+                "text": "Chaque capacité est expliquée à l'aide de schémas ou de petites interactions. Le but était de rendre les explications scientifiques accessibles aux enfants. Une voix-off et des sous-titres sont aussi là pour les aider.",
+                "text-mobile": "Chaque capacité est expliquée à l'aide de schémas et d'interactions.",
                 "text-position": "right",
                 "video": "setules.mp4",
                 "mockup": "ipad-landscape"
@@ -118,9 +118,9 @@
             },
             {
                 "type": "text",
-                "title": "(Re)discover animals",
-                "text": "We chose a dozen of animals which are incredible : let's discover the pistol shrimp, the monkfish or the mimic octopus. The parent may learn as many things as his/her children...",
-                "text-mobile": "We chose a dozen of animals which are incredible.",
+                "title": "(Re)découvrir les animaux",
+                "text": "Nous avons choisi une dizaine d'animaux incroyables : découvrez la crevette-pistolet ou la pieuvre mimétique. Les parents pourraient apprendre autant de choses que leur enfant... ",
+                "text-mobile": "Nous avons choisi une dizaine d'animaux incroyables.",
                 "text-position": "left",
                 "image": "animooh-animals-list.png"
             }
@@ -131,25 +131,25 @@
         "title": "SimonPong",
         "image": "simonpong-main.jpg",
         "date": "2015",
-        "type": "arduino experiment",
-        "text": "SimonPong is a custom arcade table created during an arduino workshop. It mixes two famous games : simon and pong.",
-        "context": "2 weeks workshop at Gobelins",
+        "type": "projet arduino",
+        "text": "SimonPong est une table d'arcade créée durant un worksop arduino. Elle combine deux jeux existants : le simon et le pong",
+        "context": "Workshop de 2 semaines aux Gobelins",
         "technologies": "Arduino, Processing",
-        "role": "Developer (and carpenter)",
+        "role": "Développeuse (et menuisier)",
         "content": [
             {
                 "type": "text",
-                "title": "Context of the project",
-                "text": "The project was created during a 2 weeks workshop : 1 week of conception and learning, and 1 week of realisation. The subject was to create a multiplayer game with arduino.",
-                "text-mobile": "The project was created during a 2 weeks workshop.",
+                "title": "Contexte du projet",
+                "text": "Le projet a été réalisé durant un workshop de 2 semaines à Gobelins : 1 semaine de conception et d'apprentissage de la technologie arduino, 1 semaine de réalisation. Le but du workshop était de créer un jeu multijoueur.",
+                "text-mobile": "Le projet a été réalisé durant un workshop de 2 semaines.",
                 "text-position": "left",
                 "image": "simonpong-table.jpg"
             },
             {
                 "type": "text",
-                "title": "Manufacturing",
-                "text": "We had only a few days to drill holes, sand, paint and make a custom arcade table.",
-                "text-mobile": "We had only a few days to make a custom arcade table.",
+                "title": "Fabrication",
+                "text": "Nous n'avions qu'une semaine pour percer, poncer, peindre et fabriquer notre propre table d'arcade.",
+                "text-mobile": "Nous n'avions qu'une semaine fabriquer notre propre table d'arcade.",
                 "text-position": "right",
                 "image": "simonpong-manufacturing.jpg"
             },
@@ -162,9 +162,9 @@
             },
             {
                 "type": "text",
-                "title": "Development",
-                "text": "We developed the graphic game using Processing and the controls with arduino. Two aruidno boards controled 16 buttons, 16 lights and 4 potentiometers.",
-                "text-mobile": "We developed the graphic game using Processing and the controls with arduino.",
+                "title": "Développement",
+                "text": "Nous avons codé le jeu avec Processing et les commandes à l'aide d'arduino. Nous avons utilisé 2 arduinos pour contrôler 16 boutons, 16 LEDs et 4 potentiomètres.",
+                "text-mobile": "Nous avons codé le jeu avec Processing et les commandes à l'aide d'arduino.",
                 "text-position": "left",
                 "image": "simonpong-electronics.jpg"
             }
@@ -176,35 +176,35 @@
         "title": "Trust",
         "image": "trust-main.jpg",
         "date": "2014",
-        "type": "iOS app",
-        "text": "Trust is a mobile application which helps you understand some news thanks to a timeline.",
-        "context": "1 week workshop in Amsterdam and 3 months realisation at Gobelins",
+        "type": "application iOS",
+        "text": "Trust est une application mobile qui permet de mieux comprendre l'actualité grâce à une timeline.",
+        "context": "Workshop d'une semaime à Amsterdam et 3 mois de réalisation aux Gobelins",
         "technologies": "Objective-C",
-        "role": "iOS developer",
+        "role": "développeuse iOS",
         "content": [
             {
                 "type": "text",
-                "title": "Purpose of the project",
-                "text": "The project has been suggested by the Thomson Reuters Foundation to the students of Gobelins. The aim was to propose an application bound to the digital natives to encourage them to read more news. We created a timeline that allows the user to better understand the news by having access to all of its history.",
-                "text-mobile": "Choose one of the news theme proposed.",
+                "title": "But du projet",
+                "text": "Le projet a été proposé par la Thomson Reuters Foundaiton aux étudiants de Gobelins. Le but était de créer une application à l'intention des <em>digital natives</em> pour leur donner envie de s'intéresser davantage à l'actualité. Nous avons créé une timeline qui permet à l'utilisateur de mieux comprendre l'actualité en ayant accès à tout son historique simplement.",
+                "text-mobile": "Choisi un des thèmes d'actualité proposé.",
                 "text-position": "left",
                 "video": "covers.mp4",
                 "mockup": "iphone-portrait"
             },
             {
                 "type": "text",
-                "title": "Navigate through the timeline",
-                "text": "The app only proposes a few actual themes (3 per week) so you can focus on them. Once you chose a news theme, you can access to its timeline. The contents are ordered so that you can understand the history of the news and how we get to the actual situation.",
-                "text-mobile": "Access to a timeline that explains the history of the news.",
+                "title": "Découverte de la timeline",
+                "text": "L'application ne propose que quelques thèmes d'actualité (3 par semaine) pour pouvoir se concentrer sur ceux-ci. Une fois le thème choisi o accède à sa timeline. Les contenus sont ordonnés de manière à comprendre l'historique de l'actualité et comment nous en sommes arrivés à la situation actuelle.",
+                "text-mobile": "Accède à une timeline qui explique l'historique de l'actualité.",
                 "text-position": "right",
                 "video": "timeline.mp4",
                 "mockup": "iphone-portrait"
             },
             {
                 "type": "text",
-                "title": "Access to linked articles",
-                "text": "Choose an article and read its content. If it contains medias you can open it in a custom lightbox and view it in portrait but also in landscape. At the end of the article you can access to a sticky linked content which will enrich the information you just read.",
-                "text-mobile": "Read an article and access to a linked content.",
+                "title": "Accès à des articles liés",
+                "text": "On peu choisir un article et simplement lire son contenu. Il contient des médias que l'on peut ouvrir dans une lightbox. A la fin de l'article on est amené à lire un autre article lié au contenu que nous venons de consulter.",
+                "text-mobile": "Lit un article et accède à un contenu lié.",
                 "text-position": "left",
                 "video": "article.mp4",
                 "mockup": "iphone-portrait"
@@ -217,42 +217,42 @@
         "title": "JocondeLab",
         "image": "jocondelab-main.jpg",
         "date": "2014",
-        "type": "website",
-        "text": "JocondeLab is a website that helps users to organize a cultural trip in France according to their tastes by visiting museums.",
-        "context": "4 months project at Gobelins",
+        "type": "site internet",
+        "text": "JocondeLab est un site internet qui aide les utilisateurs à organiser un voyage culturel en France en fonction de leurs préférences artistiques.",
+        "context": "Projet de 4 mois aux Gobelins",
         "technologies": "AngularJS, HTML5/CSS3, Silex(PHP), Sphinx",
-        "role": "Web developer",
+        "role": "Développeuse web",
         "content": [
             {
                 "type": "text",
-                "title": "Purpose of the project",
-                "text": "The project was proposed by the french ministry of culture. They had a big database of french museums and its artworks, the goal was to use it to propose an experience or a service.",
+                "title": "But du projet",
+                "text": "Le projet a été proposé par le ministère de la culture. Le but était d'utiliser une de leur base de données contenant des informations sur les musées français et et de créer une expérience ou un service.",
                 "text-position": "left",
                 "image": "jocondelab-home.jpg",
                 "mask-mobile": true
             },
             {
                 "type": "text",
-                "title": "Choose a location",
-                "text": "First, you have to choose a location. If you don't know where to go just select you departure city and the distance you want to browse. Otherwise, select an arrival city.",
-                "text-mobile": "First, choose your location.",
+                "title": "Choix d'une destination",
+                "text": "Premièrement, il faut choisir une destination. Si vous ne savez pas ou allez choisissez simplement une ville de départ et la distance que vous souhaitez parcourir. Sinon sélectionnez directement une ville d'arrivée.",
+                "text-mobile": "Commencez par choisir une destination.",
                 "text-position": "right",
                 "image": "jocondelab-destination.jpg"
             },
             {
                 "type": "text",
-                "title": "Indicate your tastes",
-                "text": "Then, indicate your tastes by selecting for each proposition if you like it or not. As you can see we used an accordion to display the images. It's a custom javascript plugin tailor-made.",
-                "text-mobile": "Then, indicate your tastes.",
+                "title": "Indiquer ses goûts",
+                "text": "Pour chaque proposition, indiquez si vous aimez ça ou non. J'ai développé un plugin JavaScript maison pour permettre l'affichage des images en accordéon.",
+                "text-mobile": "Ensuite, indiquez vos goûts.",
                 "text-position": "left",
                 "image": "jocondelab-tastes.jpg"
             },
             {
                 "type": "text",
-                "title": "Choose your artworks",
-                "text": "According to your tastes and your destination the website proposes you to see some artworks in french museums. Like them or remove them. The website will then propose you to visit some other museums on your way to your arrival. As the database was very huge, I used Sphinx to make very fast requests.",
+                "title": "Choix des oeuvres",
+                "text": "En fonction de vos goûts et de votres destination, l'application vous propose plusieurs oeuvres qui se trouvent des dans musées français. Indiquez que vous les aimez ou supprimez les. Vous aurez ensuite la possiblité de visiter des musées qui se situent sur votre pracours, de votre ville de départ à votre ville d'arrivée. Pour utiliser la base de données, très lourde, j'ai utilisé la bibilothèque de recherche Sphinx.",
                 "text-position": "right",
-                "text-mobile": "According to your tastes and your destination the website proposes you to see some artworks in french museums.",
+                "text-mobile": "En fonction de vos goûts l'application vous propose certaines oeuvres à aller visiter.",
                 "image": "jocondelab-like.jpg"
             }
         ]
@@ -263,11 +263,11 @@
         "title": "IIEP Learning",
         "image": "iieplearning-main.jpg",
         "date": "2015",
-        "type": "website",
-        "text": "IIEP Learning Portal is a platform of the Institutional Institute for Education Planning, an arm of UNESCO. It develops the capacities of education actors to plan and manage their education systems.",
-        "context": "Professional project at Opsone",
+        "type": "site internet",
+        "text": "Le portail IIEP Learning est une plateforme de l'<em>International Institute for Education Planning</em>, organe de l'UNESCO. Il permet le développement des capacités des acteurs de l'éducation et une politique de partage des connaissances.",
+        "context": "Projet professsionnel à Opsone",
         "technologies": "Symfony2, JavaScript, Solr",
-        "role": "Web developer",
+        "role": "Développeuse web",
         "content": [
             {
                 "type": "image",

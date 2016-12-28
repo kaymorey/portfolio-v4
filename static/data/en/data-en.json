@@ -1,7 +1,7 @@
 [
     {
         "slug": "lantern",
-        "title": "Lantern in english",
+        "title": "Lantern",
         "image": "lantern-main.jpg",
         "date": "2015",
         "type": "iOS app & connected object",
@@ -176,7 +176,7 @@
         "title": "Trust",
         "image": "trust-main.jpg",
         "date": "2014",
-        "type": "iOS app",
+        "type": "iOS application",
         "text": "Trust is a mobile application which helps you understand some news thanks to a timeline.",
         "context": "1 week workshop in Amsterdam and 3 months realisation at Gobelins",
         "technologies": "Objective-C",

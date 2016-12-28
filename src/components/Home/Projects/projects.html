@@ -3,7 +3,7 @@
         <div class="projects__slider-list-container">
             <ul class="projects-slider__list">
                     <li class="projects-slider__item" v-for="(project, index) in projects" :data-index="index">
-                        <a href="#" :data-slug="project.slug" class="projects-slider__item-link">
+                        <a href="#" :data-slug="project.slug" :data-locale="selectedLocale.slug" class="projects-slider__item-link">
                         <!-- <router-link :to="{ name: 'project', params: { project: project.slug }}"> -->
                         <!-- <a v-link="{ name: 'project', params: { project: project.slug }}"> -->
                             <!-- <img src="../assets/images/project.png" alt=""> -->

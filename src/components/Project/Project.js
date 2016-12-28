@@ -1,7 +1,7 @@
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 import Mixin from 'scripts/Mixin'
-import DataLoader from 'scripts/DataLoader'
 import ProjectFromHomeAnimation from 'scripts/ProjectFromHomeAnimation'
 import ProjectToHomeAnimation from 'scripts/LoadingAnimation/ProjectToHomeAnimation'
 
@@ -27,12 +27,16 @@ export default class Project {
             data () {
                 return {
                     project: '',
-                    dataLoader: new DataLoader(),
                     projectFromHomeAnimation: {},
                     projectToHomeAnimation: {},
                     rootPage: true
                 }
             },
+            computed: mapGetters({
+                locales: 'allLocales',
+                selectedLocale: 'selectedLocale',
+                projects: 'allProjects'
+            }),
             props: ['menu'],
             route: {
                 data () {
@@ -46,10 +50,11 @@ export default class Project {
                     })
                 }
 
-                this.getProject()
+                this.dispatchProjectAccordingToLocale(this.locales).then(() => {
+                    this.getProject()
+                })
             },
             updated () {
-                console.log('updated')
                 this.createProjectFromHomeAnimation()
                 this.createProjectToHomeAnimation()
             },
@@ -57,9 +62,7 @@ export default class Project {
                 getProject () {
                     let slug = this.$route.params.project
 
-                    this.dataLoader.loadData(this.$store.locale).then(() => {
-                        this.project = this.dataLoader.getProject(slug)
-                    })
+                    this.project = this.projects.find(project => project.slug === slug)
                 },
                 createProjectFromHomeAnimation () {
                     if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.sliderToProject) {

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
 import Mixin from 'scripts/Mixin'
-import DataLoader from 'scripts/DataLoader'
 import Slider from 'scripts/Slider/Slider'
 import SliderToProjectAnimation from 'scripts/SliderToProjectAnimation'
 
@@ -19,15 +18,16 @@ export default class Projects {
                     currentProject: {},
                     nextProject: {},
                     slider: {},
-                    sliderToProjectAnimation: {},
-                    dataLoader: new DataLoader()
+                    sliderToProjectAnimation: {}
                 }
             },
             computed: mapGetters({
-                projects: 'allProjects'
+                projects: 'allProjects',
+                locales: 'allLocales',
+                selectedLocale: 'selectedLocale'
             }),
             created () {
-                this.$store.dispatch('getAllProjects')
+                this.dispatchProjectAccordingToLocale(this.locales)
             },
             updated: function () {
                 this.createSlider()

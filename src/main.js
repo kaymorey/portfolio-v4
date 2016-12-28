@@ -52,13 +52,6 @@ class Main {
                 this.menu = new Menu()
                 this.menu.init()
                 this.listenToScroll()
-
-                let localeSlug = this.$route.params.locale
-                if (localeSlug) {
-                    let locale = this.locales.find(locale => locale.slug === localeSlug)
-                    this.$store.commit(types.SET_LOCALE, locale)
-                    this.$store.dispatch('getAllProjects')
-                }
             },
             updated () {
                 console.log('updated')
