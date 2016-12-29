@@ -9,21 +9,21 @@
                 <p class="project-description">{{ project.text }}</p>
                 <a :href="project.website" class="project-header__link" v-if="project.website">
                     <span class="project-link__chevron">&gt;</span>
-                    Visit website
+                    {{ 'project.website' | translate }}
                 </a>
             </div>
         </div>
         <aside class="project-header__aside">
             <div class="project-aside__block">
-                <h2 class="project-section-title">Context</h2>
+                <h2 class="project-section-title">{{ 'project.context' | translate }}</h2>
                 <p class="lighter-text-content">{{ project.context }}</p>
             </div>
             <div class="project-aside__block">
-                <h2 class="project-section-title">Technologies</h2>
+                <h2 class="project-section-title">{{ 'project.technologies' | translate }}</h2>
                 <p class="lighter-text-content">{{ project.technologies }}</p>
             </div>
             <div class="project-aside__block">
-                <h2 class="project-section-title">Role</h2>
+                <h2 class="project-section-title">{{ 'project.role' | translate }}</h2>
                 <p class="lighter-text-content">{{ project.role }}</p>
             </div>
         </aside>

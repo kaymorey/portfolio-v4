@@ -1,4 +1,7 @@
 import * as types from '../store/mutation-types'
+import store from '../store'
+import enMessages from '../../static/data/en/messages-en.js'
+import frMessages from '../../static/data/fr/messages-fr.js'
 
 export default {
     data () {
@@ -89,6 +92,22 @@ export default {
                     resolve(true)
                 })
             })
+        },
+        translate: function (text) {
+            if (store.getters.selectedLocale.identifier == 'fr-FR') {
+                return frMessages[text]
+            } else {
+                return enMessages[text]
+            }
+        }
+    },
+    filters: {
+        translate: function (text) {
+            if (store.getters.selectedLocale.identifier == 'fr-FR') {
+                return frMessages[text]
+            } else {
+                return enMessages[text]
+            }
         }
     }
 }

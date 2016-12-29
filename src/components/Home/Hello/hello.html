@@ -3,12 +3,13 @@
     <div class="hello__background"></div>
     <div class="hello__container">
         <div class="hello__content">
-            <h2 class="hello__title hello__title--top">Bonjour <img src="~assets/images/smiley.png" alt="" class="hello__smiley"></h2>
-            <h1 class="hello__title hello__title--bottom">Je m'appelle Katia Moreira, <br>je suis développeuse web et iOS.</h1>
+            <h2 class="hello__title hello__title--top">{{ 'hello.title' | translate }} <img src="~assets/images/smiley.png" alt="" class="hello__smiley"></h2>
+            <h1 class="hello__title hello__title--bottom" v-html="translate('hello.subtitle')"></h1>
             <p class="hello__text text-content">
-                Je suis actuellement freelance ! <br>Vous pouvez avoir un aperçu de mes projets ci-dessous, n'hésitez pas à me contacter pour me parler de vos projets !<br>
-                <a href="" class="link-underline__container hello__link">Voir mon CV<span class="link-underline"></span></a>
-                <a href="" class="link-underline__container hello__link">Dire bonjour<span class="link-underline"></span></a>
+                <span v-html="translate('hello.description')"></span>
+                <br>
+                <a href="" class="link-underline__container hello__link">{{ 'hello.link.resume' | translate }}<span class="link-underline"></span></a>
+                <a href="" class="link-underline__container hello__link">{{ 'hello.link.contact' | translate }}<span class="link-underline"></span></a>
             </p>
         </div>
         <div class="hello__image">
