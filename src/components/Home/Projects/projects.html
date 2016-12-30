@@ -7,7 +7,7 @@
                         <!-- <router-link :to="{ name: 'project', params: { project: project.slug }}"> -->
                         <!-- <a v-link="{ name: 'project', params: { project: project.slug }}"> -->
                             <!-- <img src="../assets/images/project.png" alt=""> -->
-                            <img :src="imagePath(project.image, project.slug)" class="projects-slider__item-img" :data-src="imagePath(project.image, project.slug)">
+                            <img :src="imagePath(project.image, project.slug)" class="projects-slider__item-img" :data-src="imagePath(project.image, project.slug)" data-pin-no-hover="true">
                             <!-- <img v-lazy="lazyImagePath(project.image, project.slug)" alt="" class="projects-slider__item-img"> -->
                         <!-- </router-link> -->
                         </a>

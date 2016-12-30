@@ -71,6 +71,7 @@ export default class SliderToProjectAnimation {
             ease: Power2.easeInOut,
             onComplete: () => {
                 this.section.remove()
+                console.log(document.querySelector('.hello'))
                 document.querySelector('.hello').remove()
 
                 this.section.classList.add('project-loading')
