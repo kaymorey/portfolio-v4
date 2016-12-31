@@ -75,6 +75,9 @@
 
 @media screen and (max-width: 1024px) {
     .project__header {
+        .project-title {
+            font-size: 4.6rem;
+        }
         .project-text__content {
             margin-right: 40px;
         }

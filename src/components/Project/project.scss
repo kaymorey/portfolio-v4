@@ -2,6 +2,9 @@
 @import '~stylesheets/include/_layout.scss';
 
 .project.loading-from-home {
+    .project__container {
+        opacity: 0;
+    }
     .project__img-center {
         &.project__img-center--top {
             position: absolute;

@@ -208,9 +208,9 @@ export default class Slider {
         if (mediaQueryManager.currentBreakpoint == 'mobile') {
             textOffsetX = 40
         } else if (mediaQueryManager.currentBreakpoint == 'tablet') {
-            textOffsetX = 220
+            textOffsetX = 18 * window.innerWidth / 100 + 60
         } else if (mediaQueryManager.currentBreakpoint == 'small-desktop') {
-            textOffsetX = (23 * window.innerWidth / 100 + 60) - ((window.innerWidth - 980) / 2)
+            textOffsetX = 15.5 * window.innerWidth / 100 + 60
         } else {
             textOffsetX = (23 * window.innerWidth / 100 + 60) - ((window.innerWidth - 1200) / 2)
         }

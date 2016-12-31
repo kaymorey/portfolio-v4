@@ -11,7 +11,6 @@
     margin: 0;
     background-color: #FFF;
     position: absolute;
-    top: 104px;
     left: 0;
     z-index: 500;
 }
@@ -248,7 +247,7 @@
 
 @media screen and (max-width: 1200px) {
     .projects-slider__text {
-        left: calc(-23vw + (100vw - 980px)/2);
+        left: -15.5vw;
     }
     .projects-slider__pagination-container {
         .pagination__link {
@@ -288,16 +287,19 @@
     }
     .projects-slider__text {
         top: 140px;
-        left: -160px;
+        left: -18vw;
 
         .project-text__title {
             font-size: 4.6rem;
         }
         .project-text__description {
-            max-width: 350px;
+            max-width: 389px;
         }
-        .project-text__date, .project-text__type, .project-text__description {
+        .project-text__type, .project-text__description {
             font-size: 1.7rem;
+        }
+        .project-text__date, .project-text__bull {
+            display: none;
         }
     }
 }
@@ -371,6 +373,10 @@
         .project-text__type, .project-text__description {
             font-size: 1.6rem;
             line-height: 1.9em;
+        }
+        .project-text__description {
+            width: 350px;
+            max-width: 100%;
         }
     }
 

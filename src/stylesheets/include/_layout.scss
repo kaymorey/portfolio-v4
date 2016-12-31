@@ -60,7 +60,7 @@
         position: absolute;
         bottom: -8px;
         left: 50%;
-        z-index: -1;
+        // z-index: -1;
     }
 
     &:hover {
@@ -68,6 +68,12 @@
             width: 25%;
             height: 10px;
         }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .text-content {
+        font-size: 1.7rem;
     }
 }
 

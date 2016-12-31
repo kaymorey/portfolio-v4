@@ -3,6 +3,7 @@ import ColorPropsPlugin from 'ColorPropsPlugin'
 import css from 'css-styler'
 
 import Utils from 'scripts/Utils'
+import mediaQueryManager from './MediaQueryManager'
 
 const COLORS_DURATION_ANIMATION = 0.5
 const POSITIONS_DURATION_ANIMATION = 0.5
@@ -18,12 +19,17 @@ export default class ProjectFromHomeAnimation {
 
         this.imgContainer = document.querySelector('.project__img-center--top')
         this.img = document.querySelector('.project__main-img')
+        this.imgWidth = this.img.naturalWidth
+        this.imgHeight = this.img.naturalHeight
 
         this.header = document.querySelector('.project__header')
         this.headerAside = document.querySelector('.project-header__aside')
         this.headerLink = null
 
         this.slider = document.querySelector('.projects')
+
+        this.finalWidthImgContainer = 0
+        this.finalHeightImgContainer = 0
 
         window.scroll(0, 0)
 
@@ -35,8 +41,18 @@ export default class ProjectFromHomeAnimation {
     init () {
         this.headerLink = document.querySelector('.project-header__link')
         this.setInitialStyles()
+        this.container.style.opacity = 1
         this.slider.remove()
         this.slider.classList.remove('project-loading')
+        this.slider.style.top = ''
+
+        if (this.imgWidth < this.container.offsetWidth) {
+            this.finalWidthImgContainer = this.imgWidth
+        } else {
+            this.finalWidthImgContainer = this.container.offsetWidth
+        }
+
+        this.finalHeightImgContainer = this.imgHeight * this.finalWidthImgContainer / this.imgWidth
 
         this.colorsAnimation()
     }
@@ -45,6 +61,12 @@ export default class ProjectFromHomeAnimation {
         // 49px _ 268.391px
         this.imgContainer.style.top = window.imgRect.top - this.container.getBoundingClientRect().top + 'px'
         this.imgContainer.style.left = window.imgRect.left - this.container.getBoundingClientRect().left + 'px'
+
+        if (mediaQueryManager.currentBreakpoint === 'tablet') {
+            this.imgContainer.style.width = window.imgWidth + 'px'
+            this.imgContainer.style.height = window.imgHeight + 'px'
+            this.img.style.height = 'auto'
+        }
 
         // 124px _ 0px
         this.header.style.top = window.textRect.top - this.container.getBoundingClientRect().top + 'px'
@@ -125,10 +147,10 @@ export default class ProjectFromHomeAnimation {
     moveElements () {
         TweenLite.to(this.imgContainer, POSITIONS_DURATION_ANIMATION, {
             ease: Power2.easeOut,
-            width: this.img.naturalWidth,
+            width: this.finalWidthImgContainer,
             top: 0,
             left: '50%',
-            marginLeft: -this.img.naturalWidth / 2 + 'px'
+            marginLeft: -this.finalWidthImgContainer / 2 + 'px'
         })
         TweenLite.to(this.img, POSITIONS_DURATION_ANIMATION, {
             ease: Power2.easeOut,
@@ -138,11 +160,12 @@ export default class ProjectFromHomeAnimation {
 
         TweenLite.to(this.header, POSITIONS_DURATION_ANIMATION, {
             ease: Power2.easeOut,
-            top: this.img.naturalHeight + 59 + 'px',
+            top: this.finalHeightImgContainer + 59 + 'px',
             onComplete: () => {
                 this.imgContainer.style.position = 'static'
                 this.imgContainer.style.width = '100%'
                 this.imgContainer.style.marginLeft = 0
+                this.imgContainer.style.height = ''
 
                 this.header.style.position = 'static'
                 this.content.style.opacity = 1
