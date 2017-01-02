@@ -76,10 +76,12 @@ export default class ProjectFromHomeAnimation {
             this.imgContainer.style.height = window.imgHeight + 'px'
             this.img.style.height = 'auto'
 
-            this.background.style.left = '13vw'
-            this.background.style.width = '87vw'
+            if (mediaQueryManager.currentBreakpoint === 'mobile') {
+                this.background.style.left = '13vw'
+                this.background.style.width = '87vw'
 
-            this.shrinkBackgroundWidth()
+                this.shrinkBackgroundWidth()
+            }
         }
     }
 
