@@ -1,4 +1,6 @@
-import {TimelineLite, TweenLite, Power3, Circ} from 'gsap'
+import {TimelineLite, TweenLite, Power1, Power3, Circ} from 'gsap'
+
+import mediaQueryManager from '../MediaQueryManager'
 
 export default class HomeLoading {
 
@@ -11,11 +13,19 @@ export default class HomeLoading {
         this.leftBackground = document.querySelector('.hello__background')
         this.rightBackground = document.querySelector('.hello__loading-right')
         this.links = [...document.querySelectorAll('.hello__link')]
+        this.positionBottomUnderline = -8
     }
 
     init () {
         return new Promise((resolve) => {
             if (this.section) {
+                window.scroll(0, 0)
+
+                if (mediaQueryManager.currentBreakpoint === 'mobile') {
+                    console.log('coucou')
+                    this.positionBottomUnderline = -4
+                }
+
                 this.setInitialStyles()
                 this.launchAnimation().then(() => {
                     resolve(true)
@@ -93,7 +103,6 @@ export default class HomeLoading {
                 delay: 0.7,
                 ease: Power3.easeOut,
                 onComplete: () => {
-                    // window.scroll(0, 0)
                     this.body.style.overflow = 'auto'
                     this.linksAnimation()
                     resolve(true)
@@ -117,10 +126,10 @@ export default class HomeLoading {
                 let underline = link.querySelector('.link-underline')
                 tl.to(underline, 0.5, {
                     width: '100%',
-                    ease: Power3.easeOut
+                    ease: Power1.easeOut
                 })
                 .to(underline, 0.5, {
-                    bottom: '-8px',
+                    bottom: this.positionBottomUnderline + 'px',
                     ease: Power3.easeOut,
                     onComplete: () => {
                         link.classList.remove('hello__link-animation')

@@ -31,7 +31,6 @@ export default class Slider {
 
     init () {
         // Responsive
-        mediaQueryManager.init()
         this.emitter.on('changeBreakpoint', () => {
             this.changeBreakpoint()
         })

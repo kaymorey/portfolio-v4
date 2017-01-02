@@ -14,6 +14,7 @@ export default class SliderToProjectAnimation {
         this.sliderBackground = document.querySelector('.projects-slider__background')
 
         this.sectionTopY = 0
+        this.isRunnning = false
     }
 
     init () {
@@ -21,10 +22,14 @@ export default class SliderToProjectAnimation {
             link.addEventListener('click', (e) => {
                 e.preventDefault()
 
-                this.scrollToCorrectPosition().then(() => {
-                    this.link = link
-                    this.launchAnimation()
-                })
+                if (!this.isRunnning) {
+                    this.isRunnning = true
+
+                    this.scrollToCorrectPosition().then(() => {
+                        this.link = link
+                        this.launchAnimation()
+                    })
+                }
             })
         })
     }

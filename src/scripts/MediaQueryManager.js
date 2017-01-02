@@ -29,6 +29,8 @@ class MediaQueryManager {
         window.addEventListener('resize', () => {
             this.resizeWindow()
         })
+
+        this.init()
     }
 
     init () {
