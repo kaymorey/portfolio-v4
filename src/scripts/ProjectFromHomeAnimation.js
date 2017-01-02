@@ -30,6 +30,7 @@ export default class ProjectFromHomeAnimation {
 
         this.finalWidthImgContainer = 0
         this.finalHeightImgContainer = 0
+        this.paddingBottomImg = 59
 
         window.scroll(0, 0)
 
@@ -54,25 +55,46 @@ export default class ProjectFromHomeAnimation {
 
         this.finalHeightImgContainer = this.imgHeight * this.finalWidthImgContainer / this.imgWidth
 
-        this.colorsAnimation()
+        if (mediaQueryManager.currentBreakpoint !== 'mobile') {
+            this.colorsAnimation()
+        } else {
+            this.paddingBottomImg = 32
+        }
     }
 
     setInitialStyles () {
-        // 49px _ 268.391px
         this.imgContainer.style.top = window.imgRect.top - this.container.getBoundingClientRect().top + 'px'
         this.imgContainer.style.left = window.imgRect.left - this.container.getBoundingClientRect().left + 'px'
 
-        if (mediaQueryManager.currentBreakpoint === 'tablet') {
-            this.imgContainer.style.width = window.imgWidth + 'px'
-            this.imgContainer.style.height = window.imgHeight + 'px'
-            this.img.style.height = 'auto'
-        }
-
-        // 124px _ 0px
         this.header.style.top = window.textRect.top - this.container.getBoundingClientRect().top + 'px'
         this.header.style.left = window.textRect.left - this.container.getBoundingClientRect().left + 'px'
 
-        this.background.style.height = this.slider.offsetHeight + 'px'
+        this.background.style.height = window.innerHeight - this.background.getBoundingClientRect().top
+
+        if (mediaQueryManager.currentBreakpoint === 'mobile' || mediaQueryManager.currentBreakpoint === 'tablet') {
+            this.imgContainer.style.width = window.imgWidth + 'px'
+            this.imgContainer.style.height = window.imgHeight + 'px'
+            this.img.style.height = 'auto'
+
+            this.background.style.left = '13vw'
+            this.background.style.width = '87vw'
+
+            this.shrinkBackgroundWidth()
+        }
+    }
+
+    /*
+     * shrinkBackgroundWidth shrinks background on mobile only
+     */
+    shrinkBackgroundWidth () {
+        TweenLite.to(this.background, 0.5, {
+            left: '23vw',
+            width: '77vw',
+            delay: 0.2,
+            onComplete: () => {
+                this.colorsAnimation()
+            }
+        })
     }
 
     /*
@@ -158,9 +180,10 @@ export default class ProjectFromHomeAnimation {
             height: 'auto'
         })
 
+        console.log(this.finalHeightImgContainer)
         TweenLite.to(this.header, POSITIONS_DURATION_ANIMATION, {
             ease: Power2.easeOut,
-            top: this.finalHeightImgContainer + 59 + 'px',
+            top: this.finalHeightImgContainer + this.paddingBottomImg + 'px',
             onComplete: () => {
                 this.imgContainer.style.position = 'static'
                 this.imgContainer.style.width = '100%'

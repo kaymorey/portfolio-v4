@@ -35,6 +35,7 @@ export default class SliderToProjectAnimation {
                 scrollTo: this.section,
                 onComplete: () => {
                     this.sectionTopY = this.section.getBoundingClientRect().top
+                    console.log(this.section.getBoundingClientRect())
                     resolve(true)
                 }
             })
@@ -73,13 +74,16 @@ export default class SliderToProjectAnimation {
         window.imgRect = imgRect
         window.textRect = textRect
 
-        if (mediaQueryManager.currentBreakpoint === 'tablet') {
+        if (mediaQueryManager.currentBreakpoint === 'mobile' || mediaQueryManager.currentBreakpoint === 'tablet') {
             window.imgWidth = imgWidth
             window.imgHeight = imgHeight
         }
 
         let backgroundTop
         switch (mediaQueryManager.currentBreakpoint) {
+        case 'mobile':
+            backgroundTop = 182 - this.section.getBoundingClientRect().top
+            break
         case 'tablet':
             backgroundTop = 185 - this.section.getBoundingClientRect().top
             break
@@ -93,17 +97,35 @@ export default class SliderToProjectAnimation {
             height: height + 100,
             ease: Power2.easeInOut,
             onComplete: () => {
-                this.section.remove()
-                document.querySelector('.hello').remove()
-
-                this.section.classList.add('project-loading')
-                this.section.style.top = this.sectionTopY + 'px'
-                document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
-
-                window.sessionStorage.setItem('navigateFrom', 'home')
-                this.pushPath()
+                if (mediaQueryManager.currentBreakpoint === 'mobile') {
+                    TweenLite.to(document.querySelector('.projects-slider__pagination-container'), 0.5, {
+                        opacity: 0,
+                        onComplete: () => {
+                            console.log(this.sectionTopY)
+                            this.prepareToPush()
+                        }
+                    })
+                } else {
+                    this.prepareToPush()
+                }
             }
         })
+
+        TweenLite.to(document.querySelector('.hello'), 0.5, {
+            opacity: 0
+        })
+    }
+
+    prepareToPush () {
+        this.section.remove()
+        this.section.classList.add('project-loading')
+        this.section.style.top = this.sectionTopY + 'px'
+        document.body.style.overflow = 'hidden'
+        window.scroll(0, 0)
+        document.body.style.overflow = 'visible'
+        document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
+        window.sessionStorage.setItem('navigateFrom', 'home')
+        this.pushPath()
     }
 
     pushPath () {

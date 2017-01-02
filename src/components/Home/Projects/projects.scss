@@ -305,6 +305,10 @@
 }
 
 @media screen and (max-width: 768px) {
+    .projects {
+        overflow: visible;
+    }
+
     .projects__slider {
         margin-left: 0;
     }
@@ -360,7 +364,7 @@
         }
 
         .project-text__content {
-            margin: 0;
+            margin-top: 5px;
         }
         .project-text__title {
             margin: 0;
@@ -372,11 +376,12 @@
         }
         .project-text__type, .project-text__description {
             font-size: 1.6rem;
-            line-height: 1.9em;
+            line-height: 2.0em;
         }
         .project-text__description {
-            width: 350px;
-            max-width: 100%;
+            max-width: 389px;
+            width: 90vw;
+            font-size: 1.6rem;
         }
     }
 
