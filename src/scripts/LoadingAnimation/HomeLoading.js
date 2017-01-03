@@ -17,12 +17,14 @@ export default class HomeLoading {
     }
 
     init () {
+        window.onunload = function () {
+            document.querySelector('body').style.opacity = 0
+            window.scrollTo(0, 0)
+        }
+
         return new Promise((resolve) => {
             if (this.section) {
-                window.scroll(0, 0)
-
                 if (mediaQueryManager.currentBreakpoint === 'mobile') {
-                    console.log('coucou')
                     this.positionBottomUnderline = -4
                 }
 
@@ -63,6 +65,7 @@ export default class HomeLoading {
 
     loadingBars () {
         return new Promise((resolve) => {
+            console.log(window.scrollY)
             TweenLite.to(this.leftBackground, 1.5, {
                 bottom: '0px',
                 ease: Power3.easeOut
@@ -71,6 +74,7 @@ export default class HomeLoading {
                 bottom: '0px',
                 ease: Power3.easeOut,
                 onComplete: () => {
+                    console.log(window.scrollY)
                     resolve(true)
                 }
             })
@@ -124,9 +128,9 @@ export default class HomeLoading {
             this.links.forEach(link => {
                 let tl = new TimelineLite()
                 let underline = link.querySelector('.link-underline')
-                tl.to(underline, 0.5, {
+                tl.to(underline, 0.6, {
                     width: '100%',
-                    ease: Power1.easeOut
+                    ease: Power1.easeIn
                 })
                 .to(underline, 0.5, {
                     bottom: this.positionBottomUnderline + 'px',
@@ -136,7 +140,7 @@ export default class HomeLoading {
                         underline.style.cssText = ''
                         resolve(true)
                     }
-                }, '+=0.5')
+                }, '+=0.6')
             })
         })
     }
