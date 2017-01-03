@@ -1,6 +1,10 @@
 @import '~stylesheets/include/_variables.scss';
 @import '~stylesheets/include/_layout.scss';
 
+.projects.loading {
+    opacity: 0;
+}
+
 .projects {
     margin-top: 120px;
     overflow: hidden;

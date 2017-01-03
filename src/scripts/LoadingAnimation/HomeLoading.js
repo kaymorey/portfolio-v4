@@ -13,6 +13,7 @@ export default class HomeLoading {
         this.leftBackground = document.querySelector('.hello__background')
         this.rightBackground = document.querySelector('.hello__loading-right')
         this.links = [...document.querySelectorAll('.hello__link')]
+        this.projects = document.querySelector('.projects')
         this.positionBottomUnderline = -8
     }
 
@@ -44,6 +45,7 @@ export default class HomeLoading {
         this.body.style.overflow = 'hidden'
 
         this.mainContainer.classList.add('visible')
+        console.log('test')
 
         let sectionHeight = this.section.offsetHeight
         this.leftBackground.style.bottom = sectionHeight - 182 + 'px'
@@ -65,16 +67,14 @@ export default class HomeLoading {
 
     loadingBars () {
         return new Promise((resolve) => {
-            console.log(window.scrollY)
             TweenLite.to(this.leftBackground, 1.5, {
                 bottom: '0px',
-                ease: Power3.easeOut
+                ease: Power1.easeInOut
             })
             TweenLite.to(this.rightBackground, 1.5, {
                 bottom: '0px',
-                ease: Power3.easeOut,
+                ease: Power1.easeInOut,
                 onComplete: () => {
-                    console.log(window.scrollY)
                     resolve(true)
                 }
             })
@@ -111,6 +111,9 @@ export default class HomeLoading {
                     this.linksAnimation()
                     resolve(true)
                 }
+            })
+            TweenLite.to(this.projects, 0.45, {
+                alpha: 1
             })
             TweenLite.to(this.menu, 0.45, {
                 alpha: 1,

@@ -10,10 +10,13 @@ import './projects.scss'
 export default class Projects {
 
     constructor () {
+        let loading = true
+
         this.component = Vue.component('projects', {
             template: require('./projects.html'),
             data () {
                 return {
+                    loading: loading,
                     draggingText: Array.from('drag to change . '),
                     currentProject: {},
                     nextProject: {},
@@ -32,6 +35,9 @@ export default class Projects {
             updated: function () {
                 this.createSlider()
                 this.createSliderToProjectAnimation()
+            },
+            destroyed () {
+                loading = false
             },
             methods: {
                 createSlider () {
