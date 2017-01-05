@@ -45,7 +45,6 @@ export default class HomeLoading {
         this.body.style.overflow = 'hidden'
 
         this.mainContainer.classList.add('visible')
-        console.log('test')
 
         let sectionHeight = this.section.offsetHeight
         this.leftBackground.style.bottom = sectionHeight - 182 + 'px'

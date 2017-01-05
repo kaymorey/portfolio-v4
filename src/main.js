@@ -54,8 +54,6 @@ class Main {
                 this.listenToScroll()
             },
             updated () {
-                console.log('updated')
-
                 if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
                     this.sliderToProject = true
                 } else {

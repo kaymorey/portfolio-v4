@@ -2,6 +2,7 @@ import {Power3, TweenLite} from 'gsap'
 import ScrollToPlugin from 'ScrollToPlugin'
 
 import Utils from 'scripts/Utils'
+import mediaQueryManager from 'scripts/MediaQueryManager'
 
 const DURATION_ANIMATION = 0.8
 
@@ -42,33 +43,69 @@ export default class SliderFromProjectAnimation {
 
     launchAnimation () {
         this.mainContainer.classList.add('visible')
-        window.scroll(0, this.section.offsetTop)
-        this.background.style.opacity = 1
-        this.projectBackground.remove()
-        this.projectBackground.classList.remove('home-loading')
+        window.scroll(0, this.section.offsetTop - this.header.offsetHeight)
 
-        TweenLite.to(this.slider, DURATION_ANIMATION, {
-            marginLeft: 0,
-            alpha: 1,
-            ease: Power3.easeOut,
-            delay: 0.5
-        })
-        TweenLite.to(this.sliderText, DURATION_ANIMATION, {
-            marginLeft: 0,
-            alpha: 1,
-            ease: Power3.easeOut,
-            delay: 0.5
-        })
-        TweenLite.to(this.pagination, DURATION_ANIMATION, {
-            top: 0,
-            alpha: 1,
-            ease: Power3.easeOut,
-            delay: 0.5
-        })
-        TweenLite.to(this.dragging, DURATION_ANIMATION, {
-            alpha: 1,
-            delay: 0.5
-        })
+        if (mediaQueryManager.currentBreakpoint === 'mobile') {
+            TweenLite.to(this.section, DURATION_ANIMATION, {
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.background, DURATION_ANIMATION, {
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.slider, DURATION_ANIMATION, {
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.sliderText, DURATION_ANIMATION, {
+                marginLeft: 0,
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.pagination, DURATION_ANIMATION, {
+                bottom: -90,
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+        } else {
+            this.background.style.opacity = 1
+            this.projectBackground.remove()
+            this.projectBackground.classList.remove('home-loading')
+
+            TweenLite.to(this.section, DURATION_ANIMATION, {
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.slider, DURATION_ANIMATION, {
+                marginLeft: 0,
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.sliderText, DURATION_ANIMATION, {
+                marginLeft: 0,
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.pagination, DURATION_ANIMATION, {
+                top: 0,
+                alpha: 1,
+                ease: Power3.easeOut,
+                delay: 0.5
+            })
+            TweenLite.to(this.dragging, DURATION_ANIMATION, {
+                alpha: 1,
+                delay: 0.5
+            })
+        }
     }
 
 }

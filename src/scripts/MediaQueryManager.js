@@ -42,7 +42,6 @@ class MediaQueryManager {
             if (window.matchMedia(breakpoint.content).matches && this.currentBreakpoint != breakpoint.name) {
                 this.previousBreakpoint = this.currentBreakpoint
                 this.currentBreakpoint = breakpoint.name
-                console.log(this.currentBreakpoint)
                 this.emitter.emit('changeBreakpoint')
             }
         }

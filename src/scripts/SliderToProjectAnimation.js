@@ -40,7 +40,6 @@ export default class SliderToProjectAnimation {
                 scrollTo: this.section,
                 onComplete: () => {
                     this.sectionTopY = this.section.getBoundingClientRect().top
-                    console.log(this.section.getBoundingClientRect())
                     resolve(true)
                 }
             })

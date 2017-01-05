@@ -182,7 +182,6 @@ export default class ProjectFromHomeAnimation {
             height: 'auto'
         })
 
-        console.log(this.finalHeightImgContainer)
         TweenLite.to(this.header, POSITIONS_DURATION_ANIMATION, {
             ease: Power2.easeOut,
             top: this.finalHeightImgContainer + this.paddingBottomImg + 'px',

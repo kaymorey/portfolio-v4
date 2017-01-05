@@ -24,6 +24,13 @@
     top: 70px;
 }
 
+@media screen and (max-width: 1024px) {
+    .project__background.home-loading {
+        position: fixed;
+        top: 192px;
+    }
+}
+
 .projects.loading-from-project {
     .projects-slider__list, .projects-slider__text {
         margin-left: -80px;
@@ -33,6 +40,24 @@
     }
     .projects-slider__list, .projects-slider__pagination-container, .projects-slider__text, .projects-slider__dragging, .projects-slider__background {
         opacity: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .projects.loading-from-project {
+        .projects-slider__list {
+            margin-left: 0;
+        }
+        .projects-slider__text {
+            margin-left: - 50px
+        }
+        .projects-slider__pagination-container {
+            top: auto;
+            bottom: -40px;
+        }
+        .projects-slider__list, .projects-slider__pagination-container, .projects-slider__text, .projects-slider__background {
+            opacity: 0;
+        }
     }
 }
 
