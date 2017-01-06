@@ -81,8 +81,6 @@ export default class ProjectToHomeAnimation {
 
     shrinkBackground () {
         let top = window.scrollY + (window.innerHeight - this.sliderHeight - 180 - this.header.offsetHeight) // 180 is slider margin bottom
-        // let top = this.background.offsetHeight - this.backgroundFinalHeight + this.background.offsetTop
-        console.log(window.innerHeight - this.sliderHeight - 180 - this.header.offsetHeight)
 
         TweenLite.to(this.background, 0.7, {
             height: this.backgroundFinalHeight,
