@@ -11,6 +11,7 @@ export default class SliderFromProjectAnimation {
     constructor () {
         this.mainContainer = document.getElementById('main-container')
         this.header = document.querySelector('.header')
+        this.hello = document.querySelector('.hello')
         this.section = document.querySelector('.projects')
 
         this.slider = document.querySelector('.projects-slider__list')
@@ -73,6 +74,10 @@ export default class SliderFromProjectAnimation {
                 ease: Power3.easeOut,
                 delay: 0.5
             })
+            TweenLite.to(this.hello, DURATION_ANIMATION, {
+                opacity: 1,
+                delay: 0.5
+            })
         } else {
             this.background.style.opacity = 1
             this.projectBackground.remove()
@@ -103,6 +108,10 @@ export default class SliderFromProjectAnimation {
             })
             TweenLite.to(this.dragging, DURATION_ANIMATION, {
                 alpha: 1,
+                delay: 0.5
+            })
+            TweenLite.to(this.hello, DURATION_ANIMATION, {
+                opacity: 1,
                 delay: 0.5
             })
         }

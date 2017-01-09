@@ -30,7 +30,7 @@ export default class Home {
                 }
             },
             mounted () {
-                if (loading) {
+                if (loading && !this.projectToSlider) {
                     this.createHomeLoading()
                 } else {
                     document.getElementById('main-container').classList.add('visible')
