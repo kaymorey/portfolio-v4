@@ -72,11 +72,15 @@ export default class Slider {
             item.style = ''
         })
 
-        if (mediaQueryManager.previousBreakpoint == 'tablet' && mediaQueryManager.currentBreakpoint == 'mobile') {
+        // From mobile to other resolutions / From tablet to mobile
+        if (mediaQueryManager.previousBreakpoint === 'mobile') {
+            let selectedItem = this.items[this.selectedIndex]
+            this.selectItemsToCopy(selectedItem)
+            this.update('updateOnBreakpointChange')
+            this.sliderLeft = 122 // sliderLeft for tablet resolution
+            this.didSlideTo(this.selectedIndex)
+        } else if (mediaQueryManager.previousBreakpoint === 'tablet' && mediaQueryManager.currentBreakpoint === 'mobile') {
             this.el.style = ''
-        } else {
-            let offsetLeft = this.items[this.selectedIndex].offsetLeft
-            this.el.style.left = -offsetLeft + this.el.offsetLeft + 'px'
         }
     }
 
@@ -156,14 +160,14 @@ export default class Slider {
         }
     }
 
-    update () {
+    update (updateOnBreakpointChange = false) {
         for (let i = 0; i < this.itemsToCopy.length; i++) {
             let itemToCopy = this.itemsToCopy[i]
 
             if (!itemToCopy.copied) {
                 let el = itemToCopy.el
 
-                if (Math.round(el.getBoundingClientRect().left + el.offsetWidth) <= this.sliderContainer.offsetLeft) {
+                if (Math.round(el.getBoundingClientRect().left + el.offsetWidth) <= this.sliderContainer.offsetLeft || updateOnBreakpointChange) {
                     itemToCopy.copy = el.cloneNode(true)
                     this.el.appendChild(itemToCopy.copy)
                     itemToCopy.copied = true
@@ -202,20 +206,20 @@ export default class Slider {
     }
 
     animateText () {
-        let textOffsetX = 238
+        let textLeftX = 238
 
-        if (mediaQueryManager.currentBreakpoint == 'mobile') {
-            textOffsetX = 40
-        } else if (mediaQueryManager.currentBreakpoint == 'tablet') {
-            textOffsetX = 18 * window.innerWidth / 100 + 60
-        } else if (mediaQueryManager.currentBreakpoint == 'small-desktop') {
-            textOffsetX = 15.5 * window.innerWidth / 100 + 60
+        if (mediaQueryManager.currentBreakpoint === 'mobile') {
+            textLeftX = 5 * window.innerWidth / 100
+        } else if (mediaQueryManager.currentBreakpoint === 'tablet') {
+            textLeftX = 18 * window.innerWidth / 100
+        } else if (mediaQueryManager.currentBreakpoint === 'small-desktop') {
+            textLeftX = 15.5 * window.innerWidth / 100
         } else {
-            textOffsetX = (23 * window.innerWidth / 100 + 60) - ((window.innerWidth - 1200) / 2)
+            textLeftX = (-23 * window.innerWidth / 100) + ((window.innerWidth - 1200) / 2)
         }
 
         for (let text of this.texts) {
-            if (mediaQueryManager.currentBreakpoint == 'mobile') {
+            if (mediaQueryManager.currentBreakpoint === 'mobile') {
                 if (text.dataset.index == 1) {
                     text.style.top = document.querySelector('.projects-slider__text[data-index="0"]').offsetTop + 'px'
                 }
@@ -223,7 +227,7 @@ export default class Slider {
 
             let index = text.dataset.index
             TweenLite.to(text, 0.7, {
-                left: text.offsetLeft - textOffsetX,
+                left: textLeftX,
                 opacity: index, /* First text (index 0) to opacity 0, second (index 1) to 1 */
                 ease: Power3.easeOut,
                 onComplete: () => {
@@ -242,7 +246,10 @@ export default class Slider {
                     }
 
                     // Unset style elements
+                    console.log(text.offsetLeft)
                     text.removeAttribute('style')
+                    console.log(text.offsetLeft)
+                    console.log(5 * window.innerWidth / 100)
 
                     // Dispatch completed animation event
                     this.el.dispatchEvent(this.animationTextCompletedEvent)
