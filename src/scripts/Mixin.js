@@ -26,9 +26,6 @@ export default {
             if (window.sessionStorage.getItem('navigateFrom') !== 'home' && window.sessionStorage.getItem('navigateFrom') !== 'project') {
                 this.resetOpacityPage()
             }
-            if (this.menu) {
-                this.menu.unselectAllItems()
-            }
 
             window.sessionStorage.setItem('navigateFrom', 'unknown')
         }

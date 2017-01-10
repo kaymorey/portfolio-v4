@@ -6,13 +6,13 @@
             </h1>
             <ul class="header__list">
                 <li class="header__item">
-                    <a href="" class="header__link header__anchor" data-target=".projects">
+                    <a href="" class="header__link header__anchor" data-target=".projects" data-route="home">
                         {{ 'menu.projects' | translate }}
                         <span class="header-link__underline"></span>
                     </a>
                 </li>
                 <li class="header__item">
-                    <router-link :to="{name: 'contact', params: {locale: 'fr'}}" class="header__link">
+                    <router-link :to="{name: 'contact', params: {locale: 'fr'}}" class="header__link" data-route="contact">
                         {{ 'menu.contact' | translate }}
                         <span class="header-link__underline"></span>
                     </router-link>

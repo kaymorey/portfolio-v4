@@ -182,6 +182,7 @@
 
 .projects-slider__list {
     display: flex;
+    display: -webkit-box;
     position: relative;
     left: 122px;
     z-index: 300;
@@ -299,11 +300,11 @@
             }
         }
     }
+
     .projects-slider__dragging {
-        transform: scale(0.9);
-        top: 170px;
-        right: 45px;
+        display: none;
     }
+
     .projects-slider__pagination-container {
         white-space: nowrap;
 
@@ -314,6 +315,7 @@
             font-size: 1.6rem;
         }
     }
+
     .projects-slider__text {
         top: 140px;
         left: -18vw;
@@ -363,10 +365,6 @@
                 height: auto;
             }
         }
-    }
-
-    .projects-slider__dragging {
-        display: none;
     }
 
     .projects-slider__pagination-container {

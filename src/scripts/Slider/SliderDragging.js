@@ -1,4 +1,5 @@
 import TweenLite from 'gsap'
+import Hammer from 'hammerjs'
 
 export default class SliderDragging {
 
@@ -21,6 +22,9 @@ export default class SliderDragging {
             DRAGGEDTONEXT: draggedToNextEvent,
             MOUSEUP: mouseupEvent
         }
+
+        this.hammerManager = new Hammer.Manager(this.slider)
+        this.hammerManager.add(new Hammer.Swipe({direction: Hammer.DIRECTION_LEFT}))
     }
 
     init () {
@@ -43,6 +47,10 @@ export default class SliderDragging {
         // Mouseleave document -> stop dragging
         document.addEventListener('mouseleave', () => {
             this.stopDragging(this.stoppedDraggingReasons.MOUSEUP)
+        })
+        // Swipe gesture
+        this.hammerManager.on('swipe', () => {
+            this.el.dispatchEvent(this.stoppedDraggingEvents.DRAGGEDTONEXT)
         })
     }
 
@@ -91,9 +99,14 @@ export default class SliderDragging {
                     opacity: 1,
                     onComplete: () => {
                         this.el.dataset.dragged = false
+                        this.el.style.left = ''
                     }
                 })
             }
         })
+    }
+
+    resize () {
+        this.initialElX = this.el.offsetLeft
     }
 }

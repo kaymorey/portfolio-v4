@@ -19,18 +19,24 @@ export default class Contact {
                     email: '',
                     message: '',
                     contactForm: {},
-                    rootPage: true
+                    rootPage: true,
+                    route: ''
                 }
             },
             props: ['menu'],
             mounted () {
+                this.route = this.$route.name
+
                 Utils.loadImages().then(() => {
                     Utils.fadeInPage().then(() => {
-                        this.menu.selectItem(1)
+                        this.menu.selectItem(this.route)
                     })
                 })
 
                 this.showEmail()
+            },
+            destroyed () {
+                this.menu.unSelectItem(this.route)
             },
             methods: {
                 isValidName: function () {

@@ -57,16 +57,20 @@ export default class Menu {
         this.anchorItem.setUnselected()
     }
 
-    selectItem (index) {
-        let item = this.items[index]
-
-        item.setSelected()
+    selectItem (route) {
+        this.items.forEach(item => {
+            if (item.el.dataset.route === route) {
+                item.setSelected()
+            }
+        })
     }
 
-    unSelectItem (index) {
-        let item = this.items[index]
-
-        item.setUnselected
+    unSelectItem (route) {
+        this.items.forEach(item => {
+            if (item.el.dataset.route === route) {
+                item.setUnselected()
+            }
+        })
     }
 
     unselectAllItems () {

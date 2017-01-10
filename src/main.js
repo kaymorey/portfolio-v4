@@ -52,6 +52,19 @@ class Main {
                 this.menu = new Menu()
                 this.menu.init()
                 this.listenToScroll()
+
+                // router.afterEach((to, from) => {
+                //     if (to.name === 'home') {
+
+                //     } else if (to.name === 'contact') {
+                //         this.menu.unselectAllItems()
+                //         this.menu.selectItem(1)
+                //     }
+                // })
+
+                if (this.$route.name === 'home') {
+                    // Deal projects link
+                }
             },
             updated () {
                 if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {

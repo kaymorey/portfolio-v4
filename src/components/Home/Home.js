@@ -26,10 +26,14 @@ export default class Home {
                     loading: loading,
                     homeLoading: {},
                     sliderFromProjectAnimation: {},
-                    rootPage: true
+                    rootPage: true,
+                    route: ''
                 }
             },
+            props: ['menu'],
             mounted () {
+                this.route = this.$route.name
+
                 if (loading && !this.projectToSlider) {
                     this.createHomeLoading()
                 } else {
@@ -38,6 +42,7 @@ export default class Home {
             },
             destroyed () {
                 loading = false
+                this.menu.unSelectItem(this.route)
             },
             methods: {
                 createHomeLoading () {

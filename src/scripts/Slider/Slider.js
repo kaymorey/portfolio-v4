@@ -55,6 +55,7 @@ export default class Slider {
         this.sliderDragging.init()
         // EventListener on sliderDragging to auto slide to next item
         this.sliderDragging.el.addEventListener('draggedToNextEvent', () => {
+            console.log('draggedToNext')
             this.slideAfterDrag()
         })
         // EventListener on sliderDragging to auto slide back to current item
@@ -64,6 +65,7 @@ export default class Slider {
 
         window.addEventListener('resize', () => {
             this.resize()
+            this.sliderDragging.resize()
         })
     }
 
@@ -211,9 +213,9 @@ export default class Slider {
         if (mediaQueryManager.currentBreakpoint === 'mobile') {
             textLeftX = 5 * window.innerWidth / 100
         } else if (mediaQueryManager.currentBreakpoint === 'tablet') {
-            textLeftX = 18 * window.innerWidth / 100
+            textLeftX = -18 * window.innerWidth / 100
         } else if (mediaQueryManager.currentBreakpoint === 'small-desktop') {
-            textLeftX = 15.5 * window.innerWidth / 100
+            textLeftX = -15.5 * window.innerWidth / 100
         } else {
             textLeftX = (-23 * window.innerWidth / 100) + ((window.innerWidth - 1200) / 2)
         }
@@ -246,10 +248,7 @@ export default class Slider {
                     }
 
                     // Unset style elements
-                    console.log(text.offsetLeft)
                     text.removeAttribute('style')
-                    console.log(text.offsetLeft)
-                    console.log(5 * window.innerWidth / 100)
 
                     // Dispatch completed animation event
                     this.el.dispatchEvent(this.animationTextCompletedEvent)
