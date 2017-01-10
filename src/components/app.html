@@ -3,6 +3,9 @@
         <nav class="header__container">
             <h1 class="header__title" :class="isHomePage ? 'header__title--hidden' : ''">
                 <router-link :to="{name: 'home'}" class="header-title__link">Katia Moreira</router-link>
+                <router-link :to="{name: 'home'}" class="header-title__link--mobile">
+                    <img src="~assets/images/smiley.svg">
+                </router-link>
             </h1>
             <ul class="header__list">
                 <li class="header__item">

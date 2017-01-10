@@ -34,17 +34,25 @@
         display: flex;
         justify-content: space-between;
     }
+
     .header__list {
         display: flex;
         justify-content: flex-end;
     }
+
     .header__title {
         transition: all 0.5s;
+
+        &.header__title--hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
     }
-    .header__title--hidden {
-        opacity: 0;
-        visibility: hidden;
+
+    .header-title__link--mobile {
+        display: none;
     }
+
     .header-title__link {
         color: $lighter-text-color;
 
@@ -61,12 +69,14 @@
             top: 1px;
         }
     }
+
     .header__item {
         padding-left: 105px;
         &:first-child {
             padding-left: 0;
         }
     }
+
     .header__link {
         color: $text-color;
         position: relative;
@@ -100,8 +110,12 @@
         .header__container {
             width: 100%;
         }
-        .header__title {
+        .header-title__link {
             display: none;
+        }
+        .header-title__link--mobile {
+            display: inline-block;
+            padding-left: 15px;
         }
         .header__list {
             width: 100%;
