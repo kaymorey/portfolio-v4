@@ -84,18 +84,10 @@ export default class Menu {
         let homeTitleTop = document.querySelector('.hello__title--top')
         if (homeTitleTop) {
             if (homeTitleTop.getBoundingClientRect().top <= 0) {
-                TweenLite.to(this.logo, 0.5, {
-                    alpha: 1
-                })
+                this.logo.classList.remove('header__title--hidden')
             } else {
-                TweenLite.to(this.logo, 0.5, {
-                    alpha: 0
-                })
+                this.logo.classList.add('header__title--hidden')
             }
-        } else {
-            TweenLite.to(this.logo, 0.5, {
-                alpha: 1
-            })
         }
     }
 

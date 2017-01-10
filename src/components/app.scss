@@ -39,7 +39,11 @@
         justify-content: flex-end;
     }
     .header__title {
+        transition: all 0.5s;
+    }
+    .header__title--hidden {
         opacity: 0;
+        visibility: hidden;
     }
     .header-title__link {
         color: $lighter-text-color;

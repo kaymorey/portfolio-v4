@@ -4,8 +4,6 @@ export default function Utils () {}
 
 Utils.fadeInPage = function () {
     let container = document.getElementById('main-container')
-    let logo = document.querySelector('.header__title')
-
     let hello = document.querySelector('.hello')
 
     return new Promise((resolve) => {
