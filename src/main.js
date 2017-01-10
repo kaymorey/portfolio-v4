@@ -27,6 +27,7 @@ class Main {
     init () {
         let loading = true
         let sliderToProject = false
+        let projectToSlider = false
 
         Vue.mixin(Mixin)
 
@@ -38,6 +39,7 @@ class Main {
                 return {
                     loading: loading,
                     sliderToProject: sliderToProject,
+                    projectToSlider: projectToSlider,
                     isHomePage: false,
                     menu: {}
                 }
@@ -52,15 +54,9 @@ class Main {
                 this.menu = new Menu()
                 this.menu.init()
                 this.listenToScroll()
-                this.setIsHomePage()
+                this.updateDataAccordingToRoute()
             },
             updated () {
-                if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
-                    this.sliderToProject = true
-                } else {
-                    this.sliderToProject = false
-                }
-
                 loading = false
             },
             methods: {
@@ -84,7 +80,7 @@ class Main {
 
                     router.push({name: this.$route.name, params: {locale: locale.slug}})
                 },
-                setIsHomePage () {
+                updateDataAccordingToRoute () {
                     if (this.$route.name === 'home') {
                         this.isHomePage = true
                     }
@@ -93,6 +89,18 @@ class Main {
                             this.isHomePage = true
                         } else {
                             this.isHomePage = false
+                        }
+
+                        if (from.name === 'project' && to.name === 'home') {
+                            this.projectToSlider = true
+                        } else {
+                            this.projectToSlider = false
+                        }
+
+                        if (from.name === 'home' && to.name == 'project') {
+                            this.sliderToProject = true
+                        } else {
+                            this.sliderToProject = false
                         }
                     })
                 }
