@@ -38,10 +38,8 @@ export default class Project {
                 projects: 'allProjects'
             }),
             props: ['menu'],
-            route: {
-                data () {
-                    this.getProject()
-                }
+            watch: {
+                '$route': 'getProject'
             },
             mounted () {
                 if (!this.sliderToProject) {
@@ -50,9 +48,7 @@ export default class Project {
                     })
                 }
 
-                this.dispatchProjectAccordingToLocale(this.locales).then(() => {
-                    this.getProject()
-                })
+                this.getProject()
             },
             updated () {
                 this.createProjectFromHomeAnimation()
@@ -60,9 +56,11 @@ export default class Project {
             },
             methods: {
                 getProject () {
-                    let slug = this.$route.params.project
-
-                    this.project = this.projects.find(project => project.slug === slug)
+                    console.log('get project')
+                    this.dispatchProjectAccordingToLocale(this.locales).then(() => {
+                        let slug = this.$route.params.project
+                        this.project = this.projects.find(project => project.slug === slug)
+                    })
                 },
                 createProjectFromHomeAnimation () {
                     if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.sliderToProject) {
