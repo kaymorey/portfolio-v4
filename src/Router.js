@@ -30,7 +30,6 @@ class Router extends VueRouter {
             },
             {
                 path: '/:locale(en|fr)/project/:project',
-                alias: '/en/project/:project',
                 name: 'project',
                 component: project.component
             },
