@@ -19,7 +19,9 @@ export default class Projects {
                     loading: loading,
                     draggingText: Array.from('drag to change . '),
                     currentProject: {},
+                    currentProjectIndex: 0,
                     nextProject: {},
+                    nextProjectIndex: 1,
                     slider: {},
                     sliderToProjectAnimation: {}
                 }
@@ -29,6 +31,9 @@ export default class Projects {
                 locales: 'allLocales',
                 selectedLocale: 'selectedLocale'
             }),
+            watch: {
+                '$route': 'updateProjects'
+            },
             created () {
                 this.dispatchProjectAccordingToLocale(this.locales)
             },
@@ -50,8 +55,10 @@ export default class Projects {
 
                             if (!this.slider.reversedTexts) {
                                 this.nextProject = this.projects[index]
+                                this.nextProjectIndex = index
                             } else {
                                 this.currentProject = this.projects[index]
+                                this.currentProjectIndex = index
                             }
                         })
 
@@ -68,6 +75,12 @@ export default class Projects {
                         this.sliderToProjectAnimation = new SliderToProjectAnimation()
                         this.sliderToProjectAnimation.init()
                     }
+                },
+                updateProjects () {
+                    this.dispatchProjectAccordingToLocale(this.locales).then(() => {
+                        this.currentProject = this.projects[this.currentProjectIndex]
+                        this.nextProject = this.projects[this.nextProjectIndex]
+                    })
                 }
             }
         })
