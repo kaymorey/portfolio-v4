@@ -14,6 +14,7 @@ export default class Hello {
                     loading: loading
                 }
             },
+            props: ['projectToSlider'],
             destroyed () {
                 loading = false
             }

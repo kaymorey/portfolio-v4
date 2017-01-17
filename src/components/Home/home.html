@@ -1,4 +1,4 @@
 <div>
-    <hello :class="projectToSlider ? 'loading-from-project' : ''"></hello>
+    <hello :class="projectToSlider ? 'loading-from-project' : ''" :projectToSlider="projectToSlider"></hello>
     <projects v-on:projects-updated="createSliderFromProjectAnimation" :class="projectToSlider ? 'loading-from-project' : ''"></projects>
 </div>

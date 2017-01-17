@@ -30,6 +30,6 @@
         </nav>
     </header>
     <div id="main-container" :class="sliderToProject ? 'visible' : ''">
-        <router-view :menu="menu"></router-view>
+        <router-view :menu="menu" :projectToSlider="projectToSlider"></router-view>
     </div>
 </div>

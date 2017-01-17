@@ -30,7 +30,7 @@ export default class Home {
                     route: ''
                 }
             },
-            props: ['menu'],
+            props: ['menu', 'projectToSlider'],
             mounted () {
                 this.route = this.$route.name
 

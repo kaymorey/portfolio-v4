@@ -6,19 +6,7 @@ import frMessages from '../../static/data/fr/messages-fr.js'
 export default {
     data () {
         return {
-            sliderToProject: false,
-            projectToSlider: false
-        }
-    },
-    created () {
-        if (this.rootPage) {
-            if (window.sessionStorage.getItem('navigateFrom') === 'home' && this.$route.name == 'project') {
-                this.sliderToProject = true
-            }
-
-            if (window.sessionStorage.getItem('navigateFrom') === 'project' && this.$route.name == 'home') {
-                this.projectToSlider = true
-            }
+            sliderToProject: false
         }
     },
     beforeDestroy () {
