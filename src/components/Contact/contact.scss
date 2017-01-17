@@ -115,6 +115,10 @@ section.contact {
         border: none;
         background: none;
         cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
     }
 }
 
@@ -140,6 +144,13 @@ section.contact {
             background-color: $light-peach !important;
         }
     }
+}
+
+.contact__errors {
+    padding-top: 25px;
+    color: #f45342;
+    font-size: 1.4rem;
+    line-height: 1.5em;
 }
 
 @media screen and (min-width: 1411px) {

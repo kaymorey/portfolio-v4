@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 import domready from 'domready'
 import { mapGetters, mapMutations } from 'vuex'
 
@@ -16,6 +17,7 @@ import Menu from 'scripts/Menu/Menu'
 import './stylesheets/main.scss'
 
 Vue.config.debug = true
+Vue.use(VueResource)
 
 class Main {
 

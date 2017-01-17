@@ -21,7 +21,11 @@ let messages = {
     'contact.label.email': 'You can contact me using the following email',
     'contact.seeyou': 'See you soon',
     'contact.send': 'Send',
-    'contact.more': 'More about me'
+    'contact.more': 'More about me',
+    'contact.errors.name': 'Invalid name',
+    'contact.errors.message': 'Invalid message',
+    'contact.errors.email': 'Invalid email',
+    'contact.errors.submit': 'Error when sending email'
 }
 
 export default messages

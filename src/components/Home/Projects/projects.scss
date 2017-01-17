@@ -32,6 +32,8 @@
 }
 
 .projects.loading-from-project {
+    opacity: 1;
+
     .projects-slider__list, .projects-slider__text {
         margin-left: -80px;
     }

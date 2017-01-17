@@ -21,6 +21,7 @@ export default class SliderToProjectAnimation {
         this.links.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault()
+                console.log(e)
 
                 if (!this.isRunnning) {
                     this.isRunnning = true
@@ -32,6 +33,17 @@ export default class SliderToProjectAnimation {
                 }
             })
         })
+    }
+
+    animateWithLink (link) {
+        if (!this.isRunnning) {
+            this.isRunnning = true
+
+            this.scrollToCorrectPosition().then(() => {
+                this.link = link
+                this.launchAnimation()
+            })
+        }
     }
 
     scrollToCorrectPosition () {

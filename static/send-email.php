@@ -7,13 +7,13 @@
     $errors = [];
 
     if (!preg_match('/[a-z]+$/', $name) {
-        array_push($errors, 'incorrect name');
+        array_push($errors, 'Invalid name');
     }
     if (!preg_match('/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/', $email) {
-        array_push($errors, 'incorrect email');
+        array_push($errors, 'Invalid email');
     }
     if (trim($message) == '') {
-        array_push($errors, 'incorrect message');
+        array_push($errors, 'Invalid message');
     }
 
     if (empty($errors)) {
@@ -25,7 +25,5 @@
         else {
             http_response_code(400);
         }
-
-
     }
 ?>
