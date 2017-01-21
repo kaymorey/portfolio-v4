@@ -20,9 +20,11 @@
         $to = 'ktia.morei@gmail.com';
 
         if (mail($to, $subject, $message, 'From:' . $email)) {
+            echo('Le mail a bien été envoyé');
             http_response_code(200);
         }
         else {
+            echo('erreur lors de l\'envoi du mal');
             http_response_code(400);
         }
     }
