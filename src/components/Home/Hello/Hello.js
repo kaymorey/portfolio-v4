@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 
 import './hello.scss'
 
@@ -14,7 +15,12 @@ export default class Hello {
                     loading: loading
                 }
             },
-            props: ['projectToSlider'],
+            computed: {
+                ...mapGetters({
+                    transitionType: 'transitionType',
+                    transitionTypes: 'allTransitionTypes'
+                })
+            },
             destroyed () {
                 loading = false
             }

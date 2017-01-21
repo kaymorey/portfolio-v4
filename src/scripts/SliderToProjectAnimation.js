@@ -2,6 +2,8 @@ import {TweenLite, Power2} from 'gsap'
 import ScrollToPlugin from 'ScrollToPlugin'
 
 import router from 'src/Router'
+import store from 'src/store'
+import * as types from 'src/store/mutation-types'
 import mediaQueryManager from './MediaQueryManager'
 
 export default class SliderToProjectAnimation {
@@ -140,7 +142,7 @@ export default class SliderToProjectAnimation {
         window.scroll(0, 0)
         document.body.style.overflow = 'visible'
         document.getElementById('main-container').insertBefore(this.section, document.getElementById('main-container').firstChild)
-        window.sessionStorage.setItem('navigateFrom', 'home')
+        store.commit(types.SET_IS_TRANSITIONING)
         this.pushPath()
     }
 

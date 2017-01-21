@@ -1,6 +1,8 @@
 import {Power3, TweenLite} from 'gsap'
 import ScrollToPlugin from 'ScrollToPlugin'
 
+import store from 'src/store'
+import * as types from 'src/store/mutation-types'
 import Utils from 'scripts/Utils'
 import mediaQueryManager from 'scripts/MediaQueryManager'
 
@@ -40,6 +42,8 @@ export default class SliderFromProjectAnimation {
                 this.launchAnimation()
             }, 100)
         }
+
+        store.commit(types.REMOVE_IS_TRANSITIONING)
     }
 
     launchAnimation () {

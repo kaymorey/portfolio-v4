@@ -2,6 +2,8 @@ import {Power4, TweenLite} from 'gsap'
 import css from 'css-styler'
 
 import router from 'src/Router'
+import store from 'src/store'
+import * as types from 'src/store/mutation-types'
 import mediaQueryManager from 'scripts/MediaQueryManager'
 
 export default class ProjectToHomeAnimation {
@@ -61,7 +63,7 @@ export default class ProjectToHomeAnimation {
         TweenLite.to(this.background, 0.5, {
             alpha: 0,
             onComplete: () => {
-                window.sessionStorage.setItem('navigateFrom', 'project')
+                store.commit(types.SET_IS_TRANSITIONING)
                 this.pushPath()
             }
         })
@@ -111,7 +113,7 @@ export default class ProjectToHomeAnimation {
                 this.background.classList.add('home-loading')
                 this.background.style.top = window.innerHeight - this.sliderHeight - 180 + 'px'
                 this.mainContainer.insertBefore(this.background, this.mainContainer.firstChild)
-                window.sessionStorage.setItem('navigateFrom', 'project')
+                store.commit(types.SET_IS_TRANSITIONING)
                 this.pushPath()
             }
         })

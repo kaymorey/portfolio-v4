@@ -2,6 +2,8 @@ import {TweenLite, TweenMax, Power2} from 'gsap'
 import ColorPropsPlugin from 'ColorPropsPlugin'
 import css from 'css-styler'
 
+import store from 'src/store'
+import * as types from 'src/store/mutation-types'
 import Utils from 'scripts/Utils'
 import mediaQueryManager from './MediaQueryManager'
 
@@ -60,6 +62,8 @@ export default class ProjectFromHomeAnimation {
         } else {
             this.paddingBottomImg = 32
         }
+
+        store.commit(types.REMOVE_IS_TRANSITIONING)
     }
 
     setInitialStyles () {

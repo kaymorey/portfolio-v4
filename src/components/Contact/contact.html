@@ -43,9 +43,13 @@
                     <br>
                     <p>{{ 'contact.seeyou' | translate }}</p>
 
-                    <p class="link-underline__container contact__send-container">
-                        <input type="submit" :value="translate('contact.send')" class="contact__send">
-                        <span class="link-underline contact__send-underline"></span>
+                    <p class="link-underline__container contact__send-container contact-send--default">
+                        <input type="submit" :value="translate('contact.send')" class="contact-send__input">
+                        <span class="link-underline contact-send__underline"></span>
+                        <span class="contact-send__underline-container">
+                            <span class="contact-send__underline contact-send__underline--main"></span>
+                            <span class="contact-send__underline contact-send__underline--over"></span>
+                        </span>
                     </p>
                     <p class="contact__errors" v-if="errors.length > 0">
                         <template v-for="(error, index) in errors">

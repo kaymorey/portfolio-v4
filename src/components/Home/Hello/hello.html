@@ -1,4 +1,4 @@
-<section class="hello" :class="loading && !projectToSlider ? 'loading' : ''">
+<section class="hello" :class="loading && this.transitionType !== this.transitionTypes['project-home'] ? 'loading' : ''">
     <div class="hello__loading-right"></div>
     <div class="hello__background"></div>
     <div class="hello__container">

@@ -4,18 +4,11 @@ import enMessages from '../../static/data/en/messages-en.js'
 import frMessages from '../../static/data/fr/messages-fr.js'
 
 export default {
-    data () {
-        return {
-            sliderToProject: false
-        }
-    },
     beforeDestroy () {
         if (this.rootPage) {
-            if (window.sessionStorage.getItem('navigateFrom') !== 'home' && window.sessionStorage.getItem('navigateFrom') !== 'project') {
+            if (!store.state.transition.isTransitioning) {
                 this.resetOpacityPage()
             }
-
-            window.sessionStorage.setItem('navigateFrom', 'unknown')
         }
     },
     methods: {

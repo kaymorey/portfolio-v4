@@ -35,14 +35,16 @@ export default class Project {
             computed: mapGetters({
                 locales: 'allLocales',
                 selectedLocale: 'selectedLocale',
-                projects: 'allProjects'
+                projects: 'allProjects',
+                transitionType: 'transitionType',
+                transitionTypes: 'allTransitionTypes'
             }),
             props: ['menu'],
             watch: {
                 '$route': 'getProject'
             },
             mounted () {
-                if (!this.sliderToProject) {
+                if (this.transitionType !== this.transitionTypes['home-project']) {
                     Utils.loadImages().then(() => {
                         Utils.fadeInPage()
                     })
@@ -56,14 +58,13 @@ export default class Project {
             },
             methods: {
                 getProject () {
-                    console.log('get project')
                     this.dispatchProjectAccordingToLocale(this.locales).then(() => {
                         let slug = this.$route.params.project
                         this.project = this.projects.find(project => project.slug === slug)
                     })
                 },
                 createProjectFromHomeAnimation () {
-                    if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.sliderToProject) {
+                    if (Object.keys(this.projectFromHomeAnimation).length === 0 && this.transitionType === this.transitionTypes['home-project']) {
                         this.projectFromHomeAnimation = new ProjectFromHomeAnimation()
                     }
                 },

@@ -43,32 +43,63 @@ export default class Contact {
             },
             methods: {
                 isValidName: function () {
+                    if (/[a-z]+$/.test(this.name)) {
+                        return true
+                    }
+
                     this.errors.push(this.translate('contact.errors.name'))
 
-                    return /[a-z]+$/.test(this.name)
+                    return false
                 },
                 isValidMessage: function () {
-                    this.errors.push(this.translate('contact.errors.message'))
                     let str = this.message.trim()
 
-                    return str.length > 0
+                    if (str.length > 0) {
+                        return true
+                    }
+
+                    this.errors.push(this.translate('contact.errors.message'))
+
+                    return false
                 },
                 isValidEmail: function () {
+                    if (/^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(this.email)) {
+                        return true
+                    }
+
                     this.errors.push(this.translate('contact.errors.email'))
 
-                    return /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/.test(this.email)
+                    return false
                 },
                 submitForm: function () {
                     this.errors = []
 
                     if (this.isValidName() && this.isValidMessage() && this.isValidEmail()) {
+                        let button = document.querySelector('.contact__send-container')
+                        let underline = document.querySelector('.contact-send__underline')
+                        let underlineOver = document.querySelector('.contact-send__underline--over')
+                        let input = document.querySelector('.contact-send__input')
+
+                        underline.addEventListener('animationend', (e) => {
+                            if (e.animationName === 'expand') {
+                                underlineOver.classList.remove('hidden')
+                            }
+                        })
+
+                        button.classList.remove('button--default')
+                        button.classList.add('button--loading')
+
                         let form = document.querySelector('.contact__form')
                         var data = new window.FormData(form)
 
-                        this.$http.post('/static/send-email.php', data).then(() => {
+                        this.$http.post('./static/send-email.php', data).then(() => {
                             this.success = true
+
+                            input.value = 'Envoyé'
+                            button.classList.remove('button--loading')
+                            button.classList.add('button--success')
                         }, () => {
-                            this.errors.push('contact.errors.submit')
+                            this.errors.push(this.translate('contact.errors.submit'))
                         })
                     }
                 },

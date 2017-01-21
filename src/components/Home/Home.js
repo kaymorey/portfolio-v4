@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
+
 import Hello from './Hello/Hello'
 import Projects from './Projects/Projects'
 
@@ -30,7 +32,13 @@ export default class Home {
                     route: ''
                 }
             },
-            props: ['menu', 'projectToSlider'],
+            computed: {
+                ...mapGetters({
+                    transitionType: 'transitionType',
+                    transitionTypes: 'allTransitionTypes'
+                })
+            },
+            props: ['menu'],
             mounted () {
                 this.route = this.$route.name
 
@@ -46,13 +54,13 @@ export default class Home {
             },
             methods: {
                 createHomeLoading () {
-                    if (Object.keys(this.homeLoading).length === 0 && !this.projectToSlider) {
+                    if (Object.keys(this.homeLoading).length === 0 && !this.transitionType !== this.transitionTypes['project-home']) {
                         this.homeLoading = new HomeLoading()
                         this.homeLoading.init()
                     }
                 },
                 createSliderFromProjectAnimation () {
-                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && this.projectToSlider) {
+                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && this.transitionType === this.transitionTypes['project-home']) {
                         this.sliderFromProjectAnimation = new SliderFromProjectAnimation()
                     }
                 }

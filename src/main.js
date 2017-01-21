@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import domready from 'domready'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 import router from './Router'
 import store from './store'
@@ -43,23 +43,32 @@ class Main {
                     sliderToProject: sliderToProject,
                     projectToSlider: projectToSlider,
                     isHomePage: false,
-                    menu: {}
+                    menu: {},
+                    hasTransitioned: false
                 }
             },
             computed: {
                 ...mapGetters({
                     locales: 'allLocales',
-                    selectedLocale: 'selectedLocale'
+                    selectedLocale: 'selectedLocale',
+                    isTransitioning: 'isTransitioning',
+                    transitionType: 'transitionType',
+                    transitionTypes: 'allTransitionTypes'
                 })
+            },
+            watch: {
+                '$route': 'updateDataAccordingToRoute'
             },
             mounted () {
                 this.menu = new Menu()
                 this.menu.init()
                 this.listenToScroll()
-                this.updateDataAccordingToRoute()
+                this.listenAfterRoute()
+
+                this.hasTransitioned = this.isTransitioning
             },
             updated () {
-                loading = false
+                this.loading = false
             },
             methods: {
                 listenToScroll () {
@@ -86,6 +95,8 @@ class Main {
                     if (this.$route.name === 'home') {
                         this.isHomePage = true
                     }
+                },
+                listenAfterRoute () {
                     router.afterEach((to, from) => {
                         if (to.name === 'home') {
                             this.isHomePage = true
@@ -93,16 +104,15 @@ class Main {
                             this.isHomePage = false
                         }
 
-                        if (from.name === 'project' && to.name === 'home') {
-                            this.projectToSlider = true
-                        } else {
-                            this.projectToSlider = false
-                        }
-
-                        if (from.name === 'home' && to.name == 'project') {
-                            this.sliderToProject = true
-                        } else {
-                            this.sliderToProject = false
+                        if (from.name === 'home' && to.name === 'project' || from.name === 'project' && to.name === 'home') {
+                            if (this.isTransitioning) {
+                                this.$store.commit(types.SET_TRANSITION, {
+                                    from: from.name,
+                                    to: to.name
+                                })
+                            }
+                        } else if (this.isTransitioning) {
+                            this.$store.commit(types.REMOVE_TRANSITION)
                         }
                     })
                 }

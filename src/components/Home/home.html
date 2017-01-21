@@ -1,4 +1,4 @@
 <div>
-    <hello :class="projectToSlider ? 'loading-from-project' : ''" :projectToSlider="projectToSlider"></hello>
-    <projects v-on:projects-updated="createSliderFromProjectAnimation" :class="projectToSlider ? 'loading-from-project' : ''"></projects>
+    <hello :class="transitionType === transitionTypes['project-home'] ? 'loading-from-project' : ''"></hello>
+    <projects v-on:projects-updated="createSliderFromProjectAnimation" :class="transitionType === transitionTypes['project-home'] ? 'loading-from-project' : ''"></projects>
 </div>
