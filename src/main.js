@@ -94,16 +94,12 @@ class Main {
                 updateDataAccordingToRoute () {
                     if (this.$route.name === 'home') {
                         this.isHomePage = true
+                    } else {
+                        this.isHomePage = false
                     }
                 },
                 listenAfterRoute () {
                     router.afterEach((to, from) => {
-                        if (to.name === 'home') {
-                            this.isHomePage = true
-                        } else {
-                            this.isHomePage = false
-                        }
-
                         if (from.name === 'home' && to.name === 'project' || from.name === 'project' && to.name === 'home') {
                             if (this.isTransitioning) {
                                 this.$store.commit(types.SET_TRANSITION, {
@@ -114,6 +110,7 @@ class Main {
                         } else if (this.isTransitioning) {
                             this.$store.commit(types.REMOVE_TRANSITION)
                         }
+                        console.log(this.isHomePage)
                     })
                 }
             }
