@@ -36,6 +36,7 @@ export default class Contact {
                 })
 
                 this.showEmail()
+                this.createContactForm()
             },
             destroyed () {
                 this.menu.unSelectItem(this.route)
@@ -107,6 +108,12 @@ export default class Contact {
                     let email = 'bonjour@katia-moreira.fr'
                     document.querySelector('.contact__email').href = 'mailto:' + email
                     document.querySelector('.contact__email').innerHTML = email
+                },
+                createContactForm: function () {
+                    if (Object.keys(this.contactForm).length === 0) {
+                        this.contactForm = new ContactForm()
+                        this.contactForm.init()
+                    }
                 }
             }
         })
