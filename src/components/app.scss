@@ -44,6 +44,7 @@
         transition: all 0.5s;
 
         &.header__title--hidden {
+            transition: none;
             opacity: 0;
             visibility: hidden;
         }
