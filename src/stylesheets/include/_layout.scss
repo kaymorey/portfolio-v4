@@ -8,6 +8,11 @@
     @extend .text-content;
     color: $lighter-text-color;
 }
+@media screen and (max-height: 768px) {
+    .text-content {
+        font-size: 1.7rem;
+    }
+}
 
 .project-text__content {
     margin-top: 54px;
