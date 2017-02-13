@@ -91,15 +91,28 @@ export default class Contact {
                         button.classList.add('button--loading')
 
                         let form = document.querySelector('.contact__form')
-                        var data = new window.FormData(form)
+                        let data = new window.FormData(form)
+
+                        let startTime = new window.Date().getTime()
+                        var elapsedTime = 0
 
                         this.$http.post('./static/send-email.php', data).then(() => {
                             this.success = true
+                            elapsedTime = new window.Date().getTime() - startTime
 
-                            input.value = 'Envoyé'
-                            button.classList.remove('button--loading')
-                            button.classList.add('button--success')
-                        }, () => {
+                            if (elapsedTime < 1000) {
+                                window.setTimeout(() => {
+                                    input.value = 'Envoyé'
+                                    button.classList.remove('button--loading')
+                                    button.classList.add('button--success')
+                                }, 1000 - elapsedTime)
+                            } else {
+                                input.value = 'Envoyé'
+                                button.classList.remove('button--loading')
+                                button.classList.add('button--success')
+                            }
+                        }, (response) => {
+                            console.log(response)
                             this.errors.push(this.translate('contact.errors.submit'))
                         })
                     }

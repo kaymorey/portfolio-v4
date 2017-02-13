@@ -264,7 +264,7 @@
         "image": "iieplearning-main.jpg",
         "date": "2015",
         "type": "site internet",
-        "text": "Le portail IIEP Learning est une plateforme de l'<em>International Institute for Education Planning</em>, organe de l'UNESCO. Il permet le développement des capacités des acteurs de l'éducation et une politique de partage des connaissances.",
+        "text": "Le portail IIEP Learning est une plateforme de l'International Institute for Education Planning, organe de l'UNESCO. Il permet le développement des capacités des acteurs de l'éducation et une politique de partage des connaissances.",
         "context": "Projet professsionnel à Opsone",
         "technologies": "Symfony2, JavaScript, Solr",
         "role": "Développeuse web",
