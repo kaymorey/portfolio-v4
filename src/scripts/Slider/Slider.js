@@ -39,11 +39,10 @@ export default class Slider {
 
         // Init SliderPagination and add eventListener
         this.sliderPagination.init()
-        this.sliderPagination.links.forEach(item => {
-            item.addEventListener('click', (e) => {
+        this.sliderPagination.links.forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault()
 
-                let link = e.target
                 let index = this.sliderPagination.links.indexOf(link)
 
                 this.slideTo(index)
@@ -93,7 +92,7 @@ export default class Slider {
     }
 
     slideTo (index, animateText = true) {
-        if (index >= 0 && index < this.items.length) {
+        if (index >= 0 && index < this.items.length && index !== this.selectedIndex) {
             let selectedItem = this.items[index]
 
             let didClickOnPaginationLinkEvent = new window.CustomEvent('didClickOnPaginationLink', {'detail': index})
