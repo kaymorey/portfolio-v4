@@ -64,11 +64,9 @@ class Main {
                 this.menu.init()
                 this.listenToScroll()
                 this.listenAfterRoute()
+                this.updateDataAccordingToRoute()
 
                 this.hasTransitioned = this.isTransitioning
-            },
-            updated () {
-                this.loading = false
             },
             methods: {
                 listenToScroll () {
@@ -100,6 +98,7 @@ class Main {
                 },
                 listenAfterRoute () {
                     router.afterEach((to, from) => {
+                        this.loading = false
                         if (from.name === 'home' && to.name === 'project' || from.name === 'project' && to.name === 'home') {
                             if (this.isTransitioning) {
                                 this.$store.commit(types.SET_TRANSITION, {
@@ -110,7 +109,6 @@ class Main {
                         } else if (this.isTransitioning) {
                             this.$store.commit(types.REMOVE_TRANSITION)
                         }
-                        console.log(this.isHomePage)
                     })
                 }
             }

@@ -4,6 +4,7 @@ import ScrollToPlugin from 'ScrollToPlugin'
 import router from 'src/Router'
 import store from 'src/store'
 import * as types from 'src/store/mutation-types'
+import Emitter from './Emitter'
 import mediaQueryManager from './MediaQueryManager'
 
 export default class SliderToProjectAnimation {
@@ -20,20 +21,15 @@ export default class SliderToProjectAnimation {
     }
 
     init () {
-        this.links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault()
-                console.log(e)
+        Emitter.on('didSelectProject', (link) => {
+            if (!this.isRunnning) {
+                this.isRunnning = true
 
-                if (!this.isRunnning) {
-                    this.isRunnning = true
-
-                    this.scrollToCorrectPosition().then(() => {
-                        this.link = link
-                        this.launchAnimation()
-                    })
-                }
-            })
+                this.scrollToCorrectPosition().then(() => {
+                    this.link = link
+                    this.launchAnimation()
+                })
+            }
         })
     }
 
@@ -100,15 +96,17 @@ export default class SliderToProjectAnimation {
         let backgroundTop
         switch (mediaQueryManager.currentBreakpoint) {
         case 'mobile':
-            backgroundTop = 182 - this.section.getBoundingClientRect().top
+            backgroundTop = 171 - this.section.getBoundingClientRect().top
             break
         case 'tablet':
-            backgroundTop = 185 - this.section.getBoundingClientRect().top
+            backgroundTop = 252 - this.section.getBoundingClientRect().top
             break
         default:
-            backgroundTop = 131
+            backgroundTop = 252 - this.section.getBoundingClientRect().top
             break
         }
+
+        console.log(backgroundTop)
 
         TweenLite.to(this.sliderBackground, 0.6, {
             top: backgroundTop,

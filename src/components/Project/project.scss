@@ -26,7 +26,7 @@
 }
 
 .project {
-    padding-top: 15px;
+    padding-top: 70px;
     position: relative;
 }
 
@@ -58,7 +58,7 @@
     background: linear-gradient(to top, #cfe4fc, #ffdfce);
 
     position: absolute;
-    top: 115px;
+    top: 182px;
     right: 0;
     bottom: 0;
     z-index: 0;
@@ -74,7 +74,7 @@
         color: $text-color;
 
         .link-underline {
-            background-color: $light-peach;
+            background-color: $light-blue;
         }
     }
 }
@@ -99,6 +99,10 @@
     }
 }
 @media screen and (max-width: 768px) {
+    .project {
+        padding-top: 38px;
+    }
+
     .project__img-center {
         &.project__img-center--top, &.project__img-center--middle {
             padding-bottom: 30px;
@@ -107,5 +111,9 @@
 
     .project__close {
         margin: 70px 0;
+    }
+
+    .project__background {
+        top: 101px;
     }
 }

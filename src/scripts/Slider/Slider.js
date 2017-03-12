@@ -54,7 +54,6 @@ export default class Slider {
         this.sliderDragging.init()
         // EventListener on sliderDragging to auto slide to next item
         this.sliderDragging.el.addEventListener('draggedToNextEvent', () => {
-            console.log('draggedToNext')
             this.slideAfterDrag()
         })
         // EventListener on sliderDragging to auto slide back to current item
@@ -62,9 +61,23 @@ export default class Slider {
             this.slideTo(this.getCurrentIndex(), false)
         })
 
+        // EventListener click on project
+        this.addEventListenerOnLinks()
+
         window.addEventListener('resize', () => {
             this.resize()
             this.sliderDragging.resize()
+        })
+    }
+
+    addEventListenerOnLinks () {
+        let links = [...document.querySelectorAll('.projects-slider__item-link')]
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault()
+
+                Emitter.emit('didSelectProject', link)
+            })
         })
     }
 
@@ -92,11 +105,12 @@ export default class Slider {
     }
 
     slideTo (index, animateText = true) {
-        if (index >= 0 && index < this.items.length && index !== this.selectedIndex) {
+        if (index >= 0 && index < this.items.length) {
             let selectedItem = this.items[index]
 
             let didClickOnPaginationLinkEvent = new window.CustomEvent('didClickOnPaginationLink', {'detail': index})
             this.el.dispatchEvent(didClickOnPaginationLinkEvent)
+            Emitter.emit('didClickOnPaginationLink', index)
 
             if (mediaQueryManager.currentBreakpoint == 'mobile') {
                 this.slideAnimationMobile(index)
@@ -116,7 +130,7 @@ export default class Slider {
                     }
                 })
 
-                if (animateText) {
+                if (animateText && index !== this.selectedIndex) {
                     this.animateText()
                 }
             }
@@ -204,6 +218,7 @@ export default class Slider {
         this.sliderDragging.refItem = this.getFirstItem()
 
         this.selectedIndex = index
+        this.addEventListenerOnLinks()
     }
 
     animateText () {
@@ -227,6 +242,11 @@ export default class Slider {
             }
 
             let index = text.dataset.index
+            let ease = Power3.easeOut
+            if (index == 1) {
+                ease = Power3.easeIn
+            }
+
             TweenLite.to(text, 0.7, {
                 left: textLeftX,
                 opacity: index, /* First text (index 0) to opacity 0, second (index 1) to 1 */

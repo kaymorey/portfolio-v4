@@ -1,9 +1,10 @@
 import Vue from 'vue'
 
-import ContactForm from 'scripts/ContactForm'
-
 import Mixin from 'scripts/Mixin'
 import Utils from 'scripts/Utils'
+
+import ContactForm from 'scripts/ContactForm'
+import TxtType from 'scripts/TxtType'
 
 import './contact.scss'
 
@@ -37,6 +38,7 @@ export default class Contact {
 
                 this.showEmail()
                 this.createContactForm()
+                this.typeText()
             },
             destroyed () {
                 this.menu.unSelectItem(this.route)
@@ -126,6 +128,18 @@ export default class Contact {
                     if (Object.keys(this.contactForm).length === 0) {
                         this.contactForm = new ContactForm()
                         this.contactForm.init()
+                    }
+                },
+                typeText: function () {
+                    let elements = document.getElementsByClassName('typewrite')
+
+                    for (let i = 0; i < elements.length; i++) {
+                        let toRotate = elements[i].getAttribute('data-type')
+                        let period = elements[i].getAttribute('data-period')
+                        if (toRotate) {
+                            let txtType = new TxtType(elements[i], JSON.parse(toRotate), period)
+                            txtType.init()
+                        }
                     }
                 }
             }

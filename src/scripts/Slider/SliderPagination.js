@@ -22,6 +22,10 @@ export default class SliderPagination {
         Emitter.on('changeBreakpoint', () => {
             this.updateOnBrakpointChange()
         })
+
+        Emitter.on('didClickOnPaginationLink', (index) => {
+            this.didClickOnLink(this.links[index])
+        })
     }
 
     didClickOnLink (link) {

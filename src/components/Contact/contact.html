@@ -6,13 +6,15 @@
         <div class="contact__content">
             <div class="contact__content--left">
                 <div class="contact__email-container">
-                {{ 'contact.introduction' | translate }}
-                    <br>
-                    <a href="#" class="contact__email"></a>
+                {{ 'contact.to' | translate }} : <a href="#" class="contact__email"></a>
+                </div>
+
+                <div class="typewrite" data-period="1000" :data-type="translate('contact.messages')">
+                    <span class="wrap"></span>
                 </div>
 
                 <form class="contact__form" v-on:submit.prevent="submitForm">
-                    <p>{{ 'contact.hi' | translate }}</p>
+                    <!-- <p>{{ 'contact.hi' | translate }}</p>
 
                     <label for="name">{{ 'contact.label.name' | translate }}</label>
                     <input type="text" name="name" v-model="name" :blur="isValidName" class="contact__input-text" required>
@@ -41,7 +43,7 @@
                     <input type="email" name="email" v-model="email" :blur="isValidMessage" class="contact__input-text" required>
 
                     <br>
-                    <p>{{ 'contact.seeyou' | translate }}</p>
+                    <p>{{ 'contact.seeyou' | translate }}</p> -->
 
                     <p class="link-underline__container contact__send-container contact-send--default">
                         <input type="submit" :value="translate('contact.send')" class="contact-send__input">
@@ -62,7 +64,7 @@
             <aside class="contact__content--right">
                 <img src="~assets/images/contact-profile.jpg" class="contact__img-profile">
                 <div class="contact__links-container">
-                    <p class="project-section-title">En savoir plus sur moi</p>
+                    <!-- <p class="project-section-title">En savoir plus sur moi</p> -->
                     <div>
                         <a href="" class="contact__social-link link-underline__container">Twitter<span class="link-underline"></span></a>
                         <a href="" class="contact__social-link link-underline__container">LinkedIn<span class="link-underline"></span></a>

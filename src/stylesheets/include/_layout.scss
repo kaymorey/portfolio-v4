@@ -30,6 +30,12 @@
     color: $blue;
 }
 
+@media screen and (max-height: 768px) {
+    .project-title {
+        font-size: 4.8rem;
+    }
+}
+
 .project-subtitle {
     @extend .text-content;
     font-style: italic;
@@ -58,8 +64,8 @@
         height: 8px;
         background-color: #FFF;
 
-        transition: width 0.5s, height 0.5s;
-        transition-timing-function: ease linear;
+        transition: width 0.45s, height 0.45s;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
         transform: translateX(-50%);
 
         position: absolute;

@@ -7,26 +7,26 @@ export default class ContactForm {
     }
 
     init () {
-        this.setTextareaMinHeight()
-        this.adjustTextareaHeight(this.textareaMinHeight)
+        // this.setTextareaMinHeight()
+        // this.adjustTextareaHeight(this.textareaMinHeight)
 
-        this.textarea.addEventListener('focus', () => {
-            this.textareaLines.style.opacity = 0
-        })
+        // this.textarea.addEventListener('focus', () => {
+        //     this.textareaLines.style.opacity = 0
+        // })
 
-        this.textarea.addEventListener('blur', () => {
-            if (this.textarea.value == '') {
-                this.textareaLines.style.opacity = 1
-            }
-        })
+        // this.textarea.addEventListener('blur', () => {
+        //     if (this.textarea.value == '') {
+        //         this.textareaLines.style.opacity = 1
+        //     }
+        // })
 
-        this.textarea.addEventListener('input', () => {
-            this.adjustTextareaHeight(this.textareaMinHeight)
-        })
+        // this.textarea.addEventListener('input', () => {
+        //     this.adjustTextareaHeight(this.textareaMinHeight)
+        // })
 
-        window.addEventListener('resize', () => {
-            this.setTextareaMinHeight()
-        })
+        // window.addEventListener('resize', () => {
+        //     this.setTextareaMinHeight()
+        // })
     }
 
     setTextareaMinHeight () {

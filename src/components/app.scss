@@ -86,7 +86,7 @@
             display: inline-block;
             width: 0px;
             height: 10px;
-            background-color: $light-peach;
+            background-color: $light-blue;
 
             position: absolute;
             bottom: 0;
@@ -95,7 +95,7 @@
         }
     }
     .header-link__language--selected, .header-link__language:hover {
-        color: $light-peach;
+        color: $blue;
     }
 }
 

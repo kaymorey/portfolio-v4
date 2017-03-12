@@ -26,7 +26,7 @@
 .hello__background {
     // width: 22px;
     width: 80%;
-    background: linear-gradient(to bottom, #F2F3F8, #CFE4FC);
+    background: linear-gradient(to bottom, #E3E6EF, #CFE4FC);
     position: absolute;
     top: 182px;
     bottom: 0;
@@ -35,7 +35,7 @@
 
 .hello__loading-right {
     width: 22px;
-    background: linear-gradient(to bottom, #F2F3F8, #CFE4FC);
+    background: linear-gradient(to bottom, #E3E6EF, #CFE4FC);
 
     position: absolute;
     top: 182px;
@@ -66,6 +66,7 @@
 
 .hello__title {
     font-size: 5.4em;
+    line-height: 1.48em;
     color: $blue;
 }
 @media screen and (max-height: 768px) {
@@ -75,7 +76,7 @@
 }
 
 .hello__title--top {
-    padding-bottom: 60px;
+    padding-bottom: 36px;
 }
 
 .hello__title--bottom {
@@ -105,7 +106,7 @@
     }
 }
 
-.hello__link-animation {
+.link-underline__container.hello__link-animation {
     .link-underline {
         width: 0;
         bottom: 10px;
@@ -148,7 +149,7 @@
     }
 
     .hello__title--top {
-        padding-bottom: 41px;
+        padding-bottom: 52px;
         font-size: 3.0em;
         line-height: 1.3em;
         letter-spacing: 0.1px;

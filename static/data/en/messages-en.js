@@ -13,6 +13,8 @@ let messages = {
     'project.close': 'Close the project',
     'contact.title': 'Say hello',
     'contact.subtitle': 'You want to reach me out ?',
+    'contact.to': 'To',
+    'contact.messages': '[ "What if we work together ?", "I have a project I would like to tell you about...", "Hey ! How are you ?"]',
     'contact.introduction': 'Use the form below or send me an email at',
     'contact.hi': 'Hello !',
     'contact.label.name': 'My name is',
