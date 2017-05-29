@@ -38,6 +38,10 @@ export default class Menu {
                 this.scrollToEl(this.anchorItem.target.offsetTop)
             } else {
                 store.commit(types.SET_IS_TRANSITIONING)
+                store.commit(types.SET_TRANSITION, {
+                    from: 'anywhere',
+                    to: 'projects'
+                })
                 this.pushPath()
             }
         })

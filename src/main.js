@@ -106,8 +106,7 @@ class Main {
                                     to: to.name
                                 })
                             }
-                        } else if (this.isTransitioning) {
-                            console.log('test')
+                        } else if (this.isTransitioning && this.transitionType !== this.transitionTypes['anywhere-projects']) {
                             this.$store.commit(types.REMOVE_TRANSITION)
                         }
                     })

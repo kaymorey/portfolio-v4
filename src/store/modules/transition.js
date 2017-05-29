@@ -2,10 +2,12 @@ import * as types from '../mutation-types'
 
 const HOME_TO_PROJECT = 'HOME_TO_PROJECT'
 const PROJECT_TO_HOME = 'PROJECT_TO_HOME'
+const TO_PROJECTS = 'TO_PROJECTS'
 
 const transitionTypes = {
     'home-project': HOME_TO_PROJECT,
-    'project-home': PROJECT_TO_HOME
+    'project-home': PROJECT_TO_HOME,
+    'anywhere-projects': TO_PROJECTS
 }
 
 const state = {

@@ -60,7 +60,7 @@ export default class Home {
                     }
                 },
                 createSliderFromProjectAnimation () {
-                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && this.transitionType === this.transitionTypes['project-home']) {
+                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && (this.transitionType === this.transitionTypes['project-home'] || this.transitionType === this.transitionTypes['anywhere-projects'])) {
                         this.sliderFromProjectAnimation = new SliderFromProjectAnimation()
                     }
                 }
