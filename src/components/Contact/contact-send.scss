@@ -39,11 +39,7 @@
         left: 50%;
         transform: translateX(-50%);
 
-        transition: all 0.4s;
-
-        &.contact-send__underline--over.hidden {
-            display: none;
-        }
+        transition: all 0.45s !important;
     }
 
     .link-underline {

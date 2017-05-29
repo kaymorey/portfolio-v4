@@ -1,5 +1,8 @@
-import {TweenLite, Power3} from 'gsap'
-import ScrollToPlugin from 'ScrollToPlugin'
+import {TweenLite, Power1} from 'gsap'
+
+import router from 'src/Router'
+import store from 'src/store'
+import * as types from 'src/store/mutation-types'
 
 import MenuItem from './MenuItem'
 import MenuItemAnchor from './MenuItemAnchor'
@@ -31,7 +34,12 @@ export default class Menu {
         this.anchorItem.el.addEventListener('click', (e) => {
             e.preventDefault()
 
-            this.scrollToEl(this.anchorItem.target.offsetTop)
+            if (document.querySelector('.hello') != undefined) {
+                this.scrollToEl(this.anchorItem.target.offsetTop)
+            } else {
+                store.commit(types.SET_IS_TRANSITIONING)
+                this.pushPath()
+            }
         })
 
         // ---- Init items ----
@@ -96,9 +104,15 @@ export default class Menu {
      * based on the passed-in el
      */
     scrollToEl (el) {
-        TweenLite.to(window, 2.0, {
+        TweenLite.to(window, 1.0, {
             scrollTo: el,
-            ease: Power3.easeOut
+            ease: Power1.easeInOut
+        })
+    }
+
+    pushPath () {
+        router.push({
+            name: 'home'
         })
     }
 }

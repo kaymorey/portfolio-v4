@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import {TweenLite, Power1} from 'gsap'
 
 import Mixin from 'scripts/Mixin'
 import Utils from 'scripts/Utils'
@@ -45,15 +46,6 @@ export default class Contact {
                 this.errors = []
             },
             methods: {
-                isValidName: function () {
-                    if (/[a-z]+$/.test(this.name)) {
-                        return true
-                    }
-
-                    this.errors.push(this.translate('contact.errors.name'))
-
-                    return false
-                },
                 isValidMessage: function () {
                     let str = this.message.trim()
 
@@ -77,42 +69,63 @@ export default class Contact {
                 submitForm: function () {
                     this.errors = []
 
-                    if (this.isValidName() && this.isValidMessage() && this.isValidEmail()) {
+                    if (this.isValidMessage() && this.isValidEmail()) {
                         let button = document.querySelector('.contact__send-container')
                         let underline = document.querySelector('.contact-send__underline')
                         let underlineOver = document.querySelector('.contact-send__underline--over')
                         let input = document.querySelector('.contact-send__input')
 
-                        underline.addEventListener('animationend', (e) => {
-                            if (e.animationName === 'expand') {
-                                underlineOver.classList.remove('hidden')
-                            }
-                        })
+                        // underline.addEventListener('animationend', (e) => {
+                        //     if (e.animationName === 'expand') {
+                        //         underlineOver.classList.remove('hidden')
+                        //     }
+                        // })
 
-                        button.classList.remove('button--default')
-                        button.classList.add('button--loading')
+                        // button.classList.remove('button--default')
+                        // button.classList.add('button--loading')
 
                         let form = document.querySelector('.contact__form')
                         let data = new window.FormData(form)
 
-                        let startTime = new window.Date().getTime()
-                        var elapsedTime = 0
+                        // let startTime = new window.Date().getTime()
+                        // var elapsedTime = 0
 
                         this.$http.post('./static/send-email.php', data).then(() => {
                             this.success = true
-                            elapsedTime = new window.Date().getTime() - startTime
+                            let delay = 0.5
 
-                            if (elapsedTime < 1000) {
+                            if (underline.offsetHeight > 8) {
+                                console.log('coucou')
+                                underline.style.height = '8px'
+                                underline.style.width = '100%'
+                                delay = 1
+
                                 window.setTimeout(() => {
-                                    input.value = 'Envoyé'
-                                    button.classList.remove('button--loading')
-                                    button.classList.add('button--success')
-                                }, 1000 - elapsedTime)
+                                    underline.style.width = 0
+                                    underline.style.left = '100%'
+                                }, 500)
                             } else {
-                                input.value = 'Envoyé'
-                                button.classList.remove('button--loading')
-                                button.classList.add('button--success')
+                                underline.style.width = 0
+                                underline.style.left = '100%'
                             }
+
+                            TweenLite.to(input, 0.3, {
+                                y: -8,
+                                alpha: 0,
+                                ease: Power1.easeInOut,
+                                delay: delay,
+                                onComplete: () => {
+                                    input.value = 'Envoyé'
+                                    TweenLite.fromTo(input, 0.3, {
+                                        y: 8,
+                                        alpha: 0
+                                    }, {
+                                        y: 0,
+                                        alpha: 1,
+                                        ease: Power1.easeInOut
+                                    })
+                                }
+                            })
                         }, (response) => {
                             console.log(response)
                             this.errors.push(this.translate('contact.errors.submit'))
@@ -140,6 +153,16 @@ export default class Contact {
                             let txtType = new TxtType(elements[i], JSON.parse(toRotate), period)
                             txtType.init()
                         }
+                    }
+                },
+                writeMessage: function () {
+                    document.querySelector('.typewrite').style.opacity = 0
+                    document.querySelector('.contact__textarea').style.opacity = 1
+                },
+                focusOutTextarea: function (event) {
+                    if (event.target.value === '') {
+                        document.querySelector('.typewrite').style.opacity = 1
+                        event.target.style.opacity = 1
                     }
                 }
             }

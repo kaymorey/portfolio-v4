@@ -25,7 +25,8 @@ export default class TxtType {
 
         this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>'
 
-        let delta = 200 - Math.random() * 100
+        // let delta = 200 - Math.random() * 100
+        let delta = 80
 
         if (this.isDeleting) {
             delta = delta / 2

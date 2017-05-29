@@ -58,9 +58,15 @@ export default class SliderFromProjectAnimation {
     }
 
     defaultAnimation () {
-        this.background.style.opacity = 1
-        this.projectBackground.remove()
-        this.projectBackground.classList.remove('home-loading')
+        if (this.projectBackground) {
+            this.background.style.opacity = 1
+            this.projectBackground.remove()
+            this.projectBackground.classList.remove('home-loading')
+        } else {
+            TweenLite.to(this.background, 0.4, {
+                alpha: 1
+            })
+        }
 
         TweenLite.to(this.section, DURATION_ANIMATION, {
             alpha: 1,

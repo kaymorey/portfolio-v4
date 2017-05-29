@@ -4,16 +4,35 @@
         <h2 class="contact__title">{{ 'contact.subtitle' | translate }}</h2>
 
         <div class="contact__content">
-            <div class="contact__content--left">
-                <div class="contact__email-container">
-                {{ 'contact.to' | translate }} : <a href="#" class="contact__email"></a>
-                </div>
-
-                <div class="typewrite" data-period="1000" :data-type="translate('contact.messages')">
-                    <span class="wrap"></span>
-                </div>
-
+            <div class="contact__content-left">
                 <form class="contact__form" v-on:submit.prevent="submitForm">
+                    <div class="contact__email-container">
+                        {{ 'contact.to' | translate }} : <span class="contact__email"></span>
+                        <br>
+                        De : <input type="email" name="email" v-model="email" class="contact__email-from" placeholder="tom-anderson@gmail.com" required>
+                    </div>
+
+                    <div class="contact__message">
+                        <div class="contact__typewrite typewrite" data-period="800" :data-type="translate('contact.messages')" v-on:click="writeMessage">
+                            <span class="wrap"></span>
+                        </div>
+                        <textarea class="contact__textarea" name="message" v-model="message" required v-on:click="writeMessage" v-on:focusout="focusOutTextarea"></textarea>
+                    </div>
+
+                    <p class="link-underline__container contact__send-container contact-send--default">
+                        <input type="submit" :value="translate('contact.send')" class="contact-send__input">
+                        <span class="link-underline contact-send__underline"></span>
+                    </p>
+                </form>
+                <div class="contact__links-container">
+                    <div>
+                        <a href="" class="contact__social-link link-underline__container">Twitter<span class="link-underline"></span></a>
+                        <a href="" class="contact__social-link link-underline__container">LinkedIn<span class="link-underline"></span></a>
+                        <a href="" class="contact__social-link link-underline__container">CV<span class="link-underline"></span>
+                        </a>
+                    </div>
+                </div>
+
                     <!-- <p>{{ 'contact.hi' | translate }}</p>
 
                     <label for="name">{{ 'contact.label.name' | translate }}</label>
@@ -44,35 +63,16 @@
 
                     <br>
                     <p>{{ 'contact.seeyou' | translate }}</p> -->
-
-                    <p class="link-underline__container contact__send-container contact-send--default">
-                        <input type="submit" :value="translate('contact.send')" class="contact-send__input">
-                        <span class="link-underline contact-send__underline"></span>
-                        <span class="contact-send__underline-container">
-                            <span class="contact-send__underline contact-send__underline--main"></span>
-                            <span class="contact-send__underline contact-send__underline--over"></span>
-                        </span>
-                    </p>
-                    <p class="contact__errors" v-if="errors.length > 0">
-                        <template v-for="(error, index) in errors">
-                            {{ error }}<br v-if="index !== errors.length-1">
-                        </template>
-                    </p>
-                </form>
             </div>
 
-            <aside class="contact__content--right">
+            <aside class="contact__content-right">
                 <img src="~assets/images/contact-profile.jpg" class="contact__img-profile">
-                <div class="contact__links-container">
-                    <!-- <p class="project-section-title">En savoir plus sur moi</p> -->
-                    <div>
-                        <a href="" class="contact__social-link link-underline__container">Twitter<span class="link-underline"></span></a>
-                        <a href="" class="contact__social-link link-underline__container">LinkedIn<span class="link-underline"></span></a>
-                        <a href="" class="contact__social-link link-underline__container">CV<span class="link-underline"></span>
-                        </a>
-                    </div>
-                </div>
             </aside>
+            <p class="contact__errors" v-if="errors.length > 0">
+                <template v-for="(error, index) in errors">
+                    {{ error }}<br v-if="index !== errors.length-1">
+                </template>
+            </p>
         </div>
     </div>
     <div class="contact__background"></div>

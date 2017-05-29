@@ -107,6 +107,7 @@ class Main {
                                 })
                             }
                         } else if (this.isTransitioning) {
+                            console.log('test')
                             this.$store.commit(types.REMOVE_TRANSITION)
                         }
                     })

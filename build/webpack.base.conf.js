@@ -90,7 +90,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\/fonts\/[a-zA-Z0-9-_]+\.(svg|eot|ttf|woff)(\?.*)?$/,
         loader: 'url',
         query: {
           limit: 10000,

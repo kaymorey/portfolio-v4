@@ -106,8 +106,6 @@ export default class SliderToProjectAnimation {
             break
         }
 
-        console.log(backgroundTop)
-
         TweenLite.to(this.sliderBackground, 0.6, {
             top: backgroundTop,
             height: height + 100,
