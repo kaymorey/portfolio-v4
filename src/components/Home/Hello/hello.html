@@ -8,7 +8,7 @@
             <p class="hello__text text-content">
                 <span v-html="translate('hello.description')"></span>
                 <br>
-                <a href="" class="link-underline__container hello__link">{{ 'hello.link.resume' | translate }}<span class="link-underline"></span></a>
+                <a href="/static/CV-Katia-Moreira.pdf" class="link-underline__container hello__link">{{ 'hello.link.resume' | translate }}<span class="link-underline"></span></a>
                 <router-link :to="{name: 'contact', params: {locale: 'fr'}}" class="link-underline__container hello__link">{{ 'hello.link.contact' | translate }}<span class="link-underline"></span></router-link>
             </p>
         </div>
