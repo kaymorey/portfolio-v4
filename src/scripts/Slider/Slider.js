@@ -20,6 +20,7 @@ export default class Slider {
         this.firstItem = this.getFirstItem()
         this.sliderDragging = new SliderDragging(document.querySelector('.projects-slider__dragging'), this.el, this.firstItem)
         this.sliderPagination = new SliderPagination()
+        this.isSliding = false
 
         this.animationTextCompletedEvent = new window.Event('animationTextCompleted')
 
@@ -46,7 +47,6 @@ export default class Slider {
                 let index = this.sliderPagination.links.indexOf(link)
 
                 this.slideTo(index)
-                this.sliderPagination.didClickOnLink(link)
             }, false)
         })
 
@@ -89,10 +89,10 @@ export default class Slider {
         // From mobile to other resolutions / From tablet to mobile
         if (mediaQueryManager.previousBreakpoint === 'mobile') {
             let selectedItem = this.items[this.selectedIndex]
-            this.selectItemsToCopy(selectedItem)
+            this.copyNextItems(selectedItem)
             this.update('updateOnBreakpointChange')
             this.sliderLeft = 122 // sliderLeft for tablet resolution
-            this.didSlideTo(this.selectedIndex)
+            this.didSlideToNext(this.selectedIndex)
         } else if (mediaQueryManager.previousBreakpoint === 'tablet' && mediaQueryManager.currentBreakpoint === 'mobile') {
             this.el.style = ''
         }
@@ -105,7 +105,8 @@ export default class Slider {
     }
 
     slideTo (index, animateText = true) {
-        if (index >= 0 && index < this.items.length) {
+        if (index >= 0 && index < this.items.length && !this.isSliding) {
+            this.isSliding = true
             let selectedItem = this.items[index]
 
             let didClickOnPaginationLinkEvent = new window.CustomEvent('didClickOnPaginationLink', {'detail': index})
@@ -115,26 +116,67 @@ export default class Slider {
             if (mediaQueryManager.currentBreakpoint == 'mobile') {
                 this.slideAnimationMobile(index)
             } else {
-                this.selectItemsToCopy(selectedItem)
+                if (index < this.selectedIndex && this.selectedIndex - index < this.items.length / 2) {
+                    this.slideToPrevElmt(index)
 
-                this.updateItemsInterval = window.setInterval(() => {
-                    this.update()
-                }, 100)
-
-                let offsetLeft = selectedItem.offsetLeft
-                TweenLite.to(this.el, 0.7, {
-                    left: -offsetLeft + this.sliderLeft,
-                    ease: Power3.easeOut,
-                    onComplete: () => {
-                        this.didSlideTo(index)
+                    if (animateText && index !== this.selectedIndex) {
+                        this.animateText('prev')
                     }
-                })
+                } else {
+                    this.slideToNextElmt(index)
 
-                if (animateText && index !== this.selectedIndex) {
-                    this.animateText()
+                    if (animateText && index !== this.selectedIndex) {
+                        this.animateText()
+                    }
                 }
             }
         }
+    }
+
+    slideToNextElmt (index) {
+        let selectedItem = this.items[index]
+
+        // Select items to copy
+        this.copyNextItems(selectedItem)
+
+        // Remove hidden items on left while sliding
+        this.updateItemsInterval = window.setInterval(() => {
+            this.updateWhileSlidingNext()
+        }, 100)
+
+        // Sliding animation
+        let offsetLeft = selectedItem.offsetLeft
+        TweenLite.to(this.el, 0.7, {
+            left: -offsetLeft + this.sliderLeft,
+            ease: Power3.easeOut,
+            onComplete: () => {
+                this.didSlideToNext(index)
+            }
+        })
+    }
+
+    slideToPrevElmt (index) {
+        let selectedItem = this.items[index]
+
+        // Select items to copy
+        this.copyPrevItems(selectedItem)
+        let firstItem = this.getFirstItem()
+
+        // Insert copied items at the beginning
+        for (let i = 0; i < this.itemsToCopy.length; i++) {
+            this.el.insertBefore(this.itemsToCopy[i], this.el.firstChild)
+        }
+        this.itemsToCopy = []
+
+        // Sliding animation
+        this.el.style.left = -firstItem.offsetLeft + this.sliderLeft + 'px'
+        TweenLite.to(this.el, 0.7, {
+            left: this.sliderLeft,
+            ease: Power3.easeOut,
+            onComplete: () => {
+                this.didSlideToPrev(index)
+            }
+        })
     }
 
     slideAnimationMobile (index) {
@@ -148,6 +190,7 @@ export default class Slider {
                 this.items[index].style.display = 'inline-block'
 
                 this.selectedIndex = index
+                this.isSliding = false
             }
         })
         TweenLite.to(this.el, 0.3, {
@@ -159,7 +202,7 @@ export default class Slider {
         this.animateText()
     }
 
-    selectItemsToCopy (selectedItem) {
+    copyNextItems (selectedItem) {
         let items = this.getCurrentItemsList()
         let index = items.indexOf(selectedItem)
 
@@ -175,7 +218,28 @@ export default class Slider {
         }
     }
 
-    update (updateOnBreakpointChange = false) {
+    copyPrevItems (selectedItem) {
+        let items = this.getCurrentItemsList()
+
+        let currentItemIndex = this.getCurrentIndex()
+        let selectedIndex = selectedItem.dataset.index
+
+        let nbItemsToCopy = currentItemIndex - selectedIndex
+        let nbItems = items.length
+        let copies = []
+
+        for (let i = 1; i <= nbItemsToCopy; i++) {
+            let itemToCopy = items[nbItems - i]
+            let copy = itemToCopy.cloneNode(true)
+            this.itemsToCopy.push(itemToCopy)
+        }
+
+        for (let i = 1; i <= nbItemsToCopy; i++) {
+            items[nbItems - i].remove()
+        }
+    }
+
+    updateWhileSlidingNext (updateOnBreakpointChange = false) {
         for (let i = 0; i < this.itemsToCopy.length; i++) {
             let itemToCopy = this.itemsToCopy[i]
 
@@ -203,7 +267,7 @@ export default class Slider {
         this.slideTo(index)
     }
 
-    didSlideTo (index) {
+    didSlideToNext (index) {
         window.clearInterval(this.updateItemsInterval)
 
         this.itemsToCopy.forEach(itemToCopy => {
@@ -219,9 +283,17 @@ export default class Slider {
 
         this.selectedIndex = index
         this.addEventListenerOnLinks()
+        this.isSliding = false
     }
 
-    animateText () {
+    didSlideToPrev (index) {
+        this.sliderDragging.refItem = this.getFirstItem()
+        this.selectedIndex = index
+        this.addEventListenerOnLinks()
+        this.isSliding = false
+    }
+
+    animateText (prev = false) {
         let textLeftX = 238
 
         if (mediaQueryManager.currentBreakpoint === 'mobile') {
@@ -245,6 +317,10 @@ export default class Slider {
             let ease = Power3.easeOut
             if (index == 1) {
                 ease = Power3.easeIn
+            }
+
+            if (index === '1' && prev !== false) {
+                text.style.left = textLeftX - 200 + 'px'
             }
 
             TweenLite.to(text, 0.7, {

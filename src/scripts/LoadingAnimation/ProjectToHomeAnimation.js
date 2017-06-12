@@ -82,7 +82,7 @@ export default class ProjectToHomeAnimation {
     }
 
     shrinkBackground () {
-        let top = window.scrollY + (window.innerHeight - this.sliderHeight - 180 - this.header.offsetHeight) // 180 is slider margin bottom
+        let top = window.scrollY + (window.innerHeight - this.sliderHeight - 90 - this.header.offsetHeight) // 180 is slider margin bottom
 
         TweenLite.to(this.background, 0.7, {
             height: this.backgroundFinalHeight,
@@ -111,7 +111,7 @@ export default class ProjectToHomeAnimation {
             },
             onComplete: () => {
                 this.background.classList.add('home-loading')
-                this.background.style.top = window.innerHeight - this.sliderHeight - 180 + 'px'
+                this.background.style.top = window.innerHeight - this.sliderHeight - 90 + 'px'
                 this.mainContainer.insertBefore(this.background, this.mainContainer.firstChild)
                 store.commit(types.SET_IS_TRANSITIONING)
                 this.pushPath()
