@@ -8,6 +8,7 @@ export default class MenuItem {
     constructor (el) {
         this.el = el
         this.underline = this.el.querySelector('.header-link__underline')
+        this.selectedAnimation = false
     }
 
     init () {
@@ -45,7 +46,7 @@ export default class MenuItem {
      * can take a callback function as a parameter
      */
     animateOnOut (callback = null) {
-        if (!this.isSelected() && this.underline !== null) {
+        if (!this.isSelected() && !this.selectedAnimation && this.underline !== null) {
             this.el.classList.remove(OVER_CLASS)
             TweenLite.to(this.underline, 0.5, {
                 width: '0',
@@ -70,6 +71,7 @@ export default class MenuItem {
                 bottom: '-15px',
                 ease: Power3.easeOut,
                 onComplete: () => {
+                    this.selectedAnimation = false
                     if (callback) {
                         callback()
                     }
@@ -98,6 +100,7 @@ export default class MenuItem {
      * if not we have to play over animation before selected animation
      */
     setSelected () {
+        this.selectedAnimation = true
         if (this.el.classList.contains(MenuItem.OVER_CLASS)) {
             this.animateSelected()
         } else {
