@@ -41,15 +41,26 @@ export default class Project {
             }),
             props: ['menu'],
             watch: {
-                '$route': 'getProject'
+                '$route': 'getProject',
+                'project': function (val) {
+                    let images = []
+                    images.push(this.imagePath(val.image, val.slug))
+
+                    let content = val.content
+                    for (let c of content) {
+                        if (c.image) {
+                            images.push(this.imagePath(c.image, val.slug))
+                        }
+                    }
+
+                    if (this.transitionType !== this.transitionTypes['home-project']) {
+                        Utils.loadImages(images).then(() => {
+                            Utils.fadeInPage()
+                        })
+                    }
+                }
             },
             mounted () {
-                if (this.transitionType !== this.transitionTypes['home-project']) {
-                    Utils.loadImages().then(() => {
-                        Utils.fadeInPage()
-                    })
-                }
-
                 this.getProject()
             },
             updated () {

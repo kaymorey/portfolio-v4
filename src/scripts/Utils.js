@@ -7,7 +7,7 @@ Utils.fadeInPage = function () {
     let hello = document.querySelector('.hello')
 
     return new Promise((resolve) => {
-        TweenLite.to(container, 0.5, {
+        TweenLite.to(container, 0.7, {
             delay: 0.2,
             alpha: 1,
             onComplete: function () {
@@ -22,13 +22,22 @@ Utils.fadeInPage = function () {
 Utils.loadImages = function (images) {
     if (!images) {
         images = [...document.querySelectorAll('img[data-src]')]
-    }
 
-    if (images.length > 0) {
+        if (images.length > 0) {
+            let img = images[0]
+
+            let imgObj = new window.Image()
+            imgObj.src = img.dataset.src
+            imgObj.onload = () => {
+                images.shift()
+                this.loadImages(images)
+            }
+        }
+    } else {
         let img = images[0]
 
         let imgObj = new window.Image()
-        imgObj.src = img.dataset.src
+        imgObj.src = img
         imgObj.onload = () => {
             images.shift()
             this.loadImages(images)
