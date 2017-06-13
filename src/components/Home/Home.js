@@ -34,6 +34,7 @@ export default class Home {
             },
             computed: {
                 ...mapGetters({
+                    isTransitioning: 'isTransitioning',
                     transitionType: 'transitionType',
                     transitionTypes: 'allTransitionTypes'
                 })
@@ -60,7 +61,7 @@ export default class Home {
                     }
                 },
                 createSliderFromProjectAnimation () {
-                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && (this.transitionType === this.transitionTypes['project-home'] || this.transitionType === this.transitionTypes['anywhere-projects'])) {
+                    if (Object.keys(this.sliderFromProjectAnimation).length === 0 && (this.transitionType === this.transitionTypes['project-home'] || this.transitionType === this.transitionTypes['anywhere-projects']) && this.isTransitioning) {
                         this.sliderFromProjectAnimation = new SliderFromProjectAnimation()
                     }
                 }
