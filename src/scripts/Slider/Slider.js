@@ -76,7 +76,13 @@ export default class Slider {
             link.addEventListener('click', (e) => {
                 e.preventDefault()
 
-                Emitter.emit('didSelectProject', link)
+                let items = this.getCurrentItemsList()
+                let item = link.parentElement
+                let itemIndex = items.indexOf(item)
+
+                if (itemIndex === 0 || mediaQueryManager.currentBreakpoint === 'mobile') {
+                    Emitter.emit('didSelectProject', link)
+                }
             })
         })
     }
