@@ -1,4 +1,4 @@
-import {TimelineLite, TweenLite, Power1, Power3, Circ} from 'gsap'
+import {TimelineLite, TweenLite, Power1, Power2, Power3, Circ} from 'gsap'
 
 import mediaQueryManager from '../MediaQueryManager'
 
@@ -130,11 +130,11 @@ export default class HomeLoading {
             this.links.forEach(link => {
                 let tl = new TimelineLite()
                 let underline = link.querySelector('.link-underline')
-                tl.to(underline, 0.6, {
+                tl.to(underline, 0.35, {
                     width: '100%',
-                    ease: Power1.easeIn
+                    ease: Power2.easeInOut
                 })
-                .to(underline, 0.5, {
+                .to(underline, 0.35, {
                     bottom: this.positionBottomUnderline + 'px',
                     ease: Power3.easeOut,
                     onComplete: () => {
