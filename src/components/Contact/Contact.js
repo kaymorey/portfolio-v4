@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import {TweenLite, Power1} from 'gsap'
 
 import Mixin from 'scripts/Mixin'
@@ -27,7 +28,16 @@ export default class Contact {
                     route: ''
                 }
             },
+            computed: mapGetters({
+                locales: 'allLocales'
+            }),
+            watch: {
+                '$route': 'reloadData'
+            },
             props: ['menu'],
+            created () {
+                this.reloadDataAcccordingToLocale(this.locales)
+            },
             mounted () {
                 this.route = this.$route.name
 
@@ -46,6 +56,9 @@ export default class Contact {
                 this.errors = []
             },
             methods: {
+                reloadData: function () {
+                    this.reloadDataAcccordingToLocale(this.locales)
+                },
                 isValidMessage: function () {
                     let str = this.message.trim()
 

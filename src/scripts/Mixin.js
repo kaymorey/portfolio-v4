@@ -57,15 +57,18 @@ export default {
             container.style.opacity = ''
             container.classList.remove('visible')
         },
+        reloadDataAcccordingToLocale: function (locales) {
+            let localeSlug = this.$route.params.locale
+            if (!localeSlug) {
+                localeSlug = 'fr'
+            }
+
+            let locale = locales.find(locale => locale.slug === localeSlug)
+            this.$store.commit(types.SET_LOCALE, locale)
+        },
         dispatchProjectAccordingToLocale: function (locales) {
             return new Promise((resolve) => {
-                let localeSlug = this.$route.params.locale
-                if (!localeSlug) {
-                    localeSlug = 'fr'
-                }
-
-                let locale = locales.find(locale => locale.slug === localeSlug)
-                this.$store.commit(types.SET_LOCALE, locale)
+                this.reloadDataAcccordingToLocale(locales)
                 this.$store.dispatch('getAllProjects').then(() => {
                     resolve(true)
                 })

@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="header__item">
-                    <router-link :to="{name: 'contact', params: {locale: 'fr'}}" class="header__link" data-route="contact">
+                    <router-link :to="{name: 'contact', params: {locale: selectedLocale.slug}}" class="header__link" data-route="contact">
                         {{ 'menu.contact' | translate }}
                         <span class="header-link__underline"></span>
                     </router-link>

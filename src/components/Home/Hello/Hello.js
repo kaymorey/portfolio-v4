@@ -18,7 +18,8 @@ export default class Hello {
             computed: {
                 ...mapGetters({
                     transitionType: 'transitionType',
-                    transitionTypes: 'allTransitionTypes'
+                    transitionTypes: 'allTransitionTypes',
+                    selectedLocale: 'selectedLocale'
                 })
             },
             destroyed () {
