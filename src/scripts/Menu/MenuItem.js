@@ -1,4 +1,4 @@
-import {TweenLite, Power3} from 'gsap'
+import {TweenLite, TweenMax, Power3} from 'gsap'
 
 const SELECTED_CLASS = 'header__link--selected'
 const OVER_CLASS = 'header__link--over'
@@ -47,6 +47,18 @@ export default class MenuItem {
      */
     animateOnOut (callback = null) {
         if (!this.isSelected() && !this.selectedAnimation && this.underline !== null) {
+            this.el.classList.remove(OVER_CLASS)
+            TweenLite.to(this.underline, 0.5, {
+                width: '0',
+                ease: Power3.easeOut,
+                onComplete: () => {
+                    if (callback) {
+                        callback()
+                    }
+                }
+            })
+        } else if (this.selectedAnimation && this.underline !== null) {
+            TweenMax.killChildTweensOf(this.underline)
             this.el.classList.remove(OVER_CLASS)
             TweenLite.to(this.underline, 0.5, {
                 width: '0',
