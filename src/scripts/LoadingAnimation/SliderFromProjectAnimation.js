@@ -42,8 +42,6 @@ export default class SliderFromProjectAnimation {
                 this.launchAnimation()
             }, 100)
         }
-
-        store.commit(types.REMOVE_IS_TRANSITIONING)
     }
 
     launchAnimation () {
@@ -146,5 +144,6 @@ export default class SliderFromProjectAnimation {
         this.section.classList.remove('loading-from-project')
         this.pagination.style.top = ''
         this.pagination.style.bottom = ''
+        store.commit(types.REMOVE_IS_TRANSITIONING)
     }
 }

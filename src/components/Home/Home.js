@@ -5,6 +5,7 @@ import Hello from './Hello/Hello'
 import Projects from './Projects/Projects'
 
 import Mixin from 'scripts/Mixin'
+import * as types from 'store/mutation-types'
 
 import HomeLoading from 'scripts/LoadingAnimation/HomeLoading'
 import SliderFromProjectAnimation from 'scripts/LoadingAnimation/SliderFromProjectAnimation'
