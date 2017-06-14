@@ -14,6 +14,7 @@ let messages = {
     'contact.title': 'Envie de me contacter ?',
     'contact.subtitle': 'Écrivez-moi quelque-chose !',
     'contact.to': 'À',
+    'contact.from': 'De',
     'contact.messages': '[ "Et si on travaillait ensemble ?", "J\'ai un projet dont j\'aimerais te parler...", "Salut Katia ! J\'ai une question pour toi"]',
     'contact.introduction': 'Utilisez le formulaire ci-dessous ou envoyez moi un email à',
     'contact.hi': 'Bonjour !',

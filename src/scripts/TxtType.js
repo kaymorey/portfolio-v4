@@ -7,10 +7,17 @@ export default class TxtType {
         this.period = parseInt(period, 10) || 2000
         this.txt = ''
         this.isDeleting = false
+        this.changingText = false
+        this.newTexts = []
     }
 
     init () {
         this.tick()
+    }
+
+    updateTexts (texts) {
+        this.changingText = true
+        this.newTexts = JSON.parse(texts)
     }
 
     tick () {
@@ -36,6 +43,12 @@ export default class TxtType {
             delta = this.period
             this.isDeleting = true
         } else if (this.isDeleting && this.txt === '') {
+            if (this.changingText) {
+                this.toRotate = this.newTexts
+                this.newTexts = []
+                this.changingText = false
+            }
+
             this.isDeleting = false
             this.loopNum++
             delta = 500

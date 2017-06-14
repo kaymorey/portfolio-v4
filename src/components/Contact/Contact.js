@@ -24,6 +24,7 @@ export default class Contact {
                     errors: [],
                     success: false,
                     contactForm: {},
+                    txtType: {},
                     rootPage: true,
                     route: ''
                 }
@@ -58,6 +59,7 @@ export default class Contact {
             methods: {
                 reloadData: function () {
                     this.reloadDataAcccordingToLocale(this.locales)
+                    this.txtType.updateTexts(this.translate('contact.messages'))
                 },
                 isValidMessage: function () {
                     let str = this.message.trim()
@@ -157,15 +159,13 @@ export default class Contact {
                     }
                 },
                 typeText: function () {
-                    let elements = document.getElementsByClassName('typewrite')
+                    let el = document.querySelector('.typewrite')
 
-                    for (let i = 0; i < elements.length; i++) {
-                        let toRotate = elements[i].getAttribute('data-type')
-                        let period = elements[i].getAttribute('data-period')
-                        if (toRotate) {
-                            let txtType = new TxtType(elements[i], JSON.parse(toRotate), period)
-                            txtType.init()
-                        }
+                    let toRotate = el.dataset.type
+                    let period = el.dataset.period
+                    if (toRotate) {
+                        this.txtType = new TxtType(el, JSON.parse(toRotate), period)
+                        this.txtType.init()
                     }
                 },
                 writeMessage: function () {
