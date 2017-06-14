@@ -4,6 +4,7 @@ import { mapGetters } from 'vuex'
 import Hello from './Hello/Hello'
 import Projects from './Projects/Projects'
 
+import Utils from 'scripts/Utils'
 import Mixin from 'scripts/Mixin'
 import * as types from 'store/mutation-types'
 
@@ -47,7 +48,7 @@ export default class Home {
                 if (loading && !this.projectToSlider) {
                     this.createHomeLoading()
                 } else {
-                    document.getElementById('main-container').classList.add('visible')
+                    Utils.fadeInPage()
                 }
             },
             destroyed () {
