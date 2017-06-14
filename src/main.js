@@ -87,7 +87,11 @@ class Main {
                     this.$store.commit(types.SET_LOCALE, locale)
                     this.$store.dispatch('getAllProjects')
 
-                    router.push({name: this.$route.name, params: {locale: locale.slug}})
+                    if (this.$route.params.project) {
+                        router.push({name: this.$route.name, params: {locale: locale.slug, project: this.$route.params.project}})
+                    } else {
+                        router.push({name: this.$route.name, params: {locale: locale.slug}})
+                    }
                 },
                 updateDataAccordingToRoute () {
                     if (this.$route.name === 'home') {
