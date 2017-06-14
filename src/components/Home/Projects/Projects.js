@@ -3,7 +3,7 @@ import { mapGetters } from 'vuex'
 
 import Mixin from 'scripts/Mixin'
 import Slider from 'scripts/Slider/Slider'
-import SliderToProjectAnimation from 'scripts/SliderToProjectAnimation'
+import SliderToProjectAnimation from 'scripts/LoadingAnimation/SliderToProjectAnimation'
 
 import './projects.scss'
 

@@ -5,7 +5,7 @@ import css from 'css-styler'
 import store from 'src/store'
 import * as types from 'src/store/mutation-types'
 import Utils from 'scripts/Utils'
-import mediaQueryManager from './MediaQueryManager'
+import mediaQueryManager from 'scripts/MediaQueryManager'
 
 const COLORS_DURATION_ANIMATION = 0.5
 const POSITIONS_DURATION_ANIMATION = 0.5

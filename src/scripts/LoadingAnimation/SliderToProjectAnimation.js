@@ -4,8 +4,8 @@ import ScrollToPlugin from 'ScrollToPlugin'
 import router from 'src/Router'
 import store from 'src/store'
 import * as types from 'src/store/mutation-types'
-import Emitter from './Emitter'
-import mediaQueryManager from './MediaQueryManager'
+import Emitter from 'scripts/Emitter'
+import mediaQueryManager from 'scripts/MediaQueryManager'
 
 export default class SliderToProjectAnimation {
 

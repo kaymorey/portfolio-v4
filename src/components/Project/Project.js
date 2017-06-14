@@ -2,7 +2,7 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 
 import Mixin from 'scripts/Mixin'
-import ProjectFromHomeAnimation from 'scripts/ProjectFromHomeAnimation'
+import ProjectFromHomeAnimation from 'scripts/LoadingAnimation/ProjectFromHomeAnimation'
 import ProjectToHomeAnimation from 'scripts/LoadingAnimation/ProjectToHomeAnimation'
 
 import ProjectHeader from './ProjectHeader/ProjectHeader'
